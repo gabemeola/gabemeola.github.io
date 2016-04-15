@@ -4,7 +4,7 @@ var path = require("path"),
 	autoprefixer = require('autoprefixer');
 module.exports = {
 	entry: { //Entry Point for Webpack
-		app: ["./app/app.jsx", "./public/sass/entry.sass"]
+		app: ["./app/app.jsx", "./sass/entry.sass"]
 	},
 	output: {
 		path: "public/",
