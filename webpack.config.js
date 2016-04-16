@@ -4,22 +4,24 @@ var path = require("path"),
 	autoprefixer = require('autoprefixer');
 module.exports = {
 	entry: { //Entry Point for Webpack
-		app: ["./app/app.jsx", "./sass/entry.sass"]
+		app: ["./app/app.jsx", "./sass/entry.sass"],
+		extensions: ["", ".js", ".jsx"]
 	},
 	output: {
 		path: "public/",
-		filename: "bundle.js" //Bundled Javascript Webpack Spits out.
+		filename: "bundle.js",
+		publicPath: "//localhost:3333/public/"//Bundled Javascript Webpack Spits out.
 	},
 	devServer: { //Allows webpack-dev-server to be live reloaded
 		inline: true,
+		hot: true,
 		port: 3333,
-		watch: true,
-		hot: true
+		watch: true
 	},
 	module: {
 		loaders: [
 			{ //Babel loader for converting ES2015 to ES5
-				test: /\.js?x$/,
+				test: /\.jsx?$/,
 				exclude: /node_modules/,
 				loader: 'babel-loader',
 				query: {
@@ -41,7 +43,7 @@ module.exports = {
 					'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false&progressive=true'
 				]
 			},
-			{
+			{ //Loads HTML imports/requires
 				test: /\.html$/,
 				loader: "html"
 			}
@@ -50,6 +52,7 @@ module.exports = {
 	//Config for Post-CSS and AutoPrefixer
 	postcss: [ autoprefixer({ remove: false, browsers: ['last 2 versions'] }) ],
 	plugins: [
+		new webpack.HotModuleReplacementPlugin(),
 		new ExtractTextPlugin("main.css")
 	]
 };
