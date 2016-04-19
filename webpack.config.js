@@ -3,9 +3,11 @@ var path = require("path"),
 	ExtractTextPlugin = require('extract-text-webpack-plugin'),
 	autoprefixer = require('autoprefixer');
 module.exports = {
-	entry: { //Entry Point for Webpack
-		app: ["./app/app.jsx", "./sass/entry.sass"],
+	resolve: { //Resolves ES2015 Imports
 		extensions: ["", ".js", ".jsx"]
+	},
+	entry: { //Entry Point for Webpack
+		app: ["./app/app.jsx", "./sass/entry.sass"]
 	},
 	output: {
 		path: "public/",

@@ -3,12 +3,11 @@ var path = require("path"),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
 		autoprefixer = require('autoprefixer');
 module.exports = {
-	resolve: { //Searches the Bower_Components Directory not just the node_modules for imports
-    root: ["./app/app.jsx", "./sass/entry.sass"],
+	resolve: { //Resolves ES2015 Imports
 		extensions: ["", ".js", ".jsx"]
-  },
+	},
   entry: { //Entry Point for Webpack
-	  app: ["./public/js/entry.js", "./public/sass/entry.sass"]
+	  app: ["./app/app.jsx", "./sass/entry.sass"]
   },
 	output: {
 		path: "public/",
@@ -48,6 +47,6 @@ module.exports = {
 	//Config for Post-CSS and AutoPrefixer
 	postcss: [ autoprefixer({ remove: false, browsers: ['last 2 versions'] }) ],
   plugins: [
-	  new ExtractTextPlugin("style.css")
+	  new ExtractTextPlugin("main.css")
   ]
 };
