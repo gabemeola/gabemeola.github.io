@@ -17,7 +17,7 @@ module.exports = {
 		loaders: [
 			{ //Babel loader for converting ES2015 to ES5
 				test: /\.jsx?$/,
-				exclude: [/bower_components/, /node_modules/],
+				exclude: /node_modules/,
 				loader: 'babel-loader',
 				query: {
 					presets: ['react', 'es2015']

@@ -1,7 +1,7 @@
 var path = require("path"),
-	webpack = require("webpack"),
-	ExtractTextPlugin = require('extract-text-webpack-plugin'),
-	autoprefixer = require('autoprefixer');
+		webpack = require("webpack"),
+		ExtractTextPlugin = require('extract-text-webpack-plugin'),
+		autoprefixer = require('autoprefixer');
 module.exports = {
 	resolve: { //Resolves ES2015 Imports
 		extensions: ["", ".js", ".jsx"]
