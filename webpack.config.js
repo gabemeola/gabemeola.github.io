@@ -1,7 +1,8 @@
 var path = require("path"),
 		webpack = require("webpack"),
 		ExtractTextPlugin = require('extract-text-webpack-plugin'),
-		autoprefixer = require('autoprefixer');
+		autoprefixer = require('autoprefixer'),
+		HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 	resolve: { //Resolves ES2015 Imports
 		extensions: ["", ".js", ".jsx"]
@@ -10,9 +11,8 @@ module.exports = {
 		app: ["./app/app.jsx", "./sass/entry.sass"]
 	},
 	output: {
-		path: "dist/",
-		filename: "bundle.js",
-		publicPath: "//localhost:3333/dist/"//Bundled Javascript Webpack Spits out.
+		path: __dirname + "/dist/",
+		filename: "bundle.js" //Bundled Javascript Webpack Spits out.
 	},
 	devServer: { //Allows webpack-dev-server to be live reloaded
 		inline: true,
@@ -55,6 +55,11 @@ module.exports = {
 	postcss: [ autoprefixer({ remove: false, browsers: ['last 2 versions'] }) ],
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new ExtractTextPlugin("main.css")
+		new ExtractTextPlugin("main.css"),
+		new HtmlWebpackPlugin({
+			template: __dirname + "/app/index.html",
+			filename: "index.html",
+			inject: "head"
+		})
 	]
 };
