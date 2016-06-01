@@ -1,3 +1,3 @@
 # gabemeola.github.io
 
-Baseplace for Gabe M personally Website
+Baseplace for Gabe M personal Website
