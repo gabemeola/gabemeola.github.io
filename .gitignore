@@ -7,3 +7,5 @@ bundle.js
 .idea
 main.css
 */min-icons/*
+dist/
+public/
