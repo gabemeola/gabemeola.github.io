@@ -7,7 +7,7 @@ class Navbar extends React.Component {
 		return(
 			<div className="navbar">
 				<NavbarHeader/>
-				{/*<NavbarNavBtn/>*/}
+				<NavbarNavBtn/>
 			</div>
 		)
 	}

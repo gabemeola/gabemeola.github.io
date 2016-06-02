@@ -2,6 +2,7 @@
 	width: 100vw
 	height: 100px
 	position: relative
+	@import "navbar-navbtn"
 	.navbar-header-wrapper
 		display: inline-block
 		position: relative
@@ -21,6 +22,8 @@
 			z-index: 1
 			transition: $transition
 		&:hover
+			.navbar-header-text
+				cursor: pointer
 			.navbar-header-block
 				width: 66%
 			.navbar-socials
