@@ -1,9 +1,10 @@
 import React from "react";
+import navbarIcon from "../../assets/navbar.svg";
 
 function NavbarNavBtn(props) {
 	return(
 		<div className="navbar-navbtn">
-			<h4>Navbarnavbtn</h4>
+			<img src={navbarIcon} alt="Navbar Icon"/>
 		</div>
 	)
 }
