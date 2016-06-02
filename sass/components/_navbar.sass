@@ -1,7 +1,9 @@
 .navbar
 	width: 95vw
-	height: 100px
+	height: 40px
+	display: block
 	position: relative
+	//background-color: orange
 	padding: 30px 0 0 0
 	margin: 0 auto
 	@import "navbar-btn"
@@ -9,7 +11,7 @@
 		display: inline-block
 		position: relative
 		transition: $transition
-		width: auto
+		width: 100%
 		@import "navbar-socials"
 		.navbar-header-text
 			color: #ffffff
@@ -19,9 +21,10 @@
 			font-weight: 500
 		.navbar-header-block
 			background-color: $green
-			width: 10.5%
-			left: -20px
+			width: 42px
+			left: -22px
 			height: 100%
+			max-height: 45px
 			position: absolute
 			z-index: 1
 			transition: $transition
@@ -29,6 +32,6 @@
 			.navbar-header-text
 				cursor: pointer
 			.navbar-header-block
-				width: 72%
+				width: 275px
 			.navbar-socials
 				opacity: 1
