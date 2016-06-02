@@ -1,13 +1,18 @@
 import React from "react";
+import NavbarHeader from "../components/NavbarHeader";
+import NavbarNavBtn from "../components/NavbarNavBtn";
+import NavbarSocials from "../components/NavbarSocials";
 
-class Navbar extends React.Component{
-	render(){
+class Navbar extends React.Component {
+	render() {
 		return(
-			<div>
-				test
+			<div className="navbar">
+				<NavbarHeader/>
+				<NavbarSocials/>
+				<NavbarNavBtn/>
 			</div>
 		)
 	}
-};
+}
 
-export default Navbar
+export default Navbar;
