@@ -4,7 +4,10 @@ import NavbarContainer from "../container/NavbarContainer";
 class Main extends React.Component {
 	render() {
 		return(
-			<NavbarContainer/>
+			<div className="main-container">
+				<NavbarContainer/>
+				{this.props.children}
+			</div>
 		)
 	}
 }
