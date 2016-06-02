@@ -1,11 +1,13 @@
 import React from "react";
-import { Route, IndexRoute } from "react-router";
-import Navbar from "../components/Navbar";
+import { Router, hashHistory, Route, IndexRoute } from "react-router";
+import Main from "../components/Main";
 
 const routes = (
-	<Route path="/" component={Navbar}>
-		<IndexRoute/>
-	</Route>
+	<Router history={hashHistory}>
+		<Route path="/" component={Main}>
+			<IndexRoute/>
+		</Route>
+	</Router>
 );
 
 export default routes;
