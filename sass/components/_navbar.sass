@@ -1,0 +1,23 @@
+.navbar
+	width: 100vw
+	background-color: ghostwhite
+	height: 100px
+	position: relative
+	.navbar-header-wrapper
+		display: inline-block
+		position: relative
+		transition: $transition
+		.navbar-header-text
+			color: #ffffff
+			position: relative
+			z-index: 2
+		.navbar-header-block
+			background-color: $green
+			width: 8%
+			height: 100%
+			position: absolute
+			z-index: 1
+			transition: $transition
+		&:hover
+			.navbar-header-block
+				width: 100%
