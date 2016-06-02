@@ -8,8 +8,8 @@ class Navbar extends React.Component {
 		return(
 			<div className="navbar">
 				<NavbarHeader/>
-				<NavbarSocials/>
-				<NavbarNavBtn/>
+{/*				<NavbarSocials/>
+				<NavbarNavBtn/>*/}
 			</div>
 		)
 	}

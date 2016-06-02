@@ -2,8 +2,8 @@ import React from "react";
 
 function NavbarHeader (props) {
 	return(
-		<div>
-			<h1>gabemeola.com</h1>
+		<div className="navbar-header-wrapper">
+			<h1 className="navbar-header-text">gabemeola.com</h1>
 		</div>
 	)
 }
