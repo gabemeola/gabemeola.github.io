@@ -6,7 +6,9 @@ class Main extends React.Component {
 		return(
 			<div className="main-container">
 				<NavbarContainer/>
-				{this.props.children}
+				<div className="main-container-content">
+					{this.props.children}
+				</div>
 			</div>
 		)
 	}
