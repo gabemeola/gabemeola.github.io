@@ -5,7 +5,7 @@ function NavbarHeader (props) {
 	return(
 		<div className="navbar-header-wrapper">
 			<div className="navbar-header-block"></div>
-			<h1 className="navbar-header-text">gabemeola.com</h1>
+			<h1 className="navbar-header-text"><span style={{fontWeight: 700}}>g</span>abemeola.com</h1>
 			<NavbarSocials/>
 		</div>
 	)
