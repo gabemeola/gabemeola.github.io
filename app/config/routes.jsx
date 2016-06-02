@@ -8,7 +8,7 @@ const routes = (
 	<Router history={hashHistory}>
 		<Route path="/" component={Main}>
 			<IndexRoute component={Home}/>
-			<Route path="menu"/>
+			<Route path="menu" component={MenuContainer}/>
 		</Route>
 	</Router>
 );
