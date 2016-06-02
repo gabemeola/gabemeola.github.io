@@ -6,9 +6,17 @@ import GithubIcon from "../../assets/Github.svg";
 function NavbarSocials(props) {
 	return(
 		<div className="navbar-socials">
-			<img className="navbar-socials-facebook" src={FacebookIcon} alt="Facebook Link"/>
-			<img className="navbar-socials-twitter" src={TwitterIcon} alt="Twitter Link"/>
-			<img className="navbar-socials-github" src={GithubIcon} alt="Github Link"/>
+			<div className="navbar-socials-flexbox">
+				<a className="navbar-socials-facebook" href="//facebook.com/gabemeola" target="_blank">
+					<img src={FacebookIcon} alt="Facebook Link"/>
+				</a>
+				<a className="navbar-socials-twitter" href="//twitter.com/c7abe" target="_blank">
+					<img src={TwitterIcon} alt="Twitter Link"/>
+				</a>
+				<a className="navbar-socials-github" href="//github.com/gabemeola" target="_blank">
+					<img src={GithubIcon} alt="Github Link"/>
+				</a>
+			</div>
 		</div>
 	)
 }

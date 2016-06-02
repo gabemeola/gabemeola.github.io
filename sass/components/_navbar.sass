@@ -1,25 +1,27 @@
 .navbar
 	width: 100vw
-	background-color: #62b4ff
 	height: 100px
 	position: relative
 	.navbar-header-wrapper
 		display: inline-block
 		position: relative
 		transition: $transition
+		width: auto
 		@import "navbar-socials"
 		.navbar-header-text
 			color: #ffffff
 			position: relative
 			z-index: 2
+			display: inline-block
 		.navbar-header-block
-			background-color: transparent
-			width: 8%
+			background-color: $green
+			width: 5%
 			height: 100%
 			position: absolute
 			z-index: 1
 			transition: $transition
 		&:hover
-			cursor: pointer
 			.navbar-header-block
-				width: 100%
+				width: 66%
+			.navbar-socials
+				opacity: 1
