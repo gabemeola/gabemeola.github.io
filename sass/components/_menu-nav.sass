@@ -1,0 +1,28 @@
+.menu-nav
+	width: 80%
+	//background-color: #35f535
+	color: #95989A
+	h2
+		font-size: 46px
+		font-weight: 200
+		padding: 15px 0
+		transition: $transition
+		&:before
+			content: "|"
+			font-weight: 500
+			font-size: 56px
+			padding-right: 25px
+			transition: $transition
+		&:hover
+			&:before
+				color: $green
+	.menu-nav-works-wrapper
+		&:hover
+			h2:before
+				color: $green
+		.menu-nav-works
+			position: relative
+			font-weight: 200
+			font-size: 30px
+			margin-left: 46px
+			padding: 12px 0
