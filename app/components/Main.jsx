@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarContainer from "../container/NavbarContainer";
+import NavbarContainer from "../containers/NavbarContainer";
 
 class Main extends React.Component {
 	render() {
