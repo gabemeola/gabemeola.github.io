@@ -1,5 +1,5 @@
 import React from "react";
-import Menu from "../components/Menu";
+import Menu from "../components/MenuNav";
 
 class MenuContainer extends React.Component {
 	render() {
@@ -11,4 +11,4 @@ class MenuContainer extends React.Component {
 	}
 }
 
-export default MenuContainer
+export default MenuContainer;
