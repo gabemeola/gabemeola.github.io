@@ -2,12 +2,12 @@ import React from "react";
 
 function NavbarSocials(props) {
 	return(
-		<div>
-			<h4>Facebook Link</h4>
-			<h4>Twitter Link</h4>
-			<h4>Github Link</h4>
+		<div className="navbar-socials">
+			<h4 className="navbar-socials-facebook">Facebook</h4>
+			<h4 className="navbar-socials-twitter">Twitter</h4>
+			<h4 className="navbar-socials-github">Github</h4>
 		</div>
 	)
-};
+}
 
 export default NavbarSocials;
