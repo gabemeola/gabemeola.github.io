@@ -1,5 +1,5 @@
 import React from "react";
-import navbarIcon from "../../assets/navbar.svg";
+import navbarIcon from "../../../assets/navbar.svg";
 import { Link } from "react-router";
 
 function NavbarNavBtn(props) {

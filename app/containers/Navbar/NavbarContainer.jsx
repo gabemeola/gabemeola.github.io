@@ -1,6 +1,6 @@
 import React from "react";
-import NavbarHeader from "../components/NavbarHeader";
-import NavbarNavBtn from "../components/NavbarNavBtn";
+import NavbarHeader from "../../components/Navbar/NavbarHeader";
+import NavbarNavBtn from "../../components/Navbar/NavbarNavBtn";
 
 class Navbar extends React.Component {
 	render() {

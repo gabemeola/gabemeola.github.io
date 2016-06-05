@@ -1,5 +1,5 @@
 import React from "react";
-import NavbarSocials from "../components/NavbarSocials";
+import NavbarSocials from "./NavbarSocials";
 import { Link } from "react-router";
 
 function NavbarHeader (props) {
