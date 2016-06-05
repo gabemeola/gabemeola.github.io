@@ -3,13 +3,13 @@
     <style>
       .cls-1 {
         fill: none;
-        stroke: #d3754f;
+        stroke: #df997d;
         stroke-width: 2px;
       }
     </style>
   </defs>
   <g id="group-15" transform="translate(-1716 2670)">
-    <line id="line-4" class="cls-1" y2="27" transform="translate(1147.954 54.454) rotate(-45)"/>
+    <path id="line-4" class="cls-1" d="M0,0V27" transform="translate(1147.954 54.454) rotate(-45)"/>
     <line id="line-5" class="cls-1" y2="27" transform="translate(1167.046 54.454) rotate(45)"/>
   </g>
 </svg>
