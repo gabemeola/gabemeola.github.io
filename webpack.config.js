@@ -1,6 +1,5 @@
 var path = require("path"),
 		webpack = require("webpack"),
-		ExtractTextPlugin = require('extract-text-webpack-plugin'),
 		autoprefixer = require('autoprefixer'),
 		HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
@@ -8,7 +7,12 @@ module.exports = {
 		extensions: ["", ".js", ".jsx"]
 	},
 	entry: { //Entry Point for Webpack
-		app: ["./app/app.jsx", "./sass/entry.sass"]
+		app: [
+			'webpack-dev-server/client?http://localhost:3333',
+			'webpack/hot/only-dev-server',
+			'./app/app.jsx',
+			'./sass/entry.sass'
+		]
 	},
 	output: {
 		path: __dirname + "/dist/",
@@ -25,10 +29,7 @@ module.exports = {
 			{ //Babel loader for converting ES2015 to ES5
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				loader: 'babel-loader',
-				query: {
-					presets: ['react', 'es2015']
-				}
+				loaders: ['react-hot', 'babel-loader?presets[]=es2015,presets[]=react']
 			},
 			{ //Converts SASS to CSS
 				test: /\.sass$/,
