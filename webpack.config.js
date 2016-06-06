@@ -32,7 +32,7 @@ module.exports = {
 			},
 			{ //Converts SASS to CSS
 				test: /\.sass$/,
-				loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax')
+				loader: 'style-loader!css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax'
 			},
 			{ //Loads the font files from imports
 				test:  /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -55,7 +55,6 @@ module.exports = {
 	postcss: [ autoprefixer({ remove: false, browsers: ['last 2 versions'] }) ],
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
-		new ExtractTextPlugin("main.css"),
 		new HtmlWebpackPlugin({
 			template: __dirname + "/app/index.html",
 			filename: "index.html",
