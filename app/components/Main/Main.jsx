@@ -10,7 +10,7 @@ class Main extends React.Component {
 		}
 	}
 	//Set up component to not re-render ever navbar open change
-	handleNavbarOpen() {
+	handleNavbarSwitch() {
 		this.state.navbarOpen ?
 			this.setState({
 				navbarOpen: false
@@ -18,14 +18,19 @@ class Main extends React.Component {
 			this.setState({
 				navbarOpen: true
 			});
-		console.log(this.state.navbarOpen);
+	}
+	handleNavbarClose() {
+		if(this.state.navbarOpen) {
+			this.handleNavbarSwitch();
+		}
 	}
 	render() {
 		return(
 			<div className="main-container">
 				<NavbarContainer
-					onNavbarOpen={() => this.handleNavbarOpen()}
+					onNavbarSwitch={() => this.handleNavbarSwitch()}
 					handleNavbarOpen={this.state.navbarOpen}
+					onNavbarClose={() => this.handleNavbarClose()}
 				/>
 				<div className={"main-container-content " + (this.state.navbarOpen ? "main-container-content--blurred" : "")}>
 					{this.props.children}

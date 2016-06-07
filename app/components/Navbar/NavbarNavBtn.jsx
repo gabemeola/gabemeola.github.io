@@ -4,7 +4,7 @@ import navbarIcon from "../../../assets/navbar.svg";
 function NavbarNavBtn(props) {
 	return(
 		<div className="navbar-navbtn">
-			<a onClick={props.onNavbarOpen}>
+			<a onClick={props.onNavbarSwitch}>
 				<img src={navbarIcon} alt="Navigation Icon"/>
 			</a>
 		</div>
@@ -12,7 +12,7 @@ function NavbarNavBtn(props) {
 }
 
 NavbarNavBtn.propTypes = {
-	onNavbarOpen: PropTypes.func.isRequired,
+	onNavbarSwitch: PropTypes.func.isRequired,
 	isNavbarOpen: PropTypes.bool.isRequired
 };
 
