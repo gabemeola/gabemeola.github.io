@@ -2,16 +2,17 @@
 	width: 92vw
 	height: auto
 	position: fixed
-	background-color: #ffffff
+	//background-color: rgba(255, 255, 255, .5)
 	left: 4%
 	display: none
 	opacity: 0
 	transition: all 1s ease-in-out
+	top: 280px
+	z-index: 9999
 	&--visible
 		transition: all 1s ease-in-out
 		display: block
 		opacity: 1
-		top: 300px
 		animation: bounce-in-animation 1000ms linear both
 		@keyframes bounce-in-animation
 			0%
@@ -46,6 +47,5 @@
 	&--hidden
 		transition: all 1s ease-in-out
 		display: none
-		top: 300px
 		opacity: 0
 	@import "menu-nav"

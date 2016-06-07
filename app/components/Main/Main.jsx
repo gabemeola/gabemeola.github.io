@@ -27,7 +27,7 @@ class Main extends React.Component {
 					onNavbarOpen={() => this.handleNavbarOpen()}
 					handleNavbarOpen={this.state.navbarOpen}
 				/>
-				<div className="main-container-content">
+				<div className={"main-container-content " + (this.state.navbarOpen ? "main-container-content--blurred" : "")}>
 					{this.props.children}
 				</div>
 				<MenuContainer
