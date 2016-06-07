@@ -1,35 +1,29 @@
-import React from "react";
+import React, { PropTypes } from "react";
 import NavbarHeader from "../../components/Navbar/NavbarHeader";
 import NavbarNavBtn from "../../components/Navbar/NavbarNavBtn";
 
 class NavbarContainer extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			navbarOpen: false
-		}
-	}
-	handleNavbarOpen() {
-		this.state.navbarOpen ?
-		this.setState({
-			navbarOpen: false
-		}) :
-			this.setState({
-				navbarOpen: true
-			});
-		console.log(this.state.navbarOpen);
+	passNavbarOpen() {
+		this.props.onNavbarOpen();
 	}
 	render() {
 		return(
-			<div className="navbar">
-				<NavbarHeader/>
-				<NavbarNavBtn
-					onNavbarOpen={() => this.handleNavbarOpen()}
-				  isNavbarOpen={this.state.navbarOpen}
-				/>
+			<div>
+				<div className="navbar">
+					<NavbarHeader/>
+					<NavbarNavBtn
+						onNavbarOpen={() => this.passNavbarOpen()}
+					  isNavbarOpen={this.props.handleNavbarOpen}
+					/>
+				</div>
 			</div>
 		)
 	}
 }
+
+NavbarContainer.propTypes = {
+	onNavbarOpen: PropTypes.func.isRequired,
+	handleNavbarOpen: PropTypes.bool.isRequired
+};
 
 export default NavbarContainer;
