@@ -9,7 +9,9 @@ class Main extends React.Component {
 			navbarOpen: false
 		}
 	}
-	//Set up component to not re-render ever navbar open change
+	shouldComponentUpdate(nextProps, nextState) {
+		return nextState.navbarOpen !== this.state.navbarOpen
+	}
 	handleNavbarSwitch() {
 		this.state.navbarOpen ?
 			this.setState({
