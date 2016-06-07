@@ -29,7 +29,7 @@ class Main extends React.Component {
 			<div className="main-container">
 				<NavbarContainer
 					onNavbarSwitch={() => this.handleNavbarSwitch()}
-					handleNavbarOpen={this.state.navbarOpen}
+					isNavbarOpen={this.state.navbarOpen}
 					onNavbarClose={() => this.handleNavbarClose()}
 				/>
 				<div className={"main-container-content " + (this.state.navbarOpen ? "main-container-content--blurred" : "")}>
@@ -37,6 +37,7 @@ class Main extends React.Component {
 				</div>
 				<MenuContainer
 					visible={this.state.navbarOpen}
+					onNavbarSwitch={() => this.handleNavbarSwitch()}
 				/>
 			</div>
 		)

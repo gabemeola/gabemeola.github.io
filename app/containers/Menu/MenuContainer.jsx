@@ -1,11 +1,16 @@
-import React from "react";
+import React, { PropTypes } from "react";
 import MenuNav from "../../components/Menu/MenuNav";
 
 class MenuContainer extends React.Component {
+	passNavbarSwitch() {
+		this.props.onNavbarSwitch();
+	}
 	render() {
 		return (
 			<div className={"menu-container " + (this.props.visible ? "menu-container--visible" : "menu-container--hidden")}>
-				<MenuNav/>
+				<MenuNav
+					onNavbarSwitch={() => this.passNavbarSwitch()}
+				/>
 			</div>
 		)
 	}
@@ -14,5 +19,11 @@ class MenuContainer extends React.Component {
 MenuContainer.defaultProps = {
 	visible: false
 };
+
+MenuContainer.propTypes = {
+	visible: PropTypes.bool.isRequired,
+	onNavbarSwitch: PropTypes.func.isRequired
+};
+
 
 export default MenuContainer;

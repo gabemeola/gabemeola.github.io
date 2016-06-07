@@ -3,7 +3,7 @@ import NavbarHeader from "../../components/Navbar/NavbarHeader";
 import NavbarNavBtn from "../../components/Navbar/NavbarNavBtn";
 
 class NavbarContainer extends React.Component {
-	passNavbarOpen() {
+	passNavbarSwitch() {
 		this.props.onNavbarSwitch();
 	}
 	passNavbarClose() {
@@ -17,8 +17,8 @@ class NavbarContainer extends React.Component {
 						onNavbarClose={() => this.passNavbarClose()}
 					/>
 					<NavbarNavBtn
-						onNavbarSwitch={() => this.passNavbarOpen()}
-					  isNavbarOpen={this.props.handleNavbarOpen}
+						onNavbarSwitch={() => this.passNavbarSwitch()}
+					  isNavbarOpen={this.props.isNavbarOpen}
 					/>
 				</div>
 			</div>
@@ -28,7 +28,7 @@ class NavbarContainer extends React.Component {
 
 NavbarContainer.propTypes = {
 	onNavbarSwitch: PropTypes.func.isRequired,
-	handleNavbarOpen: PropTypes.bool.isRequired,
+	isNavbarOpen: PropTypes.bool.isRequired,
 	onNavbarClose: PropTypes.func.isRequired
 };
 
