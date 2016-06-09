@@ -11,6 +11,7 @@ const routes = (
 			<IndexRoute component={LandingContainer}/>
 			<Route path="about" component={HomeContainer}/>
 			<Route path="menu" component={MenuContainer}/>
+			<Route path="*" component={LandingContainer}/>
 		</Route>
 	</Router>
 );
