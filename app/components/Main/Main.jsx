@@ -10,7 +10,11 @@ class Main extends React.Component {
 		}
 	}
 	shouldComponentUpdate(nextProps, nextState) {
-		return nextState.navbarOpen !== this.state.navbarOpen
+		if(nextProps.children.type.name !== this.props.children.type.name) { // If Route Changes, update
+			return true
+		} else {   // If Route Doesn't change then check to see if navbar state changed
+			return nextState.navbarOpen !== this.state.navbarOpen
+		}
 	}
 	handleNavbarSwitch() {
 		this.state.navbarOpen ?

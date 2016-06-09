@@ -5,7 +5,7 @@ function Menu(props) {
 	return(
 		<div className="menu-nav-wrapper">
 			<div className="menu-nav">
-				<Link to="/" onClick={props.onNavbarSwitch}>
+				<Link to="about" onClick={props.onNavbarSwitch}>
 					<h2>About me</h2>
 				</Link>
 				<div className="menu-nav-works-wrapper">
