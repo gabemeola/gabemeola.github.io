@@ -1,13 +1,13 @@
 import React from "react";
 import { Router, hashHistory, Route, IndexRoute } from "react-router";
 import Main from "../components/Main/Main";
-import Home from "../components/Home/Home";
+import HomeContainer from "../containers/Home/HomeContainer";
 import MenuContainer from "../containers/Menu/MenuContainer";
 
 const routes = (
 	<Router history={hashHistory}>
 		<Route path="/" component={Main}>
-			<IndexRoute component={Home}/>
+			<IndexRoute component={HomeContainer}/>
 			<Route path="menu" component={MenuContainer}/>
 		</Route>
 	</Router>

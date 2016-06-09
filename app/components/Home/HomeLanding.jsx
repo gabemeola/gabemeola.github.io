@@ -1,9 +1,9 @@
 import React from "react";
 
-function Home(props) {
+function HomeLanding(props) {
 	return(
 		<div>HOME PAGE IS WORKING</div>
 	)
 }
 
-export default Home;
+export default HomeLanding;
