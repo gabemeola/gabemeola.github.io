@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 
 function LandingIcon(props) {
 	return (
-		<div className={"landing-icon " + (props.isIconExpanded ? "landing-icon-expanded" : "")}
+		<div className={"landing-icon " + (props.isIconExpanded ? "landing-icon--expanded" : "landing-icon--closed")}
 		     onClick={props.onIconExpand}
 		></div>
 	)
