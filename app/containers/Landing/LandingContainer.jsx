@@ -23,6 +23,7 @@ class LandingContainer extends React.Component {
 				<Landing/>
 				<LandingIcon 
 					onIconExpand={() => this.handleIconExpand()}
+				  isIconExpanded={this.state.iconExpanded}
 				/>
 			</div>
 		)
