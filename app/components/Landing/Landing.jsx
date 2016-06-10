@@ -2,7 +2,7 @@ import React from "react";
 
 function Landing(props) {
 	return(
-		<div>LANDING PAGE IS WORKING</div>
+		<h1><div className="underline">Hello!<div className="underline-mark"></div></div> - Gabe</h1>
 	)
 }
 

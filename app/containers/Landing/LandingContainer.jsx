@@ -4,7 +4,9 @@ import Landing from "../../components/Landing/Landing";
 class LandingContainer extends React.Component {
 	render() {
 		return(
-			<Landing/>
+			<div className="landing">
+				<Landing/>
+			</div>
 		)
 	}
 }
