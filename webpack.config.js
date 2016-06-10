@@ -16,7 +16,8 @@ module.exports = {
 	},
 	output: {
 		path: __dirname + "/dist/",
-		filename: "bundle.js" //Bundled Javascript Webpack Spits out.
+		filename: "bundle.js",
+		publicPath: "http://localhost:3333/"//Bundled Javascript Webpack Spits out.
 	},
 	devServer: { //Allows webpack-dev-server to be live reloaded
 		inline: true,
