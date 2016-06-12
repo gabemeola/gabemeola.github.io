@@ -1,30 +1,71 @@
 .landing-icon
 	background-color: $orange
 	display: inline-block
-	position: relative
 	transition: $fade-transition
-	transform: scale(1)
 	vertical-align: middle
-	border-radius: 100%
-	padding-bottom: 15%
-	width: 15%
+	background-image: url("../assets/gabe.png")
+	background-repeat: no-repeat
+	padding-bottom: 12%
+	width: 12%
+	position: fixed
+	right: 13%
+	top: 34%
+	overflow: hidden
 	&--closed
-		width: 15%
 		height: 0
-		background-image: url("../assets/gabe.png")
-		background-repeat: no-repeat
 		background-position-y: 60%
 		background-position-x: 38%
 		background-size: 300%
-		position: relative
+		border-radius: 100%
 		cursor: pointer
 		&:hover
 			transform: scale(0.8)
 	&--expanded
-		width: 100%
-		height: 100%
-		transform: scale(8)
-		position: fixed
-		right: 11%
-		top: 30%
-		transition: all .8s ease-in-out
+		padding-bottom: 0
+		width: 100vw
+		height: 90vh
+		right: 0
+		top: 10%
+		border-radius: 0
+		background-size: cover
+		background-position: bottom center
+		animation: expanded-animation 800ms linear
+@keyframes expanded-animation
+	0%
+		transform: scale(0.8)
+		top: 34%
+		width: 12%
+		padding-bottom: 12%
+		height: 0
+		right: 13%
+		border-radius: 100%
+		background-position-y: 60%
+		background-position-x: 38%
+		background-size: 300%
+	23%
+		background-size: cover
+	40%
+		transform: scale(1)
+		width: 12%
+		padding-bottom: 12%
+		height: 0
+		top: 34%
+		right: 13%
+		border-radius: 10%
+	80%
+		//top: 10%
+		transform: translate(0, -6%)
+		width: 15%
+		height: 90vh
+		right: 13%
+		padding-bottom: 0
+	100%
+		//top: 10%
+		width: 100vw
+		height: 90vh
+		transform: translate(0%, 0)
+		//right: 0
+		padding-bottom: 0
+		border-radius: 0
+		background-size: cover
+		background-position: bottom center
