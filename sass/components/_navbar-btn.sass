@@ -6,3 +6,45 @@
 	position: fixed
 	right: 4%
 	z-index: 9999
+	transition: $transition
+	animation: navbar-close 200ms linear
+	transform: rotate(0deg) translate(0, 0)
+	&--open
+		animation: navbar-open 200ms linear
+		transform: rotate(225deg) translate(-10px, -1px)
+	.navbar-navbtn-img1, .navbar-navbtn-img2
+		position: relative
+		height: 100%
+		width: 3px
+		display: inline-block
+		background-color: $orange
+		transition: $transition
+	.navbar-navbtn-img1
+		margin-right: 70%
+		&--open
+			transform-origin: center
+			transform: translate(17px, 0)
+	.navbar-navbtn-img2
+		&--open
+			transform-origin: center
+			transform: rotate(-90deg)
+@keyframes navbar-open
+	0%
+		transform-origin: center
+		transform: rotate(0deg)
+		filter: blur(0px)
+	50%
+		filter: blur(3px)
+	100%
+		filter: blur(0px)
+		transform: rotate(225deg) translate(-10px, -1px)
+@keyframes navbar-close
+	0%
+		transform-origin: center
+		filter: blur(0px)
+		transform: rotate(225deg) translate(-10px, -1px)
+	50%
+		filter: blur(3px)
+	100%
+		transform: rotate(0deg) translate(0, 0)
+		filter: blur(0px)
