@@ -22,8 +22,16 @@
 		top: 95vh
 		height: 800px
 		background-color: #ffffff
+		animation: content-fade-in 800ms linear
 		transform: translate(0, -30vh)
-		transition: all 1s ease-in-out
+		opacity: 1
+		@keyframes content-fade-in
+			0%
+				transform: translate(0, 0)
+				opacity: 0
+			100%
+				transform: translate(0, -30vh)
+				opacity: 1
 	.home-content-header
 		width: 100%
 		height: 65px

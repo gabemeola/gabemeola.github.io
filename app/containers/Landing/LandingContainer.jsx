@@ -15,7 +15,10 @@ class LandingContainer extends React.Component {
 	handleIconExpand() {
 		this.setState({
 			iconExpanded: true
-		})
+		});
+		setTimeout(() => {
+			this.context.router.push(`/about`)
+		}, 800)
 	}
 	render() {
 		return(
@@ -29,5 +32,9 @@ class LandingContainer extends React.Component {
 		)
 	}
 }
+
+LandingContainer.contextTypes = {
+	router: React.PropTypes.object.isRequired
+};
 
 export default LandingContainer;
