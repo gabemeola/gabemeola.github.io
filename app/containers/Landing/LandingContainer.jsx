@@ -18,7 +18,7 @@ class LandingContainer extends React.Component {
 		});
 		setTimeout(() => {
 			this.context.router.push(`/about`)
-		}, 800)
+		}, 1000)
 	}
 	render() {
 		return(
