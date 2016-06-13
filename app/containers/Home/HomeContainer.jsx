@@ -4,7 +4,9 @@ import Home from "../../components/Home/Home";
 class HomeContainer extends React.Component {
 	render() {
 		return(
-			<Home/>
+			<div className="home">
+				<Home/>
+			</div>
 		)
 	}
 }
