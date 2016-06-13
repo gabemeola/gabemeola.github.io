@@ -5,6 +5,21 @@ body
 .blurMe
 	filter: blur(1px)
 
+.underline
+	display: inline-block
+	position: relative
+	.underline-mark
+		position: absolute
+		bottom: 0
+		width: 100%
+		height: .8vw
+		background-color: $orange
+		transition: all .2s ease-in-out
+	&:hover
+		.underline-mark
+			//bottom: 35%
+			transform: translate(0, -530%)
+
 a
 	text-decoration: none
 	color: inherit
