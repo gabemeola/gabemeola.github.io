@@ -12,6 +12,8 @@ class Main extends React.Component {
 	shouldComponentUpdate(nextProps, nextState) {
 		if(nextProps.location.pathname !== this.props.location.pathname) { // If Route Changes, update
 			return true
+		} else if(nextState.isLoading !== this.state.isLoading) {
+			return true
 		} else {   // If Route Doesn't change then check to see if navbar state changed
 			return nextState.navbarOpen !== this.state.navbarOpen
 		}
