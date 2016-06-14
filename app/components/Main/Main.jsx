@@ -18,6 +18,14 @@ class Main extends React.Component {
 			return nextState.navbarOpen !== this.state.navbarOpen
 		}
 	}
+	componentDidMount() {
+		window.onload = () => { // Wait for CSS to load and externals
+			setTimeout(() => {
+				let elem = document.getElementById("loading");
+				elem.parentNode.removeChild(elem);
+			}, 3000);
+		};
+	}
 	handleNavbarSwitch() {
 		this.state.navbarOpen ?
 			this.setState({
