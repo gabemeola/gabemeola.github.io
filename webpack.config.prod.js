@@ -4,7 +4,7 @@ var path = require("path"),
 		autoprefixer = require('autoprefixer'),
 		HtmlWebpackPlugin = require('html-webpack-plugin');
 
-var preloadCSS = new ExtractTextPlugin("preload.css"),
+var preloadCSS = new ExtractTextPlugin("preload.css"), //Extracts the two chunk to different file for async loading
     mainCSS = new ExtractTextPlugin("main.css");
 module.exports = {
 	resolve: { //Resolves ES2015 Imports
