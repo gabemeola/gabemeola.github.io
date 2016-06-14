@@ -1,2 +1,29 @@
-div
-	background-color: green
+#loading
+	//background-color: green
+	width: 100vw
+	height: 100vh
+	font-family: 'Muli', sans-serif
+	.loading-content
+		width: 50%
+		margin: 0 auto
+		//background-color: orange
+		text-align: center
+		padding-top: 45%
+		.loading-spinner
+			width: 50px
+			height: 50px
+			margin: 0 auto
+			background-color: #6CCECD
+			animation: loading 3s linear 1s infinite
+			h1
+				font-weight: 700
+				color: #ffffff
+				padding-left: 30px
+				padding-top: 8px
+@keyframes loading
+	0%
+		opacity: 1
+	50%
+		opacity: 0.20
+	100%
+		opacity: 1
