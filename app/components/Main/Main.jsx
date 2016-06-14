@@ -3,14 +3,14 @@ import NavbarContainer from "../../containers/Navbar/NavbarContainer";
 import MenuContainer from "../../containers/Menu/MenuContainer";
 
 class Main extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			navbarOpen: false
 		}
 	}
 	shouldComponentUpdate(nextProps, nextState) {
-		if(nextProps.children.type.name !== this.props.children.type.name) { // If Route Changes, update
+		if(nextProps.location.pathname !== this.props.location.pathname) { // If Route Changes, update
 			return true
 		} else {   // If Route Doesn't change then check to see if navbar state changed
 			return nextState.navbarOpen !== this.state.navbarOpen
