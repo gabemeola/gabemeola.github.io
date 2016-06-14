@@ -11,6 +11,7 @@ module.exports = {
 			'webpack-dev-server/client?http://localhost:3333',
 			'webpack/hot/only-dev-server',
 			'./app/app.jsx',
+			"./sass/preloader/preload.sass",
 			'./sass/entry.sass'
 		]
 	},

@@ -8,7 +8,11 @@ module.exports = {
 		extensions: ["", ".js", ".jsx"]
 	},
   entry: { //Entry Point for Webpack
-	  app: ["./app/app.jsx", "./sass/entry.sass"]
+	  app: [
+		  "./app/app.jsx",
+		  "./sass/preloader/preload.sass",
+		  "./sass/entry.sass"
+	  ]
   },
 	output: {
 		path: __dirname + "/dist/",
@@ -24,8 +28,14 @@ module.exports = {
 					presets: ['react', 'es2015']
 		    }
 			},
+			{ //Loads the preloader sass as inline styles
+				test: /\.sass$/,
+				include: __dirname + "/sass/preloader/",
+				loader: 'style-loader!css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax'
+			},
       { //Converts SASS to CSS and also performs relevant pathing and auto-prefixes
         test: /\.sass$/,
+	      exclude: __dirname + "/sass/preloader/",
 	      loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax')
       },
 			{ //Loads the font files from imports
