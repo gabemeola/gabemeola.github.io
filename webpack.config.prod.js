@@ -3,6 +3,9 @@ var path = require("path"),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
 		autoprefixer = require('autoprefixer'),
 		HtmlWebpackPlugin = require('html-webpack-plugin');
+
+var preloadCSS = new ExtractTextPlugin("preload.css"),
+    mainCSS = new ExtractTextPlugin("main.css");
 module.exports = {
 	resolve: { //Resolves ES2015 Imports
 		extensions: ["", ".js", ".jsx"]
@@ -31,12 +34,12 @@ module.exports = {
 			{ //Loads the preloader sass as inline styles
 				test: /\.sass$/,
 				include: __dirname + "/sass/preloader/",
-				loader: 'style-loader!css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax'
+				loader: preloadCSS.extract('css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax')
 			},
       { //Converts SASS to CSS and also performs relevant pathing and auto-prefixes
         test: /\.sass$/,
 	      exclude: __dirname + "/sass/preloader/",
-	      loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax')
+	      loader: mainCSS.extract('css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax')
       },
 			{ //Loads the font files from imports
 				test:  /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -58,7 +61,8 @@ module.exports = {
 	//Config for Post-CSS and AutoPrefixer
 	postcss: [ autoprefixer({ remove: false, browsers: ['last 2 versions'] }) ],
   plugins: [
-	  new ExtractTextPlugin("main.css"),
+	  preloadCSS,
+	  mainCSS,
 	  new HtmlWebpackPlugin({
 		  template: __dirname + "/app/index.html",
 		  filename: "index.html",
