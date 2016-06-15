@@ -3,6 +3,9 @@ import NavbarHeader from "../../components/Navbar/NavbarHeader";
 import NavbarNavBtn from "../../components/Navbar/NavbarNavBtn";
 
 class NavbarContainer extends React.Component {
+	constructor(props) {
+		super(props)
+	}
 	passNavbarSwitch() {
 		this.props.onNavbarSwitch();
 	}

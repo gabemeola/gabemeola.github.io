@@ -2,6 +2,9 @@ import React, { PropTypes } from "react";
 import MenuNav from "../../components/Menu/MenuNav";
 
 class MenuContainer extends React.Component {
+	constructor(props) {
+		super(props)
+	}
 	passNavbarSwitch() {
 		this.props.onNavbarSwitch();
 	}
