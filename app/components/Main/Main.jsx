@@ -20,7 +20,7 @@ class Main extends React.Component {
 		}
 	}
 	componentDidMount() {
-		window.onload = () => { // Wait for CSS to load and externals
+		window.onload = () => { // Wait for CSS and externals to load
 			setTimeout(() => {
 				let elem = document.getElementById("loading");
 				elem.parentNode.removeChild(elem);
@@ -35,7 +35,7 @@ class Main extends React.Component {
 			this.setState({
 				navbarOpen: true
 			});
-		!this.state.navbarOpen ? preventScroll.disable() : preventScroll.enable()
+		this.state.navbarOpen ? preventScroll.enable() : preventScroll.disable()
 	}
 	handleNavbarClose() {
 		if(this.state.navbarOpen) {
