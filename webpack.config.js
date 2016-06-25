@@ -4,6 +4,7 @@ var address,
 		autoprefixer = require('autoprefixer'),
 		HtmlWebpackPlugin = require('html-webpack-plugin'),
 		ifaces = require('os').networkInterfaces();
+// Finds out your local IP address
 for (var dev in ifaces) {
 	ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address: undefined);
 }
