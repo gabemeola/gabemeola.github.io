@@ -1,12 +1,11 @@
-var path = require("path"),
+var address,
+		path = require("path"),
 		webpack = require("webpack"),
 		autoprefixer = require('autoprefixer'),
-		HtmlWebpackPlugin = require('html-webpack-plugin');
-var address,
+		HtmlWebpackPlugin = require('html-webpack-plugin'),
 		ifaces = require('os').networkInterfaces();
 for (var dev in ifaces) {
-	var iface = ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false);
-	iface.length > 0 ? address = iface[0].address: undefined
+	ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address: undefined);
 }
 module.exports = {
 	resolve: { //Resolves ES2015 Imports
