@@ -4,7 +4,7 @@
   "description": "Gabe M Personal WebApp",
   "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --colors",
+    "start": "webpack-dev-server --progress --colors --host 0.0.0.0",
     "build": "webpack --config webpack.config.prod.js -p --progress"
   },
   "repository": {

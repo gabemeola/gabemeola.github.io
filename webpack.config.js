@@ -2,13 +2,19 @@ var path = require("path"),
 		webpack = require("webpack"),
 		autoprefixer = require('autoprefixer'),
 		HtmlWebpackPlugin = require('html-webpack-plugin');
+var address,
+		ifaces = require('os').networkInterfaces();
+for (var dev in ifaces) {
+	var iface = ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false);
+	iface.length > 0 ? address = iface[0].address: undefined
+}
 module.exports = {
 	resolve: { //Resolves ES2015 Imports
 		extensions: ["", ".js", ".jsx"]
 	},
 	entry: { //Entry Point for Webpack
 		app: [
-			'webpack-dev-server/client?http://localhost:3333',
+			`webpack-dev-server/client?http://${address}:3333`,
 			'webpack/hot/only-dev-server',
 			'./app/app.jsx',
 			"./sass/preloader/preload.sass",
@@ -18,7 +24,7 @@ module.exports = {
 	output: {
 		path: __dirname + "/dist/",
 		filename: "bundle.js",
-		publicPath: "http://localhost:3333/"//Bundled Javascript Webpack Spits out.
+		publicPath: `http://${address}:3333/` //Bundled Javascript Webpack Spits out.
 	},
 	devServer: { //Allows webpack-dev-server to be live reloaded
 		inline: true,
