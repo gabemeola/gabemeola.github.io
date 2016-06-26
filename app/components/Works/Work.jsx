@@ -4,7 +4,9 @@ function Work(props) {
 	return(
 		<div className="work">
 			<div className="work-details"></div>
-			<div className="work-header"></div>
+			<div className="work-header">
+				<h1>{props.name}</h1>
+			</div>
 		</div>
 	)
 }
@@ -14,7 +16,7 @@ Work.propTypes = {
 	detailTime: PropTypes.string,
 	builtWith: PropTypes.array,
 	team: PropTypes.array,
-	header: PropTypes.string,
+	name: PropTypes.string,
 	siteUrl: PropTypes.string
 };
 
