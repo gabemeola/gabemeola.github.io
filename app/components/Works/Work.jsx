@@ -2,7 +2,10 @@ import React from "react";
 
 function Work(props) {
 	return(
-		<div>{props.work}</div>
+		<div className="work">
+			<div className="work-details"></div>
+			<div className="work-header"></div>
+		</div>
 	)
 }
 
