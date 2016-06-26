@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropTypes } from "react";
 
 function Work(props) {
 	return(
@@ -8,5 +8,14 @@ function Work(props) {
 		</div>
 	)
 }
+
+Work.propTypes = {
+	detailHeader: PropTypes.string,
+	detailTime: PropTypes.string,
+	builtWith: PropTypes.array,
+	team: PropTypes.array,
+	header: PropTypes.string,
+	siteUrl: PropTypes.string
+};
 
 export default Work;
