@@ -10,13 +10,13 @@ function Menu(props) {
 				</Link>
 				<div className="menu-nav-works-wrapper">
 					<h2>Work</h2>
-					<Link to="work/cosmeticlaserexchange" onClick={props.onNavbarSwitch}>
+					<Link to="works/cosmeticlaserexchange" onClick={props.onNavbarSwitch}>
 						<h3 className="menu-nav-works">Cosmetic Laser Exchange</h3>
 					</Link>
-					<Link to="work/5starlegal" onClick={props.onNavbarSwitch}>
+					<Link to="works/fivestarlegal" onClick={props.onNavbarSwitch}>
 						<h3 className="menu-nav-works">5 Star Legal</h3>
 					</Link>
-					<Link to="work/cam-taylor" onClick={props.onNavbarSwitch}>
+					<Link to="works/camtaylor" onClick={props.onNavbarSwitch}>
 						<h3 className="menu-nav-works">Cameron & Taylor Wedding</h3>
 					</Link>
 				</div>
