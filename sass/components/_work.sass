@@ -4,7 +4,8 @@
 	font-family: $latoFont
 	.work-details-wrapper
 		width: 100%
-		height: 300px
+		min-height: 300px
+		padding-bottom: 10px
 		background-color: #A7664C
 		.work-details
 			width: 85%
@@ -24,11 +25,13 @@
 			.work-details-info
 				display: flex
 				flex-direction: row
-				flex-wrap: nowrap
+				flex-wrap: wrap
 				justify-content: space-between
 				margin-top: 50px
 				.work-details-built
 					max-width: 28%
+					@media only screen and (max-width: $sm-device)
+						max-width: none
 				.work-details-team
 					ul
 						list-style: none
