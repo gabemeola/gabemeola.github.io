@@ -24,7 +24,7 @@ function CosmeticLaserExchange(props) {
 	return (
 		<Work
 			detailHeader="An Angular App"
-			detailDate="March, 2015"
+			detailDate="March, 2016"
 		  builtWith={builtWith}
 		  team={team}
 		  name="Cosmetic Laser Exchange"
