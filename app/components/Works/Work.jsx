@@ -3,8 +3,8 @@ import React, { PropTypes } from "react";
 function Work(props) {
 	return(
 		<div className="work">
-			<div className="work-details-wrapper">
-				<div className="work-details">
+			<div className="work-details">
+				<div className="work-details-wrapper">
 					<div className="work-details-header">
 						<div className="work-details-header-name">
 							{props.detailHeader}
@@ -31,7 +31,13 @@ function Work(props) {
 				</div>
 			</div>
 			<div className="work-header">
-				<h1>{props.name}</h1>
+				<div className="work-header-wrapper">
+					<h1 className="work-header-name">{props.name}</h1>
+					<h3 className="work-header-siteUrl underline">
+						<a href={"//" + props.siteUrl}>{props.siteUrl}</a>
+						<div className="underline-mark"></div>
+					</h3>
+				</div>
 			</div>
 		</div>
 	)
