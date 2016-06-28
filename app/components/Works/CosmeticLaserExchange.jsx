@@ -28,7 +28,7 @@ function CosmeticLaserExchange(props) {
 		  builtWith={builtWith}
 		  team={team}
 		  name="Cosmetic Laser Exchange"
-		  siteUrl="www.cosmeticlaserexchange.com"
+		  siteUrl="cosmeticlaserexchange.com"
 		/>
 	)
 }

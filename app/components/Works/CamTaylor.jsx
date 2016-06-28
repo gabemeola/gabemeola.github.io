@@ -26,7 +26,7 @@ function CamTaylor(props) {
 			builtWith={builtWith}
 			team={team}
 			name="Cameron & Taylor Wedding"
-			siteUrl="www.raindropsandmangotrees.com"
+			siteUrl="raindropsandmangotrees.com"
 		/>
 	)
 }

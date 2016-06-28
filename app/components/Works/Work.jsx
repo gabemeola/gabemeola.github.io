@@ -34,8 +34,9 @@ function Work(props) {
 				<div className="work-header-wrapper">
 					<h1 className="work-header-name">{props.name}</h1>
 					<h3 className="work-header-siteUrl underline">
-						<a href={"//" + props.siteUrl}>{props.siteUrl}</a>
-						<div className="underline-mark"></div>
+						<a target="_blank" href={`//${props.siteUrl}`}>{`www.${props.siteUrl}`}
+							<div className="underline-mark"></div>
+						</a>
 					</h3>
 				</div>
 			</div>

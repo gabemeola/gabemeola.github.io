@@ -28,7 +28,7 @@ function FiveStarLegal(props) {
 			builtWith={builtWith}
 			team={team}
 			name="Five Star Legal"
-			siteUrl="www.5starlegaldocuments.firebaseapp.com"
+			siteUrl="5starlegaldocuments.firebaseapp.com"
 		/>
 	)
 }
