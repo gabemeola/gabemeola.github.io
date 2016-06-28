@@ -46,13 +46,12 @@ function Work(props) {
 						<img src={props.macMock} alt="IMG MOCK"/>
 					</div>
 					<div className="work-content-header">
-							<h2>Web App for ordering and
-								Listing Medical Lasers</h2>
-							<h4>with <b>Gabe Meola</b>
-									<br/>
-									as <b>Full Stack Developer</b>
+							<h2>{props.overviewHeader}</h2>
+							<h4>
+								with <b>Gabe Meola</b>
+								<br/>
+								as <b>{props.overviewPosition}</b>
 							</h4>
-
 					</div>
 				</div>
 			</div>
@@ -68,7 +67,8 @@ Work.propTypes = {
 	name: PropTypes.string,
 	siteUrl: PropTypes.string,
 	macMock: PropTypes.string,
-	overviewHeader: PropTypes.string
+	overviewHeader: PropTypes.string,
+	overviewPosition: PropTypes.string
 };
 
 export default Work;

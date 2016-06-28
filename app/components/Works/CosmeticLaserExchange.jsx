@@ -32,6 +32,8 @@ function CosmeticLaserExchange(props) {
 			  name="Cosmetic Laser Exchange"
 			  siteUrl="cosmeticlaserexchange.com"
 			  macMock={macMock}
+				overviewHeader="Web App for ordering and Listing Medical Lasers"
+				overviewPosition="Full Stack Developer"
 			/>
 		</div>
 	)
