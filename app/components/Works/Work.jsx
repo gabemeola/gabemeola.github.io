@@ -24,7 +24,7 @@ function Work(props) {
 						<div className="work-details-team">
 							<h3>Team:</h3>
 							<ul>
-								{props.team.map((name) => <li>{name}</li>)}
+								{props.team.map((name, index) => <li key={index}>{name}</li>)}
 							</ul>
 						</div>
 					</div>
@@ -50,7 +50,8 @@ Work.propTypes = {
 	builtWith: PropTypes.array,
 	team: PropTypes.array,
 	name: PropTypes.string,
-	siteUrl: PropTypes.string
+	siteUrl: PropTypes.string,
+	image1Mock: PropTypes.any
 };
 
 export default Work;

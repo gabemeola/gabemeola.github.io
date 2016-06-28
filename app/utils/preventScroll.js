@@ -15,7 +15,7 @@ function preventDefaultForScrollKeys(e) {
 	}
 }
 
-const PreventScroll = {
+const preventScroll = {
 	disable() {
 		fixedElem.addEventListener('touchmove', preventDefault, false);
 		fixedElem.addEventListener('DOMMouseScroll', preventDefault, false);
@@ -34,4 +34,4 @@ const PreventScroll = {
 	}
 };
 
-export default PreventScroll;
+export default preventScroll;
