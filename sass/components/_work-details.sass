@@ -1,0 +1,51 @@
+.work-details
+	width: 100%
+	min-height: 300px
+	padding-bottom: 10px
+	background-color: #A7664C
+	.work-details-wrapper
+		width: 85%
+		margin: 0 auto
+		padding-top: 20px
+		color: #ffffff
+		.work-details-header
+			display: block
+			width: 100%
+			height: 30px
+			border-bottom: 1px solid #ffffff
+			position: relative
+			&-name
+				float: left
+			&-date
+				float: right
+		.work-details-info
+			display: flex
+			flex-direction: row
+			flex-wrap: wrap
+			justify-content: space-between
+			margin-top: 50px
+			.work-details-built
+				max-width: 28%
+				@media only screen and (max-width: $sm-device)
+					max-width: none
+			.work-details-team
+				ul
+					list-style: none
+.work-header
+	width: 100%
+	min-height: 50px
+	padding-bottom: 10px
+	background-color: #D3754F
+	color: #ffffff
+	.work-header-wrapper
+		width: 90%
+		margin: 0 auto
+		display: flex
+		flex-wrap: wrap
+		justify-content: space-between
+		align-items: baseline
+		padding-top: .6%
+		.work-header-name
+			font-weight: 500
+		.work-header-siteUrl
+			font-weight: 500

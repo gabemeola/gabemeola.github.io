@@ -22,14 +22,16 @@ let team = [
 
 function FiveStarLegal(props) {
 	return (
-		<Work
-			detailHeader="An Angular App"
-			detailDate="April, 2016"
-			builtWith={builtWith}
-			team={team}
-			name="Five Star Legal"
-			siteUrl="5starlegaldocuments.firebaseapp.com"
-		/>
+		<div className="work">
+			<Work
+				detailHeader="An Angular App"
+				detailDate="April, 2016"
+				builtWith={builtWith}
+				team={team}
+				name="Five Star Legal"
+				siteUrl="5starlegaldocuments.firebaseapp.com"
+			/>
+		</div>
 	)
 }
 

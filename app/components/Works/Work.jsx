@@ -2,7 +2,7 @@ import React, { PropTypes } from "react";
 
 function Work(props) {
 	return(
-		<div className="work">
+		<div>
 			<div className="work-details">
 				<div className="work-details-wrapper">
 					<div className="work-details-header">

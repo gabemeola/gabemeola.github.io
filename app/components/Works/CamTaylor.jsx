@@ -20,14 +20,16 @@ let team = [
 
 function CamTaylor(props) {
 	return (
-		<Work
-			detailHeader="An Angular App"
-			detailDate="February, 2016"
-			builtWith={builtWith}
-			team={team}
-			name="Cameron & Taylor Wedding"
-			siteUrl="raindropsandmangotrees.com"
-		/>
+		<div className="work">
+			<Work
+				detailHeader="An Angular App"
+				detailDate="February, 2016"
+				builtWith={builtWith}
+				team={team}
+				name="Cameron & Taylor Wedding"
+				siteUrl="raindropsandmangotrees.com"
+			/>
+		</div>
 	)
 }
 
