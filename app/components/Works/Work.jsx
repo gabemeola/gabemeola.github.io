@@ -40,6 +40,22 @@ function Work(props) {
 					</h3>
 				</div>
 			</div>
+			<div className="work-content">
+				<div className="work-content-overview">
+					<div className="work-content-macmock">
+						<img src={props.macMock} alt="IMG MOCK"/>
+					</div>
+					<div className="work-content-header">
+							<h2>Web App for ordering and
+								Listing Medical Lasers</h2>
+							<h4>with <b>Gabe Meola</b>
+									<br/>
+									as <b>Full Stack Developer</b>
+							</h4>
+
+					</div>
+				</div>
+			</div>
 		</div>
 	)
 }
@@ -51,7 +67,8 @@ Work.propTypes = {
 	team: PropTypes.array,
 	name: PropTypes.string,
 	siteUrl: PropTypes.string,
-	image1Mock: PropTypes.any
+	macMock: PropTypes.string,
+	overviewHeader: PropTypes.string
 };
 
 export default Work;

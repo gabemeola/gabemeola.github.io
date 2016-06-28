@@ -1,6 +1,6 @@
 import React from "react";
 import Work from "./Work";
-import CLEmock from "../../../assets/CLEmock.png";
+import macMock from "../../../assets/CLEmock@2x.png";
 
 let builtWith = [
 	"AngularJS",
@@ -31,7 +31,7 @@ function CosmeticLaserExchange(props) {
 			  team={team}
 			  name="Cosmetic Laser Exchange"
 			  siteUrl="cosmeticlaserexchange.com"
-			  image1Mock={CLEmock}
+			  macMock={macMock}
 			/>
 		</div>
 	)
