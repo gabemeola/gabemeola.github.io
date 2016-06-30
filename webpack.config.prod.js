@@ -59,7 +59,7 @@ module.exports = {
 		]
 	},
 	//Config for Post-CSS and AutoPrefixer
-	postcss: [ autoprefixer({ remove: false, browsers: ['last 2 versions'] }) ],
+	postcss: [ autoprefixer({ remove: true, browsers: ['> 5%'] }) ],
   plugins: [
 	  preloadCSS,
 	  mainCSS,

@@ -61,7 +61,7 @@ module.exports = {
 		]
 	},
 	//Config for Post-CSS and AutoPrefixer
-	postcss: [ autoprefixer({ remove: false, browsers: ['last 2 versions'] }) ],
+	postcss: [ autoprefixer({ remove: false, browsers: ['> 5%'] }) ],
 	plugins: [
 		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
