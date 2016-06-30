@@ -1,5 +1,6 @@
 import React from "react";
 import Work from "./Work";
+import macMock from "../../../assets/camtaylorMock@2x.png";
 
 let builtWith = [
 	"HTML5",
@@ -28,6 +29,9 @@ function CamTaylor(props) {
 				team={team}
 				name="Cameron & Taylor Wedding"
 				siteUrl="raindropsandmangotrees.com"
+				macMock={macMock}
+				overviewHeader=""
+				overviewPosition=""
 			/>
 		</div>
 	)

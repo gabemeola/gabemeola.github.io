@@ -1,5 +1,6 @@
 import React from "react";
 import Work from "./Work";
+import macMock from "../../../assets/fivestarMock@2x.png";
 
 let builtWith = [
 	"HTML5",
@@ -30,6 +31,9 @@ function FiveStarLegal(props) {
 				team={team}
 				name="Five Star Legal"
 				siteUrl="5starlegaldocuments.firebaseapp.com"
+				macMock={macMock}
+				overviewHeader=""
+				overviewPosition=""
 			/>
 		</div>
 	)
