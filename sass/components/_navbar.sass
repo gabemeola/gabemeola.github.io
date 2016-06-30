@@ -11,9 +11,11 @@
 	.navbar-header-wrapper
 		display: inline-block
 		position: relative
-		transition: $transition
 		width: 85%
 		left: 4%
+		backface-visibility: hidden
+		perspective: 1000
+		transform: translateZ(0)
 		@import "navbar-socials"
 		.navbar-header-text
 			color: #ffffff

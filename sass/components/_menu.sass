@@ -3,20 +3,21 @@
 	height: 90vh
 	position: fixed
 	left: 4%
-	display: none
+	display: block
 	opacity: 0
 	transition: $fade-transition
 	top: 90px
 	z-index: 9999
 	visibility: hidden
+	backface-visibility: hidden
+	perspective: 1000
+	transform: translateZ(0)
 	&--visible
 		transition: $fade-transition
 		visibility: visible
 		opacity: 1
-		display: block
 	&--hidden
 		transition: $fade-transition
 		opacity: 0
 		visibility: hidden
-		display: block
 	@import "menu-nav"

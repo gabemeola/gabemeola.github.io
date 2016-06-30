@@ -9,9 +9,11 @@
 	width: 20px
 	height: 35px
 	transition: $transition
-	transform: rotate(180deg) translate(0, 0)
+	transform: rotate(180deg) translate3d(0, 0, 0)
+	backface-visibility: hidden
+	perspective: 1000
 	&--open
-		transform: rotate(225deg) translate(-9px, 0)
+		transform: rotate(225deg) translate3d(-9px, 0, 0)
 	.navbar-navbtn-img1, .navbar-navbtn-img2
 		position: relative
 		height: 100%
@@ -22,9 +24,13 @@
 	.navbar-navbtn-img1
 		margin-right: 70%
 		&--open
+			backface-visibility: hidden
+			perspective: 1000
 			transform-origin: center
-			transform: translate(17px, 0)
+			transform: translate3d(17px, 0, 0)
 	.navbar-navbtn-img2
 		&--open
+			backface-visibility: hidden
+			perspective: 1000
 			transform-origin: center
-			transform: rotate(-90deg)
+			transform: rotate(-90deg) translate3d(0, 0, 0)
