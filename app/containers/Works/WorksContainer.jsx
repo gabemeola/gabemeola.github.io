@@ -13,12 +13,16 @@ class WorksContainer extends React.Component {
 	render() {
 		const { work } = this.props.routeParams;
 
-		if(work === "cosmeticlaserexchange") return <CosmeticLaserExchange/>;
-		if(work === "fivestarlegal") return <FiveStarLegal/>;
-		if(work === "camtaylor") return <CamTaylor/>;
-		else {
-			this.handleNoWorkMatch();
-			return null;
+		switch (work) {
+			case "cosmeticlaserexchange":
+				return <CosmeticLaserExchange/>;
+			case "fivestarlegal":
+				return <FiveStarLegal/>;
+			case "camtaylor":
+				return <CamTaylor/>;
+			default:
+				this.handleNoWorkMatch();
+				return null;
 		}
 	}
 }
