@@ -4,11 +4,11 @@ import { Link } from "react-router";
 function Menu(props) {
 	return(
 		<div className="menu-nav">
-			<Link to="about" onClick={props.onNavbarSwitch}>
+			<Link to="about" onClick={props.onNavbarSwitch} activeClassName="about--active">
 				<h2 className="about">About me</h2>
 			</Link>
 			<div className="menu-nav-works-wrapper">
-				<h2>Work</h2>
+				<h2 className="work">Work</h2>
 				<Link to="works/cosmeticlaserexchange" activeClassName="menu-nav-works--active" onClick={props.onNavbarSwitch}>
 					<h3 className="menu-nav-works">Cosmetic Laser Exchange</h3>
 				</Link>
