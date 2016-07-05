@@ -56,6 +56,13 @@ function Work(props) {
 					</div>
 				</div>
 			</div>
+			<div className="work-link">
+				<a target="_blank" href={`//${props.siteUrl}`}>
+					<div className="work-link-btn">
+						<p>Visit Project</p>
+					</div>
+				</a>
+			</div>
 		</div>
 	)
 }

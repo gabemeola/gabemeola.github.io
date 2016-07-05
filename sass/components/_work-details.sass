@@ -28,6 +28,7 @@
 				max-width: 28%
 				@media only screen and (max-width: $sm-device)
 					max-width: none
+					margin: -20px 0 20px 0
 			.work-details-team
 				ul
 					list-style: none
@@ -48,8 +49,12 @@
 		padding-top: .6%
 		.work-header-name
 			font-weight: 500
+			@media only screen and (max-width: $sm-device)
+				font-size: 1.8em
 		.work-header-siteUrl
 			font-weight: 500
+			@media only screen and (max-width: $sm-device)
+				font-size: 1.1em
 .work-content
 	width: 92%
 	margin: 0 auto
@@ -73,3 +78,22 @@
 			h4
 				margin-top: 15px
 				float: right
+			@media only screen and (max-width: 1025px)
+				max-width: 90%
+.work-link
+	height: 100px
+	max-width: 300px
+	margin: 0 auto
+	.work-link-btn
+		height: 100%
+		width: 100%
+		background-color: $orange
+		margin-top: 50px
+		border-radius: 10px
+		display: flex
+		justify-content: center
+		align-items: center
+		p
+			font-weight: 300
+			font-size: 2em
+			font-family: $muliFont
