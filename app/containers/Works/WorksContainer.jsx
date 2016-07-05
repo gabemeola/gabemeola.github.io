@@ -14,11 +14,11 @@ class WorksContainer extends React.Component {
 		const { work } = this.props.routeParams;
 
 		switch (work) {
-			case "cosmeticlaserexchange":
+			case "cosmeticlaserexchange" :
 				return <CosmeticLaserExchange/>;
-			case "fivestarlegal":
+			case "fivestarlegal" :
 				return <FiveStarLegal/>;
-			case "camtaylor":
+			case "camtaylor" :
 				return <CamTaylor/>;
 			default:
 				this.handleNoWorkMatch();
