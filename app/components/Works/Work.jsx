@@ -34,7 +34,8 @@ function Work(props) {
 				<div className="work-header-wrapper">
 					<h1 className="work-header-name">{props.name}</h1>
 					<h3 className="work-header-siteUrl underline">
-						<a target="_blank" href={`//${props.siteUrl}`}>{`www.${props.siteUrl}`}
+						<a target="_blank" href={`//${props.siteUrl}`}>
+							{`www.${props.siteUrl}`}
 							<div className="underline-mark"></div>
 						</a>
 					</h3>
@@ -43,7 +44,7 @@ function Work(props) {
 			<div className="work-content">
 				<div className="work-content-overview">
 					<div className="work-content-macmock">
-						<img src={props.macMock} alt="IMG MOCK"/>
+						<img src={props.macMock} alt="MAC MOCK"/>
 					</div>
 					<div className="work-content-header">
 							<h2>{props.overviewHeader}</h2>
