@@ -79,7 +79,7 @@
 				margin-top: 15px
 				float: right
 			@media only screen and (max-width: 1025px)
-				max-width: 90%
+				max-width: 80%
 .work-link
 	height: 100px
 	max-width: 300px
@@ -93,7 +93,11 @@
 		display: flex
 		justify-content: center
 		align-items: center
+		transition: $transition
+		&:hover
+			transform: scale3d(1.1, 1.2, 1) rotate(-1deg)
 		p
 			font-weight: 300
 			font-size: 2em
 			font-family: $muliFont
+			color: #ffffff

@@ -30,8 +30,8 @@ function CamTaylor(props) {
 				name="Cameron & Taylor Wedding"
 				siteUrl="raindropsandmangotrees.com"
 				macMock={macMock}
-				overviewHeader=""
-				overviewPosition=""
+				overviewHeader="Wedding Planning Site for RSVP tracking and mailing list"
+				overviewPosition="Frontend Developer"
 			/>
 		</div>
 	)
