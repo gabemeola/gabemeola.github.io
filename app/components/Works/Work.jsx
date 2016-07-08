@@ -68,15 +68,15 @@ function Work(props) {
 }
 
 Work.propTypes = {
-	detailHeader: PropTypes.string,
-	detailDate: PropTypes.string,
-	builtWith: PropTypes.array,
-	team: PropTypes.array,
-	name: PropTypes.string,
-	siteUrl: PropTypes.string,
+	detailHeader: PropTypes.string.isRequired,
+	detailDate: PropTypes.string.isRequired,
+	builtWith: PropTypes.array.isRequired,
+	team: PropTypes.array.isRequired,
+	name: PropTypes.string.isRequired,
+	siteUrl: PropTypes.string.isRequired,
 	macMock: PropTypes.string,
-	overviewHeader: PropTypes.string,
-	overviewPosition: PropTypes.string
+	overviewHeader: PropTypes.string.isRequired,
+	overviewPosition: PropTypes.string.isRequired
 };
 
 export default Work;

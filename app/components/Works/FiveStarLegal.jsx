@@ -32,7 +32,7 @@ function FiveStarLegal(props) {
 				name="Five Star Legal"
 				siteUrl="5starlegaldocuments.firebaseapp.com"
 				macMock={macMock}
-				overviewHeader="Living Trust Questionnaire that dynamically changes based on questions submitted"
+				overviewHeader="Dynamic Living Trust Questionnaire based on questions answered"
 				overviewPosition="Frontend Developer"
 			/>
 		</div>
