@@ -1,21 +1,21 @@
 import React, { PropTypes } from "react";
 import { Link } from "react-router";
 
-function Menu(props) {
+function Menu({onNavbarSwitch}) {
 	return(
 		<div className="menu-nav">
-			<Link to="about" onClick={props.onNavbarSwitch} activeClassName="about--active">
+			<Link to="about" onClick={onNavbarSwitch} activeClassName="about--active">
 				<h2 className="about">About me</h2>
 			</Link>
 			<div className="menu-nav-works-wrapper">
 				<h2>Work</h2>
-				<Link to="works/cosmeticlaserexchange" activeClassName="menu-nav-works--active" onClick={props.onNavbarSwitch}>
+				<Link to="works/cosmeticlaserexchange" activeClassName="menu-nav-works--active" onClick={onNavbarSwitch}>
 					<h3 className="menu-nav-works">Cosmetic Laser Exchange</h3>
 				</Link>
-				<Link to="works/fivestarlegal" activeClassName="menu-nav-works--active" onClick={props.onNavbarSwitch}>
+				<Link to="works/fivestarlegal" activeClassName="menu-nav-works--active" onClick={onNavbarSwitch}>
 					<h3 className="menu-nav-works">5 Star Legal</h3>
 				</Link>
-				<Link to="works/camtaylor" activeClassName="menu-nav-works--active" onClick={props.onNavbarSwitch}>
+				<Link to="works/camtaylor" activeClassName="menu-nav-works--active" onClick={onNavbarSwitch}>
 					<h3 className="menu-nav-works">Cameron & Taylor Wedding</h3>
 				</Link>
 			</div>
