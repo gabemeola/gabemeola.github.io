@@ -6,7 +6,7 @@ let smooch = new SmoochCore({
 });
 
 export function init(email) {
-	let smoochId = createHash(email, true);
+	let smoochId = createHash(email + window.navigator.platform, true);
 	console.log(smoochId);
 	smooch.appUsers.init({
 		device: {
