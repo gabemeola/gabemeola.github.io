@@ -57,12 +57,26 @@ module.exports = {
 			{ //Loads HTML imports/requires
 				test: /\.html$/,
 				loader: "html"
+			},
+			{ // Loads JSON files
+				test: /\.json$/,
+				loader: "json"
+			},
+			{ //Disables AMD support for blueimp-load-image for Smooch
+				test: /load-image/,
+				loader: 'imports?define=>false'
 			}
 		]
 	},
 	//Config for Post-CSS and AutoPrefixer
 	postcss: [ autoprefixer({ remove: false, browsers: ['> 5%'] }) ],
 	plugins: [
+		new webpack.DefinePlugin({
+			'process.env': {
+				'NODE_ENV': JSON.stringify('development')
+			}
+		}),
+		new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
 		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
 			template: __dirname + "/app/index.html",

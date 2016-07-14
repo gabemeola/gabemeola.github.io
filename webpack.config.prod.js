@@ -15,6 +15,10 @@ module.exports = {
 		  "./app/app.jsx",
 		  "./sass/preloader/preload.sass",
 		  "./sass/entry.sass"
+	  ],
+	  modulesDirectories: [
+		  'node_modules',
+		  'external_modules'
 	  ]
   },
 	output: {
@@ -55,6 +59,14 @@ module.exports = {
 			{ //Loads HTML imports/requires
 				test: /\.html$/,
 				loader: "html"
+			},
+			{ // Loads JSON files
+				test: /\.json$/,
+				loader: "json"
+			},
+			{ //Disables AMD support for blueimp-load-image for Smooch
+				test: /load-image/,
+				loader: 'imports?define=>false'
 			}
 		]
 	},
@@ -68,6 +80,7 @@ module.exports = {
 			  'NODE_ENV': JSON.stringify('production')
 		  }
 	  }),
+	  new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
 	  new webpack.optimize.UglifyJsPlugin({
 		  compress: {
 			  warnings: false
