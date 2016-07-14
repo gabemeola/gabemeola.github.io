@@ -26,14 +26,15 @@ class Main extends React.Component {
 		};
 	}
 	handleNavbarSwitch() {
-		this.state.navbarOpen ?
+		let { navbarOpen } = this.state;
+		navbarOpen ?
 			this.setState({
 				navbarOpen: false
 			}) :
 			this.setState({
 				navbarOpen: true
 			});
-		this.state.navbarOpen ? preventScroll.enable() : preventScroll.disable()
+		navbarOpen ? preventScroll.enable() : preventScroll.disable()
 	}
 	handleNavbarClose() {
 		if(this.state.navbarOpen) {

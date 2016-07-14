@@ -5,6 +5,7 @@ import LandingContainer from "../containers/Landing/LandingContainer";
 import HomeContainer from "../containers/Home/HomeContainer";
 import MenuContainer from "../containers/Menu/MenuContainer";
 import WorksContainer from "../containers/Works/WorksContainer";
+import SmoochContainer from "../containers/Smooch/SmoochContainer";
 
 const routes = (
 	<Router history={hashHistory}>
@@ -14,6 +15,7 @@ const routes = (
 			<Route path="menu" component={MenuContainer}/>
 			<Route path="works/:work" component={WorksContainer}/>
 			<Route path="*" component={LandingContainer}/>
+			<Route path="smooch" component={SmoochContainer}/>
 		</Route>
 	</Router>
 );
