@@ -11,11 +11,11 @@ const routes = (
 	<Router history={hashHistory}>
 		<Route path="/" component={Main}>
 			<IndexRoute component={LandingContainer}/>
+			<Route path="smooch" component={SmoochContainer}/>
 			<Route path="about" component={HomeContainer}/>
 			<Route path="menu" component={MenuContainer}/>
 			<Route path="works/:work" component={WorksContainer}/>
 			<Route path="*" component={LandingContainer}/>
-			<Route path="smooch" component={SmoochContainer}/>
 		</Route>
 	</Router>
 );

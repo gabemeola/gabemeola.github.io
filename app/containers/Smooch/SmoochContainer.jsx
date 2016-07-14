@@ -1,9 +1,7 @@
 import React from "react";
-import SmoochCore from 'smooch-core';
+import * as smoochUtils from "../../utils/smoochUtils";
 
-let smooch = new SmoochCore({
-	appToken: "3nf36hcp4oj7ab8f52uvmkleb"
-});
+smoochUtils.init("bob@example.com");
 
 class SmoochContainer extends React.Component {
 	render() {
