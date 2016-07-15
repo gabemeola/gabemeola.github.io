@@ -1,28 +1,27 @@
 import React from "react";
 import { initSmooch, postSmooch, getSmooch } from "../../utils/smoochUtils";
 
-function Conversation({data}) {
-	return (
-		<div>
-			{/*{data[0].text}*/}
-		</div>
-	)
-}
 
 class SmoochContainer extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
 			inputText: "",
-			smoochConversation: []
+			smoochConversation: [],
+			conversationText: []
 		}
 	}
 	componentWillMount() {
 		initSmooch("bob@example.com")
-			.then((res) => {
+			.then(() => {
 				getSmooch().then((res) => {
+					let newConversationText = [];
+					res.conversation.messages.forEach((item) => {
+						newConversationText.push(item.text);
+					});
 					this.setState({
-						smoochConversation: res.conversation.messages
+						smoochConversation: res.conversation.messages,
+						conversationText: newConversationText
 					})
 				})
 			});
@@ -32,8 +31,13 @@ class SmoochContainer extends React.Component {
 		postSmooch(this.state.inputText)
 			.then(() => {
 				getSmooch().then((res) => {
+					let newConversationText = [];
+					res.conversation.messages.forEach((item) => {
+						newConversationText.push(item.text);
+					});
 					this.setState({
-						smoochConversation: res.conversation.messages
+						smoochConversation: res.conversation.messages,
+						conversationText: newConversationText
 					})
 				});
 			});
@@ -46,10 +50,8 @@ class SmoochContainer extends React.Component {
 			<div>
 				<h2>Smooch Container</h2>
 				<br/>
-				<Conversation
-					data={this.state.smoochConversation}
-				/>
-				{this.state.smoochConversation.forEach((item) => console.warn(item))}
+				{this.state.conversationText.map((text, key) => <p key={key}>{text}</p>)}
+				{/*{this.state.smoochConversation.forEach((item) => console.warn(item))}*/}
 				<br/>
 				<form onSubmit={(event) => this.handleTextSubmit(event)}>
 					<input

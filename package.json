@@ -19,6 +19,7 @@
   "homepage": "https://github.com/gabemeola/gabemeola.github.io#readme",
   "dependencies": {
     "history": "^3.0.0",
+    "lodash": "^4.13.1",
     "q": "^1.4.1",
     "react": "^15.1.0",
     "react-addons-css-transition-group": "^15.1.0",
