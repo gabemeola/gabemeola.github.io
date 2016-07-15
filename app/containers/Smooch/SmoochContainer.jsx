@@ -46,11 +46,22 @@ class SmoochContainer extends React.Component {
 		})
 	}
 	render() {
+		const convo = this.state.smoochConversation.map((info, index) => {
+				return(
+					<p
+						key={index}
+						style={info.role == "appUser" ? {color: '#6CCECD'} : {color: '#DF997D'}}
+					>
+						{info.text} - <i>{info.name}</i>
+					</p>
+				)
+		});
+
 		return (
 			<div>
 				<h2>Smooch Container</h2>
 				<br/>
-				{this.state.conversationText.map((text, key) => <p key={key}>{text}</p>)}
+				{convo}
 				{/*{this.state.smoochConversation.forEach((item) => console.warn(item))}*/}
 				<br/>
 				<form onSubmit={(event) => this.handleTextSubmit(event)}>
