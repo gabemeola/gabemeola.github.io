@@ -11,7 +11,8 @@ let smooch = new SmoochCore({
 
 export function initSmooch(email) {
 	let defer = q.defer();
-	deviceId = createHash(email + window.navigator.platform, true);
+	let { platform } = window.navigator;
+	deviceId = createHash(email + platform, true);
 	console.log(deviceId);
 	smooch.appUsers.init({
 		device: {
@@ -19,7 +20,7 @@ export function initSmooch(email) {
 			platform: 'web',
 			appVersion: '1.0'
 		},
-		userId: email
+		userId: email + platform
 	}).then((res) => {
 		console.log("Smooch returns: ", res);
 		smoochUserEmail = res.appUser._id;
