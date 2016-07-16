@@ -3,7 +3,8 @@ var address,
 		webpack = require("webpack"),
 		autoprefixer = require('autoprefixer'),
 		HtmlWebpackPlugin = require('html-webpack-plugin'),
-		ifaces = require('os').networkInterfaces();
+		ifaces = require('os').networkInterfaces(),
+		PORT = process.env.PORT ;
 // Finds out your local IP address
 for (var dev in ifaces) {
 	ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address: undefined);
@@ -14,7 +15,7 @@ module.exports = {
 	},
 	entry: { //Entry Point for Webpack
 		app: [
-			`webpack-dev-server/client?http://${address}:3333`,
+			`webpack-dev-server/client?http://${address}:${PORT}`,
 			'webpack/hot/only-dev-server',
 			'./app/app.jsx',
 			"./sass/preloader/preload.sass",
@@ -24,7 +25,7 @@ module.exports = {
 	output: {
 		path: __dirname + "/dist/",
 		filename: "bundle.js",
-		publicPath: `http://${address}:3333/` //Bundled Javascript Webpack Spits out.
+		publicPath: `http://${address}:${PORT}/` //Bundled Javascript Webpack Spits out.
 	},
 	devtool: 'source-map',
 	devServer: { //Allows webpack-dev-server to be live reloaded

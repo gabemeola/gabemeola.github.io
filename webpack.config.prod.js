@@ -16,10 +16,6 @@ module.exports = {
 		  "./sass/preloader/preload.sass",
 		  "./sass/entry.sass"
 	  ],
-	  modulesDirectories: [
-		  'node_modules',
-		  'external_modules'
-	  ]
   },
 	output: {
 		path: __dirname + "/dist/",
