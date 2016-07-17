@@ -3,7 +3,7 @@ import { initSmooch, postSmooch, getSmooch } from "../../utils/smoochUtils";
 
 
 class SmoochContainer extends React.Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
 			inputText: "",
