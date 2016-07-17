@@ -1,11 +1,11 @@
 var express = require("express");
 
-module.exports = (PORT) => {
+module.exports = (PORT, ADDRESS) => {
 	const app = express();
 
 	app.get("/server", function (req, res) {
-		res.send('Proxy is Working')
+		res.send('<h1>Proxy is Working</h1>')
 	});
 
-	app.listen(PORT);
+	app.listen(PORT, () => console.log(`Server Listening on : http://${ADDRESS}:${PORT}`));
 };
