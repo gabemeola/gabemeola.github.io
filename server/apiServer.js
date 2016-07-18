@@ -1,12 +1,11 @@
-var app = require("express")(),
+var express = require("express"),
+		app = express(),
 		http = require("http").Server(app),
 		io = require("socket.io")(http);
 
 module.exports = function(PORT) {
 
-	app.get("/", (req, res) => {
-		res.sendFile(__dirname + "/dist/index.html")
-	});
+	app.use("/", express.static(__dirname + "/dist"));
 
 	app.get("/server", (req, res) => {
 		res.send('<h1>Proxy is Working</h1>')
