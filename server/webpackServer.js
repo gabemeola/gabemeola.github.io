@@ -9,7 +9,6 @@ module.exports = (PORT, ADDRESS) => {
 		},
 		progress: true,
 		hot: true,
-		watch: true,
 		stats: {
 			progress: true,
 			colors: true

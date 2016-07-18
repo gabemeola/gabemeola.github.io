@@ -82,7 +82,8 @@ module.exports = {
 	  new webpack.optimize.UglifyJsPlugin({
 		  compress: {
 			  warnings: false
-		  }
+		  },
+		  comments: false
 	  }),
 	  new HtmlWebpackPlugin({
 		  template: __dirname + "/app/index.html",
