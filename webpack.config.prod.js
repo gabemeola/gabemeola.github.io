@@ -2,7 +2,8 @@ var path = require("path"),
     webpack = require("webpack"),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
 		autoprefixer = require('autoprefixer'),
-		HtmlWebpackPlugin = require('html-webpack-plugin');
+		HtmlWebpackPlugin = require('html-webpack-plugin'),
+		webServer = '159.203.242.5:8080';
 
 var preloadCSS = new ExtractTextPlugin("preload.css"), //Extracts the two chunk to different file for async loading
     mainCSS = new ExtractTextPlugin("main.css");
@@ -72,7 +73,7 @@ module.exports = {
 	  preloadCSS,
 	  mainCSS,
 	  new webpack.DefinePlugin({
-		  SERVER_ADDRESS: JSON.stringify(`http://gabemeola.com`),
+		  SERVER_ADDRESS: JSON.stringify(`http://${webServer}`),
 		  'process.env': {
 			  'NODE_ENV': JSON.stringify('production')
 		  }
