@@ -72,6 +72,7 @@ module.exports = {
 	  preloadCSS,
 	  mainCSS,
 	  new webpack.DefinePlugin({
+		  SERVER_ADDRESS: JSON.stringify(`http://gabemeola.com`),
 		  'process.env': {
 			  'NODE_ENV': JSON.stringify('production')
 		  }

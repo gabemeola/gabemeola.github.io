@@ -1,9 +1,8 @@
-var express = require("express"),
+var app = require("express")(),
 		http = require("http").Server(app),
 		io = require("socket.io")(http);
 
 module.exports = (PORT) => {
-	const app = express();
 
 	app.get("/", (req, res) => {
 		res.sendFile(__dirname + "/index.html")
@@ -13,7 +12,9 @@ module.exports = (PORT) => {
 		res.send('<h1>Proxy is Working</h1>')
 	});
 
-
+	io.on("connection", (socket) => {
+		console.log("Socket.io: A User Connected");
+	});
 
 	http.listen(PORT, () => console.log(`Server Listening on Port: ${PORT}`));
 };

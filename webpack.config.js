@@ -74,6 +74,7 @@ module.exports = {
 	postcss: [ autoprefixer({ remove: false, browsers: ['> 5%'] }) ],
 	plugins: [
 		new webpack.DefinePlugin({
+			SERVER_ADDRESS: JSON.stringify(`http://${address}:${PORT}`),
 			'process.env': {
 				'NODE_ENV': JSON.stringify('development')
 			}

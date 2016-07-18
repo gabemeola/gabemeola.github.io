@@ -26,6 +26,7 @@
     "react-dom": "^15.1.0",
     "react-router": "^2.5.1",
     "smooch-core": "^1.4.0",
+    "socket.io-client": "^1.4.8",
     "webpack": "^1.12.15"
   },
   "devDependencies": {
