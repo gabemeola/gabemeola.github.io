@@ -8,7 +8,6 @@ module.exports = (PORT, ADDRESS) => {
 			"*" : `http://${ADDRESS}:${PORT - 10}`
 		},
 		progress: true,
-		inline: true,
 		hot: true,
 		watch: true,
 		stats: {
