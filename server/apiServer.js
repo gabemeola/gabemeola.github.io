@@ -5,7 +5,13 @@ var express = require("express"),
 
 module.exports = function(PORT) {
 
-	app.use("/", express.static(__dirname + "/dist"));
+	app.get("/", (req, res) => {
+		res.sendFile(__dirname + "/dist/index.html")
+	});
+
+	app.use("/", express.static(__dirname + "/dist", {
+		maxAge: 2592000
+	}));
 
 	app.get("/server", (req, res) => {
 		res.send('<h1>Proxy is Working</h1>')
