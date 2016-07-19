@@ -1,6 +1,6 @@
 import React from "react";
 import { initSmooch, postSmooch, getSmooch } from "../../utils/smoochUtils";
-const socket = require("socket.io-client")(SERVER_ADDRESS);
+const socket = io(SERVER_ADDRESS);
 
 
 class SmoochContainer extends React.Component {

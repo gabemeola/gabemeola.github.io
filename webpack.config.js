@@ -78,9 +78,9 @@ module.exports = {
 				'NODE_ENV': JSON.stringify('development')
 			}
 		}),
-		// new webpack.ProvidePlugin({
-		// 	socket: 'window.io(`http://${address}:${PORT}`)'
-		// }),
+		new webpack.ProvidePlugin({
+			socket: 'window.io'
+		}),
 		new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
 		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
