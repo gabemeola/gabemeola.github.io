@@ -20,7 +20,7 @@ export function initSmooch(email) {
 			platform: 'web',
 			appVersion: '1.0'
 		},
-		userId: email + platform
+		userId: email + '/' + platform
 	}).then((res) => {
 		console.log("Smooch returns: ", res);
 		smoochUserEmail = res.appUser._id;

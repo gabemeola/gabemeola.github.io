@@ -3,7 +3,7 @@ var path = require("path"),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
 		autoprefixer = require('autoprefixer'),
 		HtmlWebpackPlugin = require('html-webpack-plugin'),
-		webServer = '159.203.242.5:8080';
+		webServer = '159.203.242.5:3333';
 
 var preloadCSS = new ExtractTextPlugin("preload.css"), //Extracts the two chunk to different file for async loading
     mainCSS = new ExtractTextPlugin("main.css");
