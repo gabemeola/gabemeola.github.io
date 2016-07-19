@@ -8,21 +8,15 @@ class SmoochContainer extends React.Component {
 		super(props);
 		this.state = {
 			inputText: "",
-			smoochConversation: [],
-			conversationText: []
+			smoochConversation: []
 		}
 	}
 	componentWillMount() {
 		initSmooch("bob@example.com")
 			.then(() => {
 				getSmooch().then((res) => {
-					let newConversationText = [];
-					res.conversation.messages.forEach((item) => {
-						newConversationText.push(item.text);
-					});
 					this.setState({
-						smoochConversation: res.conversation.messages,
-						conversationText: newConversationText
+						smoochConversation: res.conversation.messages
 					})
 				})
 			});
@@ -32,13 +26,8 @@ class SmoochContainer extends React.Component {
 		postSmooch(this.state.inputText)
 			.then(() => {
 				getSmooch().then((res) => {
-					let newConversationText = [];
-					res.conversation.messages.forEach((item) => {
-						newConversationText.push(item.text);
-					});
 					this.setState({
-						smoochConversation: res.conversation.messages,
-						conversationText: newConversationText
+						smoochConversation: res.conversation.messages
 					})
 				});
 			});
