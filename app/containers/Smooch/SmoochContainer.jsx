@@ -23,7 +23,6 @@ class SmoochContainer extends React.Component {
 			});
 	}
 	handleTextSubmit(text) {
-		console.warn("text Submit: ", text);
 		postSmooch(text)
 			.then(() => {
 				getSmooch().then((res) => {
@@ -35,11 +34,11 @@ class SmoochContainer extends React.Component {
 	}
 	render() {
 		return (
-			<div>
+			<div className="smooch">
 				<h2>Smooch Container</h2>
 				<br/>
 				<SmoochChats
-
+					conversation={this.state.smoochConversation}
 				/>
 				{/*{this.state.smoochConversation.forEach((item) => console.warn(item))}*/}
 				<br/>

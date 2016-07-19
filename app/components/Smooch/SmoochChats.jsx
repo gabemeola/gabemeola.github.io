@@ -1,20 +1,32 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-// const convo = this.state.smoochConversation.map((info, index) => {
-// 	return (
-// 		<p
-// 			key={index}
-// 			style={info.role == "appUser" ? {color: '#6CCECD'} : {color: '#DF997D'}}
-// 		>
-// 			{info.text} - <i>{info.name}</i>
-// 		</p>
-// 	);
-// });
+function SmoochChats({conversation}) {
 
-function SmoochChats(props) {
+	const convo = conversation.map((info, index) => {
+		return (
+			<p
+				key={index}
+				className={"smooch-chat-thread" + (info.role == "appUser" ? "smooch-chat-thread--appUser" : "smooch-chat-thread--appMaker")}
+			>
+				{info.text} - <span className="smooch-chat-name">{info.name}</span>
+			</p>
+		);
+	});
+
 	return (
-		<h1>Smooch Chats</h1>
+		<div>
+			<h3>Smooch Chats</h3>
+			{convo}
+		</div>
 	)
 }
+
+SmoochChats.propTypes = {
+	conversation: PropTypes.array
+};
+
+SmoochChats.defaultProps = {
+
+};
 
 export default SmoochChats;
