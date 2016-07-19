@@ -6,7 +6,7 @@ function SmoochChats({conversation}) {
 		return (
 			<p
 				key={index}
-				className={"smooch-chat-thread" + (info.role == "appUser" ? "smooch-chat-thread--appUser" : "smooch-chat-thread--appMaker")}
+				className={"smooch-chat-thread " + (info.role == "appUser" ? "smooch-chat-thread--appUser" : "smooch-chat-thread--appMaker")}
 			>
 				{info.text} - <span className="smooch-chat-name">{info.name}</span>
 			</p>
@@ -14,7 +14,7 @@ function SmoochChats({conversation}) {
 	});
 
 	return (
-		<div>
+		<div className="smooch-chat">
 			<h3>Smooch Chats</h3>
 			{convo}
 		</div>
