@@ -24,14 +24,14 @@ class SmoochContainer extends React.Component {
 	}
 	handleTextSubmit(text) {
 		console.warn("text Submit: ", text);
-		// postSmooch(text)
-		// 	.then(() => {
-		// 		getSmooch().then((res) => {
-		// 			this.setState({
-		// 				smoochConversation: res.conversation.messages
-		// 			})
-		// 		});
-		// 	});
+		postSmooch(text)
+			.then(() => {
+				getSmooch().then((res) => {
+					this.setState({
+						smoochConversation: res.conversation.messages
+					})
+				});
+			});
 	}
 	render() {
 		return (

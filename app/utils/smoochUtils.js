@@ -4,14 +4,14 @@ import q from "q";
 
 let smoochUserEmail;
 let deviceId;
-let smooch = new SmoochCore({
+const smooch = new SmoochCore({
 	appToken: "3nf36hcp4oj7ab8f52uvmkleb"
 });
 
 
 export function initSmooch(email) {
-	let defer = q.defer();
-	let { platform } = window.navigator;
+	const defer = q.defer();
+	const { platform } = window.navigator;
 	deviceId = createHash(email + platform, true);
 	console.log(deviceId);
 	smooch.appUsers.init({
@@ -31,7 +31,7 @@ export function initSmooch(email) {
 
 
 export function postSmooch(text) {
-	let defer = q.defer();
+	const defer = q.defer();
 	smooch.conversations.sendMessage(smoochUserEmail, {
 		text: text,
 		role: "appUser",
@@ -46,7 +46,7 @@ export function postSmooch(text) {
 
 
 export function getSmooch() {
-	let defer = q.defer();
+	const defer = q.defer();
 	smooch.conversations.get(smoochUserEmail)
 		.then((res) => {
 			console.log("Get Smooch: ", res);
