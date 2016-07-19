@@ -18,7 +18,7 @@ module.exports = function(PORT) {
 	app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 	app.get("/server", (req, res) => {
-		res.send('<h1>Proxy is Workin</h1>')
+		res.send('<h1>Proxy is Working</h1>')
 	});
 
 	io.on("connection", (socket) => {
@@ -31,7 +31,7 @@ module.exports = function(PORT) {
 	app.post("/api/newmessage", (req, res) => {
 		console.log('BODY: ', req.body);
 		res.sendStatus(200);
-	})
+	});
 
 	http.listen(PORT, () => console.log(`Server Listening on Port: ${PORT}`));
 };
