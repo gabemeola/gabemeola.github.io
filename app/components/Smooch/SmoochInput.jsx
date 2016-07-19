@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropTypes } from "react";
 
 class SmoochInput extends React.Component {
 	constructor(props) {
@@ -25,6 +25,10 @@ class SmoochInput extends React.Component {
 			</form>
 		)
 	}
-}
+};
+
+SmoochInput.propTypes = {
+	onTextSubmit: PropTypes.func
+};
 
 export default SmoochInput;
