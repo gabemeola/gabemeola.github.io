@@ -9,17 +9,21 @@ class SmoochContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			smoochConversation: []
+			smoochConversation: [],
+			convoStarted: false
 		}
 	}
 	componentWillMount() {
 		initSmooch("bob@example.com")
-			.then(() => {
-				getSmooch().then((res) => {
-					this.setState({
-						smoochConversation: res.conversation.messages
+			.then((res) => {
+				if(res.appUser.conversationStarted === true) {
+					getSmooch().then((res) => {
+						this.setState({
+							smoochConversation: res.conversation.messages,
+							convoStarted: true
+						})
 					})
-				})
+				}
 			});
 	}
 	handleTextSubmit(text) {
