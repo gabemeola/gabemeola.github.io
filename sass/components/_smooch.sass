@@ -1,20 +1,58 @@
+$gradient-gray: rgba(184, 187, 189, .4)
+
 .smooch
-	padding-bottom: 100px
+	//padding-bottom: 100px
 .smooch-form
-	padding-top: 20px
-	margin: 0 auto
-	width: 80vw
+	padding-top: 50px
+	margin-left: -4%
+	width: 100vw
+	height: 80px
+	padding-bottom: 80px
+	background: $gradient-gray
+	perspective: 1000
+	transform: translateZ(0)
+	&--submitted
+		perspective: 1000
+		transform: translateZ(0)
+		animation: gradient-shift .4s linear
+	@keyframes gradient-shift
+		0%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		5%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		10%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		15%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		20%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		25%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		30%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray)
+		35%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray)
+		40%
+			background: linear-gradient(to top, $green, $gradient-gray)
+		45%
+			background: linear-gradient(to top, $green, $green)
+		50%
+			background: $green
+		100%
+			background: $gradient-gray
 .smooch-input
-	width: 100%
+	width: 80%
 	height: 40px
 	color: #828587
+	margin-left: 6%
+	background-color: transparent
 	border-top: none
 	border-left: 4px solid $green
 	border-right: none
 	border-bottom: none
 	box-shadow: none
 	border-radius: 0
-	transition: $fade-transition
+	transition: $transition
 	font-family: $latoFont
 	font-size: 28px
 	padding-left: 15px
@@ -29,7 +67,7 @@
 			opacity: 1
 	&:focus
 		outline: none
-		border-left: 5px solid $green
-		transition: $fade-transition
+		border-left: 6px solid $green
+		transition: $transition
 		animation: none
 @import "smooch-chat"

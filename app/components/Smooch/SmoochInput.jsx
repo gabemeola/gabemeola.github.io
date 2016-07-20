@@ -4,24 +4,33 @@ class SmoochInput extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			inputText: ""
+			inputText: "",
+			isSubmitted: false
 		}
+	}
+	handleIsSubmitted() {
+		this.setState({
+			isSubmitted: true
+		});
+		setTimeout(() => this.setState({isSubmitted: false}), 400)
 	}
 	forTextSubmit(e) {
 		e.preventDefault();
+		this.handleIsSubmitted();
 		this.props.onTextSubmit(this.state.inputText);
 		this.setState({
 			inputText: ""
 		})
 	}
 	render() {
+		const { isSubmitted, inputText } = this.state;
 		return (
-			<div className="smooch-form">
+			<div className={"smooch-form " + (isSubmitted ? "smooch-form--submitted" : "" )}>
 				<form
 					onSubmit={(event) => this.forTextSubmit(event)}
 				>
 					<input
-						value={this.state.inputText}
+						value={inputText}
 						onChange={(event) => this.setState({inputText: event.target.value})}
 						type="text"
 					  className="smooch-input"
@@ -30,7 +39,7 @@ class SmoochInput extends React.Component {
 			</div>
 		)
 	}
-};
+}
 
 SmoochInput.propTypes = {
 	onTextSubmit: PropTypes.func
