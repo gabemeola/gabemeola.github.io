@@ -7,6 +7,12 @@ class WorksContainer extends React.Component {
 	constructor(props) {
 		super(props);
 	}
+	componentDidMount() {
+		window.scrollTo(0,0)
+	}
+	componentDidUpdate() {
+		window.scrollTo(0,0)
+	}
 	handleNoWorkMatch() {
 		this.context.router.push("/about");
 	}
