@@ -12,15 +12,13 @@ class SmoochInput extends React.Component {
 		this.setState({
 			isSubmitted: true
 		});
-		setTimeout(() => this.setState({isSubmitted: false}), 400)
+		setTimeout(() => this.setState({inputText: ""}), 200);
+		setTimeout(() => this.setState({isSubmitted: false}), 400);
 	}
 	forTextSubmit(e) {
 		e.preventDefault();
 		this.handleIsSubmitted();
 		this.props.onTextSubmit(this.state.inputText);
-		this.setState({
-			inputText: ""
-		})
 	}
 	render() {
 		const { isSubmitted, inputText } = this.state;

@@ -32,20 +32,19 @@ class SmoochContainer extends React.Component {
 				getSmooch().then((res) => {
 					this.setState({
 						smoochConversation: res.conversation.messages
-					})
+					});
+					window.scrollTo(0,document.body.scrollHeight);
 				});
 			});
 	}
 	render() {
 		return (
 			<div className="smooch">
-				<h2>Smooch Container</h2>
-				<br/>
 				<SmoochChats
 					conversation={this.state.smoochConversation}
 				/>
-				{/*{this.state.smoochConversation.forEach((item) => console.warn(item))}*/}
 				<br/>
+				{/*{this.state.smoochConversation.forEach((item) => console.warn(item))}*/}
 				<SmoochInput
 					onTextSubmit={(text) => this.handleTextSubmit(text)}
 				/>
