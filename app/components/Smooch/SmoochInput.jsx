@@ -16,13 +16,18 @@ class SmoochInput extends React.Component {
 	}
 	render() {
 		return (
-			<form onSubmit={(event) => this.forTextSubmit(event)}>
-				<input
-					value={this.state.inputText}
-					onChange={(event) => this.setState({inputText: event.target.value})}
-					type="text"
-				/>
-			</form>
+			<div className="smooch-form">
+				<form
+					onSubmit={(event) => this.forTextSubmit(event)}
+				>
+					<input
+						value={this.state.inputText}
+						onChange={(event) => this.setState({inputText: event.target.value})}
+						type="text"
+					  className="smooch-input"
+					/>
+				</form>
+			</div>
 		)
 	}
 };
