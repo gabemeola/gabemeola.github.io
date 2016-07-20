@@ -1,0 +1,72 @@
+$gradient-gray: rgba(184, 187, 189, .4)
+
+.smooch-form
+	padding-top: 50px
+	margin-left: -4%
+	width: 100vw
+	height: 80px
+	padding-bottom: 80px
+	background: $gradient-gray
+	perspective: 1000
+	transform: translateZ(0)
+	&--submitted
+		perspective: 1000
+		transform: translateZ(0)
+		animation: gradient-shift .4s linear
+	@keyframes gradient-shift
+		0%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		5%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		10%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		15%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		20%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		25%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray, $gradient-gray)
+		30%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray, $gradient-gray)
+		35%
+			background: linear-gradient(to top, $green, $gradient-gray, $gradient-gray)
+		40%
+			background: linear-gradient(to top, $green, $gradient-gray)
+		45%
+			background: linear-gradient(to top, $green, $green)
+		50%
+			background: $green
+		100%
+			background: $gradient-gray
+.smooch-input
+	width: 80%
+	height: 40px
+	color: #828587
+	margin-left: 6%
+	-webkit-appearance: none
+	background-color: transparent
+	border-top: none
+	border-left: 4px solid $green
+	border-right: none
+	border-bottom: none
+	box-shadow: inset 0 0 10px 3px rgba(184, 187, 189, .3)
+	border-radius: 0
+	transition: $transition
+	font-family: $latoFont
+	font-size: 28px
+	padding-left: 15px
+	opacity: 1
+	animation: input-flicker 2.5s cubic-bezier(0.4, 0, 0.2, 1) 2s infinite
+	@keyframes input-flicker
+		0%
+			opacity: 1
+		50%
+			opacity: .2
+		100%
+			opacity: 1
+	&:focus
+		outline: none
+		border-left: 6px solid $green
+		transition: $transition
+		animation: none
+		box-shadow: inset 0 0 10px 3px rgba(184, 187, 189, .08)
