@@ -11,7 +11,7 @@ module.exports = function(PORT) {
 	});
 
 	app.use("/", express.static(__dirname + "/dist", {
-		maxAge: 2592000
+		maxAge: 5184000000
 	}));
 
 	app.use(bodyParser.json()); // for parsing application/json
