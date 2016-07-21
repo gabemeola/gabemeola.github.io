@@ -3,10 +3,11 @@ var path = require("path"),
     ExtractTextPlugin = require('extract-text-webpack-plugin'),
 		autoprefixer = require('autoprefixer'),
 		HtmlWebpackPlugin = require('html-webpack-plugin'),
+		ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin'),
 		webServer = '159.203.242.5:3333';
 
-var preloadCSS = new ExtractTextPlugin("preload.css"), //Extracts the two chunk to different file for async loading
-    mainCSS = new ExtractTextPlugin("main.css");
+var preloadCSS = new ExtractTextPlugin("preload.[hash].css"), //Extracts the two chunk to different file for async loading
+    mainCSS = new ExtractTextPlugin("main.[hash].css");
 module.exports = {
 	resolve: { //Resolves ES2015 Imports
 		extensions: ["", ".js", ".jsx"]
@@ -20,7 +21,7 @@ module.exports = {
   },
 	output: {
 		path: __dirname + "/dist/",
-		filename: "bundle.js" //Bundled Javascript Webpack Spits out.
+		filename: "bundle.[hash].js" //Bundled Javascript Webpack Spits out.
 	},
 	module: {
 		loaders: [
@@ -93,6 +94,9 @@ module.exports = {
 		  template: __dirname + "/app/index.html",
 		  filename: "index.html",
 		  inject: "body"
+	  }),
+	  new ScriptExtHtmlWebpackPlugin({
+		  defaultAttribute: 'async'
 	  })
   ]
 };
