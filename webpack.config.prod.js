@@ -84,7 +84,8 @@ module.exports = {
 	  new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
 	  new webpack.optimize.UglifyJsPlugin({
 		  compress: {
-			  warnings: false
+			  warnings: false,
+			  drop_console: true
 		  },
 		  comments: false
 	  }),
