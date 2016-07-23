@@ -1,4 +1,5 @@
 import React from "react";
+import NewConvo from "../../utils/NewConvo";
 
 class ConvoInit extends React.Component {
 	constructor(props) {
@@ -29,20 +30,11 @@ class ConvoInit extends React.Component {
 
 	}
 	render() {
-		const convo = this.state.conversation.map((info, index) => {
-			return (
-				<p
-					key={index}
-					className={"smooch-chat-thread " + (info.role == "appUser" ? "smooch-chat-thread--appUser" : "smooch-chat-thread--appMaker")}
-				>
-					{info.text}<span className="smooch-chat-name">{info.name}</span>
-				</p>
-			);
-		});
-
 		return(
 			<div className="smooch-chat">
-				{convo}
+				<NewConvo
+					conversation={this.state.conversation}
+				/>
 				<button onClick={() => this.handleNewBotMessage(0)}>Test Button</button>
 			</div>
 		)
