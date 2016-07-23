@@ -1,6 +1,7 @@
-import React from "react";
-import Landing from "../../components/Landing/Landing";
+import React, { PropTypes } from "react";
+import SmoochContainer from "../Smooch/SmoochContainer";
 import LandingIcon from "../../components/Landing/LandingIcon";
+import ConvoInit from "../../components/Landing/ConvoInit";
 
 class LandingContainer extends React.Component {
 	constructor() {
@@ -23,18 +24,18 @@ class LandingContainer extends React.Component {
 	render() {
 		return(
 			<div className="landing">
-				<Landing/>
-				<LandingIcon 
-					onIconExpand={() => this.handleIconExpand()}
-				  isIconExpanded={this.state.iconExpanded}
-				/>
+				<ConvoInit/>
+				{/*<LandingIcon */}
+					{/*onIconExpand={() => this.handleIconExpand()}*/}
+				  {/*isIconExpanded={this.state.iconExpanded}*/}
+				{/*/>*/}
 			</div>
 		)
 	}
 }
 
 LandingContainer.contextTypes = {
-	router: React.PropTypes.object.isRequired
+	router: PropTypes.object.isRequired
 };
 
 export default LandingContainer;
