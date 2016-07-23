@@ -18,11 +18,14 @@ class ConvoInit extends React.Component {
 		let newConversation = conversation.slice(0);
 		let newThread = {
 			text: convoScript[marker],
-			name: "Gabe Meola",
+			name: "GabeBot",
 			role: "appMaker"
 		};
 
-		newConversation.push(convoScript[0]);
+		newConversation.push(newThread);
+		this.setState({
+			conversation: newConversation
+		})
 
 	}
 	render() {
@@ -40,7 +43,7 @@ class ConvoInit extends React.Component {
 		return(
 			<div className="smooch-chat">
 				{convo}
-				<button onClick={() => this.handleTestButton()}>Test Button</button>
+				<button onClick={() => this.handleNewBotMessage(0)}>Test Button</button>
 			</div>
 		)
 	}
