@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import NewConvo from "../../utils/NewConvo";
+import NewConvo from "./NewConvo";
 
 function SmoochChats({conversation}) {
 	return (

@@ -1,5 +1,5 @@
 import React from "react";
-import NewConvo from "../../utils/NewConvo";
+import NewConvo from "../Smooch/NewConvo";
 
 class ConvoInit extends React.Component {
 	constructor(props) {
