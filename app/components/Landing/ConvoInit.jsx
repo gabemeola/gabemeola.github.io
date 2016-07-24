@@ -47,24 +47,25 @@ class ConvoInit extends React.Component {
 			}
 		};
 
-		const invalidEmail = () => {
-			pushUserInput();
-			setTimeout(() => {
-				let newConversation = this.state.conversation.slice(0);
-				const newThread = {
-					text: "Invalid Email. Please type just your email address.",
-					name: "GabeBot",
-					role: "appMaker"
-				};
-				newConversation.push(newThread);
-				this.setState({
-					conversation: newConversation,
-					inputDisabled: false
-				});
-			}, 1500)
-		};
 
 		const userThreadChecker = () => {
+			const invalidEmail = () => {
+				pushUserInput();
+				setTimeout(() => {
+					let newConversation = this.state.conversation.slice(0);
+					const newThread = {
+						text: "Invalid Email. Please type just your email address.",
+						name: "GabeBot",
+						role: "appMaker"
+					};
+					newConversation.push(newThread);
+					this.setState({
+						conversation: newConversation,
+						inputDisabled: false
+					});
+				}, 1500)
+			};
+
 			switch (scriptMarker) {
 				case 1:
 					this.setState({
@@ -131,7 +132,7 @@ class ConvoInit extends React.Component {
 				/>
 				{/*<button onClick={() => this.handleNewBotMessage(0)}>Test Button</button>*/}
 				<SmoochInput
-					onTextSubmit={(text) => this.handleNewUserMessage(text)}
+					onTextSubmit={(text) => setTimeout(() => this.handleNewUserMessage(text), 200)}
 				  isDisabled={this.state.inputDisabled}
 				/>
 			</div>
