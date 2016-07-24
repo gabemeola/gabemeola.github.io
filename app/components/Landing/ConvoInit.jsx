@@ -2,13 +2,13 @@ import React from "react";
 import NewConvo from "../Smooch/NewConvo";
 import SmoochInput from "../Smooch/SmoochInput";
 import { initSmooch } from "../../utils/smoochUtils";
-import { emailValidate } from "../../utils/validations";
+import { emailValidate, blankString } from "../../utils/validations";
 
 const script = [
-	"Hello, my name is GabeBot.",
-	"What is your name?",
-	"Great! Feel free to take a look at my current work!",
-	"This conversation is persistent, but what is your email in case we get disconnected?"
+	`Hello, my name is GabeBot.`,
+	`What is your name?`,
+	`Great! Feel free to take a look at my current work!`,
+	`This conversation is persistent, but what is your email in case we get disconnected?`
 ];
 
 class ConvoInit extends React.Component {
@@ -23,7 +23,7 @@ class ConvoInit extends React.Component {
 		}
 	}
 	handleNewUserMessage(text) {
-		const {inputDisabled, conversation, scriptMarker} = this.state;
+		const {inputDisabled, conversation, scriptMarker, convoScript} = this.state;
 
 		const pushUserInput = () => {
 			let newConversation = conversation.slice(0);
@@ -40,10 +40,11 @@ class ConvoInit extends React.Component {
 		};
 
 		const continueFlow = () => {
+			const lastScript = convoScript.length - 1;
 			if (!inputDisabled) {
 				pushUserInput();
 				this.setState({ scriptMarker: scriptMarker + 1 });
-				setTimeout(() => this.convoFlow(), 1500);
+				if (lastScript !== scriptMarker) setTimeout(() => this.convoFlow(), 1500);
 			}
 		};
 
@@ -68,10 +69,12 @@ class ConvoInit extends React.Component {
 
 			switch (scriptMarker) {
 				case 1:
-					this.setState({
-						userName: text
-					});
-					continueFlow();
+					if(!blankString(text)) {
+						this.setState({
+							userName: text
+						});
+						continueFlow();
+					}
 					break;
 				case 3:
 					if (emailValidate(text)) {
@@ -104,6 +107,10 @@ class ConvoInit extends React.Component {
 			});
 		};
 
+		const lastMessageScript = () => {
+
+		};
+
 		const threadChecker = () => {
 			switch (scriptMarker) {
 				case 0:
@@ -132,7 +139,7 @@ class ConvoInit extends React.Component {
 				/>
 				{/*<button onClick={() => this.handleNewBotMessage(0)}>Test Button</button>*/}
 				<SmoochInput
-					onTextSubmit={(text) => setTimeout(() => this.handleNewUserMessage(text), 800)}
+					onTextSubmit={(text) => setTimeout(() => this.handleNewUserMessage(text), 600)}
 				  isDisabled={this.state.inputDisabled}
 				/>
 			</div>
