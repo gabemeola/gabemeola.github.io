@@ -16,24 +16,11 @@ class ConvoInit extends React.Component {
 		super(props);
 		this.state = {
 			conversation: [],
-			userName: "Bob",
+			userName: undefined,
 			convoScript: script,
 			inputDisabled: false,
-			scriptMarker: 3
+			scriptMarker: 0
 		}
-	}
-	handleNewBotMessage(marker) {
-		const { convoScript, conversation } = this.state;
-		let newConversation = conversation.slice(0);
-		const newThread = {
-			text: convoScript[marker],
-			name: "GabeBot",
-			role: "appMaker"
-		};
-		newConversation.push(newThread);
-		this.setState({
-			conversation: newConversation
-		})
 	}
 	handleNewUserMessage(text) {
 		const {inputDisabled, conversation, scriptMarker} = this.state;
@@ -80,6 +67,9 @@ class ConvoInit extends React.Component {
 		const userThreadChecker = () => {
 			switch (scriptMarker) {
 				case 1:
+					this.setState({
+						userName: text
+					});
 					continueFlow();
 					break;
 				case 3:
@@ -100,7 +90,7 @@ class ConvoInit extends React.Component {
 		const { convoScript, conversation, scriptMarker } = this.state;
 		let newConversation = conversation.slice(0);
 
-		const pushThread = (marker) => {
+		const pushBotThread = (marker) => {
 			const newThread = {
 				text: convoScript[marker],
 				name: "GabeBot",
@@ -117,14 +107,14 @@ class ConvoInit extends React.Component {
 			switch (scriptMarker) {
 				case 0:
 				case 2:
-					pushThread(scriptMarker);
+					pushBotThread(scriptMarker);
 					this.setState({
 						scriptMarker: scriptMarker + 1
 					});
-					setTimeout(() => pushThread(scriptMarker + 1), 5000);
+					setTimeout(() => pushBotThread(scriptMarker + 1), 5000);
 					break;
 				default:
-					pushThread(scriptMarker)
+					pushBotThread(scriptMarker)
 			}
 		};
 
