@@ -111,7 +111,7 @@ class ConvoInit extends React.Component {
 					this.setState({
 						scriptMarker: scriptMarker + 1
 					});
-					setTimeout(() => pushBotThread(scriptMarker + 1), 5000);
+					setTimeout(() => pushBotThread(scriptMarker + 1), 3000);
 					break;
 				default:
 					pushBotThread(scriptMarker)
@@ -121,7 +121,7 @@ class ConvoInit extends React.Component {
 		threadChecker();
 	}
 	componentDidMount() {
-		this.convoFlow()
+		setTimeout(() => this.convoFlow(), 3000);
 	}
 	render() {
 		return(
