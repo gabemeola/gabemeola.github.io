@@ -9,7 +9,7 @@ const smooch = new SmoochCore({
 });
 
 
-export function initSmooch(email) {
+export function initSmooch(email, name) {
 	const defer = q.defer();
 	const { platform } = window.navigator;
 	deviceId = createHash(email + platform, true);
@@ -24,6 +24,17 @@ export function initSmooch(email) {
 	}).then((res) => {
 		console.log("Smooch returns: ", res);
 		smoochUserEmail = res.appUser._id;
+		defer.resolve(res);
+	});
+	return defer.promise;
+}
+
+export function updateSmooch(email, name) {
+	const defer = q.defer();
+	smooch.appUsers.update(smoochUserEmail, {
+		email: email,
+		givenName: name
+	}).then((res) => {
 		defer.resolve(res);
 	});
 	return defer.promise;

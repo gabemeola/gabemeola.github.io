@@ -1,7 +1,7 @@
 import React from "react";
 import NewConvo from "../Smooch/NewConvo";
 import SmoochInput from "../Smooch/SmoochInput";
-import { initSmooch, getSmooch, postSmooch } from "../../utils/smoochUtils";
+import { initSmooch, getSmooch, postSmooch, updateSmooch } from "../../utils/smoochUtils";
 import { emailValidate, blankString } from "../../utils/validations";
 
 const script = [
@@ -36,9 +36,10 @@ class ConvoInit extends React.Component {
 		});
 	}
 	initNewSmooch() {
-		const { userEmail } = this.state;
+		const { userEmail, userName } = this.state;
 		console.warn("lastMessageScript Ran");
 		initSmooch(userEmail).then(() => {
+			updateSmooch(userEmail, userName);
 			this.setState({
 				isSmoochInit: true
 			})
