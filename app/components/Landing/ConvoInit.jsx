@@ -1,7 +1,7 @@
 import React from "react";
 import NewConvo from "../Smooch/NewConvo";
 import SmoochInput from "../Smooch/SmoochInput";
-import { initSmooch } from "../../utils/smoochUtils";
+import { initSmooch, getSmooch, postSmooch } from "../../utils/smoochUtils";
 import { emailValidate, blankString } from "../../utils/validations";
 
 const script = [
@@ -17,10 +17,32 @@ class ConvoInit extends React.Component {
 		this.state = {
 			conversation: [],
 			userName: undefined,
+			userEmail: undefined,
 			convoScript: script,
 			inputDisabled: false,
-			scriptMarker: 0
+			scriptMarker: 0,
+			isSmoochInit: false
 		}
+	}
+	handleSmoochPost() {
+		let newConversation = this.state.conversation.slice(0);
+		postSmooch(text).then(() => {
+			getSmooch().then((res) => {
+				const jointConversation = newConversation.concat(res.conversation.messages);
+				this.setState({
+					conversation: jointConversation
+				})
+			})
+		});
+	}
+	initNewSmooch() {
+		const { userEmail} = this.state;
+		console.warn("lastMessageScript Ran");
+		initSmooch(userEmail).then(() => {
+			this.setState({
+				isSmoochInit: true
+			})
+		});
 	}
 	handleNewUserMessage(text) {
 		const {inputDisabled, conversation, scriptMarker, convoScript} = this.state;
@@ -44,7 +66,12 @@ class ConvoInit extends React.Component {
 			if (!inputDisabled) {
 				pushUserInput();
 				this.setState({ scriptMarker: scriptMarker + 1 });
-				if (lastScript !== scriptMarker) setTimeout(() => this.convoFlow(), 1500);
+				if (lastScript !== scriptMarker) {
+					setTimeout(() => this.convoFlow(), 1500);
+				} else {
+					this.initNewSmooch();
+					this.setState({ inputDisabled: false });
+				}
 			}
 		};
 
@@ -96,7 +123,8 @@ class ConvoInit extends React.Component {
 					break;
 				case 3:
 					if (emailValidate(text)) {
-						// initSmooch(text);
+						this.setState({ userEmail: text });
+						console.log("Smooch Initiated for: ", text);
 						continueFlow();
 					} else {
 						invalidEmail();
@@ -125,10 +153,6 @@ class ConvoInit extends React.Component {
 			});
 		};
 
-		const lastMessageScript = () => {
-
-		};
-
 		const threadChecker = () => {
 			switch (scriptMarker) {
 				case 0:
@@ -155,7 +179,6 @@ class ConvoInit extends React.Component {
 				<NewConvo
 					conversation={this.state.conversation}
 				/>
-				{/*<button onClick={() => this.handleNewBotMessage(0)}>Test Button</button>*/}
 				<SmoochInput
 					onTextSubmit={(text) => setTimeout(() => this.handleNewUserMessage(text), 600)}
 				  isDisabled={this.state.inputDisabled}
