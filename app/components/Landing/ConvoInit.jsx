@@ -1,6 +1,8 @@
 import React from "react";
 import NewConvo from "../Smooch/NewConvo";
 import SmoochInput from "../Smooch/SmoochInput";
+import { initSmooch } from "../../utils/smoochUtils";
+import { emailValidate } from "../../utils/validations";
 
 const script = [
 	"Hello, my name is GabeBot.",
@@ -17,7 +19,7 @@ class ConvoInit extends React.Component {
 			userName: "Bob",
 			convoScript: script,
 			inputDisabled: false,
-			scriptMarker: 0
+			scriptMarker: 3
 		}
 	}
 	handleNewBotMessage(marker) {
@@ -34,8 +36,9 @@ class ConvoInit extends React.Component {
 		})
 	}
 	handleNewUserMessage(text) {
-		const { inputDisabled, conversation, scriptMarker } = this.state;
-		if(!inputDisabled) {
+		const {inputDisabled, conversation, scriptMarker} = this.state;
+
+		const pushUserInput = () => {
 			let newConversation = conversation.slice(0);
 			const newThread = {
 				text,
@@ -45,11 +48,53 @@ class ConvoInit extends React.Component {
 			newConversation.push(newThread);
 			this.setState({
 				conversation: newConversation,
-				scriptMarker: scriptMarker + 1,
 				inputDisabled: true
 			});
-			setTimeout(() => this.convoFlow(), 1500);
-		}
+		};
+
+		const continueFlow = () => {
+			if (!inputDisabled) {
+				pushUserInput();
+				this.setState({ scriptMarker: scriptMarker + 1 });
+				setTimeout(() => this.convoFlow(), 1500);
+			}
+		};
+
+		const invalidEmail = () => {
+			pushUserInput();
+			setTimeout(() => {
+				let newConversation = this.state.conversation.slice(0);
+				const newThread = {
+					text: "Invalid Email, please type just your email address.",
+					name: "GabeBot",
+					role: "appMaker"
+				};
+				newConversation.push(newThread);
+				this.setState({
+					conversation: newConversation,
+					inputDisabled: false
+				});
+			}, 1500)
+		};
+
+		const userThreadChecker = () => {
+			switch (scriptMarker) {
+				case 1:
+					continueFlow();
+					break;
+				case 3:
+					if (emailValidate(text)) {
+						// initSmooch(text);
+						continueFlow();
+					} else {
+						invalidEmail();
+					}
+					break;
+				default:
+					continueFlow();
+			}
+		};
+		userThreadChecker();
 	}
 	convoFlow() {
 		const { convoScript, conversation, scriptMarker } = this.state;
@@ -71,6 +116,7 @@ class ConvoInit extends React.Component {
 		const threadChecker = () => {
 			switch (scriptMarker) {
 				case 0:
+				case 2:
 					pushThread(scriptMarker);
 					this.setState({
 						scriptMarker: scriptMarker + 1
