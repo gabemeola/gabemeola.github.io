@@ -52,7 +52,7 @@ class ConvoInit extends React.Component {
 			setTimeout(() => {
 				let newConversation = this.state.conversation.slice(0);
 				const newThread = {
-					text: "Invalid Email, please type just your email address.",
+					text: "Invalid Email. Please type just your email address.",
 					name: "GabeBot",
 					role: "appMaker"
 				};
