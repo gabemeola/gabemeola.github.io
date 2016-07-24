@@ -24,7 +24,7 @@ class ConvoInit extends React.Component {
 			isSmoochInit: false
 		}
 	}
-	handleSmoochPost() {
+	handleSmoochPost(text) {
 		let newConversation = this.state.conversation.slice(0);
 		postSmooch(text).then(() => {
 			getSmooch().then((res) => {
@@ -36,7 +36,7 @@ class ConvoInit extends React.Component {
 		});
 	}
 	initNewSmooch() {
-		const { userEmail} = this.state;
+		const { userEmail } = this.state;
 		console.warn("lastMessageScript Ran");
 		initSmooch(userEmail).then(() => {
 			this.setState({
@@ -179,10 +179,16 @@ class ConvoInit extends React.Component {
 				<NewConvo
 					conversation={this.state.conversation}
 				/>
-				<SmoochInput
-					onTextSubmit={(text) => setTimeout(() => this.handleNewUserMessage(text), 600)}
-				  isDisabled={this.state.inputDisabled}
-				/>
+				{!this.state.isSmoochInit ?
+					<SmoochInput
+						onTextSubmit={(text) => setTimeout(() => this.handleNewUserMessage(text), 600)}
+						isDisabled={this.state.inputDisabled}
+					/> :
+					<SmoochInput
+						onTextSubmit={(text) => this.handleSmoochPost(text)}
+						isDisabled={false}
+					/>
+				}
 			</div>
 		)
 	}
