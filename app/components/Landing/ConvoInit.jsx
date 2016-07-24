@@ -132,7 +132,7 @@ class ConvoInit extends React.Component {
 				/>
 				{/*<button onClick={() => this.handleNewBotMessage(0)}>Test Button</button>*/}
 				<SmoochInput
-					onTextSubmit={(text) => setTimeout(() => this.handleNewUserMessage(text), 200)}
+					onTextSubmit={(text) => setTimeout(() => this.handleNewUserMessage(text), 800)}
 				  isDisabled={this.state.inputDisabled}
 				/>
 			</div>
