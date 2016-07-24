@@ -66,6 +66,22 @@ class ConvoInit extends React.Component {
 					});
 				}, 1500)
 			};
+			const invalidName = () => {
+				pushUserInput();
+				setTimeout(() => {
+					let newConversation = this.state.conversation.slice(0);
+					const newThread = {
+						text: "Sorry, I didn't catch that.",
+						name: "GabeBot",
+						role: "appMaker"
+					};
+					newConversation.push(newThread);
+					this.setState({
+						conversation: newConversation,
+						inputDisabled: false
+					});
+				}, 1500)
+			};
 
 			switch (scriptMarker) {
 				case 1:
@@ -74,6 +90,8 @@ class ConvoInit extends React.Component {
 							userName: text
 						});
 						continueFlow();
+					} else {
+						invalidName();
 					}
 					break;
 				case 3:
