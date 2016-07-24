@@ -34,7 +34,7 @@ class ConvoInit extends React.Component {
 		})
 	}
 	handleNewUserMessage(text) {
-		const { inputDisabled, conversation } = this.state;
+		const { inputDisabled, conversation, scriptMarker } = this.state;
 		if(!inputDisabled) {
 			let newConversation = conversation.slice(0);
 			const newThread = {
@@ -43,28 +43,46 @@ class ConvoInit extends React.Component {
 				role: "appUser"
 			};
 			newConversation.push(newThread);
-			console.warn(newConversation);
 			this.setState({
 				conversation: newConversation,
+				scriptMarker: scriptMarker + 1,
 				inputDisabled: true
 			});
-			this.state.scriptMarker++;
 			setTimeout(() => this.convoFlow(), 1500);
 		}
 	}
 	convoFlow() {
 		const { convoScript, conversation, scriptMarker } = this.state;
 		let newConversation = conversation.slice(0);
-		const newThread = {
-			text: convoScript[scriptMarker],
-			name: "GabeBot",
-			role: "appMaker"
+
+		const pushThread = (marker) => {
+			const newThread = {
+				text: convoScript[marker],
+				name: "GabeBot",
+				role: "appMaker"
+			};
+			newConversation.push(newThread);
+			this.setState({
+				conversation: newConversation,
+				inputDisabled: false
+			});
 		};
-		newConversation.push(newThread);
-		this.setState({
-			conversation: newConversation,
-			inputDisabled: false
-		});
+
+		const threadChecker = () => {
+			switch (scriptMarker) {
+				case 0:
+					pushThread(scriptMarker);
+					this.setState({
+						scriptMarker: scriptMarker + 1
+					});
+					setTimeout(() => pushThread(scriptMarker + 1), 5000);
+					break;
+				default:
+					pushThread(scriptMarker)
+			}
+		};
+
+		threadChecker();
 	}
 	componentDidMount() {
 		this.convoFlow()
@@ -75,7 +93,7 @@ class ConvoInit extends React.Component {
 				<NewConvo
 					conversation={this.state.conversation}
 				/>
-				<button onClick={() => this.handleNewBotMessage(0)}>Test Button</button>
+				{/*<button onClick={() => this.handleNewBotMessage(0)}>Test Button</button>*/}
 				<SmoochInput
 					onTextSubmit={(text) => this.handleNewUserMessage(text)}
 				  isDisabled={this.state.inputDisabled}
