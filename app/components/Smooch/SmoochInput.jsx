@@ -32,6 +32,7 @@ class SmoochInput extends React.Component {
 						onChange={(event) => this.setState({inputText: event.target.value})}
 						type="text"
 					  className="smooch-input"
+					  disabled={this.props.isDisabled}
 					/>
 				</form>
 			</div>
@@ -40,7 +41,12 @@ class SmoochInput extends React.Component {
 }
 
 SmoochInput.propTypes = {
-	onTextSubmit: PropTypes.func
+	onTextSubmit: PropTypes.func,
+	isDisabled: PropTypes.bool
+};
+
+SmoochInput.defaultProps = {
+	isDisabled: false
 };
 
 export default SmoochInput;
