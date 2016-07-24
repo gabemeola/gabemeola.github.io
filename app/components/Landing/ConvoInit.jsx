@@ -43,17 +43,17 @@ class ConvoInit extends React.Component {
 				role: "appUser"
 			};
 			newConversation.push(newThread);
+			console.warn(newConversation);
 			this.setState({
 				conversation: newConversation,
 				inputDisabled: true
 			});
 			this.state.scriptMarker++;
-			this.convoFlow();
+			setTimeout(() => this.convoFlow(), 1500);
 		}
 	}
 	convoFlow() {
 		const { convoScript, conversation, scriptMarker } = this.state;
-		console.log("convoFlow: ", scriptMarker);
 		let newConversation = conversation.slice(0);
 		const newThread = {
 			text: convoScript[scriptMarker],
