@@ -25,24 +25,33 @@ class ConvoInit extends React.Component {
 		}
 	}
 	handleSmoochPost(text) {
-		let newConversation = this.state.conversation.slice(0);
 		postSmooch(text).then(() => {
 			getSmooch().then((res) => {
-				const jointConversation = newConversation.concat(res.conversation.messages);
-				this.setState({
-					conversation: jointConversation
+				this.setState({  // Updating Current Convo to match with Smooch's
+					conversation: res.conversation.messages
 				})
 			})
 		});
 	}
 	initNewSmooch() {
 		const { userEmail, userName } = this.state;
+		const newUserSlackMessage = `${userName} at ${userEmail} just finished up with the bot. Handing it off to Human Gabe!`;
+		this.setState({ inputDisabled: false });
 		console.warn("lastMessageScript Ran");
-		initSmooch(userEmail).then(() => {
-			updateSmooch(userEmail, userName);
-			this.setState({
-				isSmoochInit: true
-			})
+		initSmooch(userEmail).then(() => {  // Initializes new Smooch User
+			updateSmooch(userEmail, userName).then(() => { // Adds User Email and Name to Smooch Database
+				postSmooch(newUserSlackMessage).then(() => { // Send New User Smooch Email to Business Logic
+					getSmooch().then((res) => { // Concats Old Bot Conversation with new Smooch Conversation
+						let newConversation = this.state.conversation.slice(0);
+						res.conversation.messages.pop();
+						const jointConversation = newConversation.concat(res.conversation.messages);
+						this.setState({
+							conversation: jointConversation,
+							isSmoochInit: true
+						})
+					})
+				});
+			});
 		});
 	}
 	handleNewUserMessage(text) {
@@ -71,13 +80,13 @@ class ConvoInit extends React.Component {
 					setTimeout(() => this.convoFlow(), 1500);
 				} else {
 					this.initNewSmooch();
-					this.setState({ inputDisabled: false });
 				}
 			}
 		};
 
 
 		const userThreadChecker = () => {
+
 			const invalidEmail = () => {
 				pushUserInput();
 				setTimeout(() => {
@@ -94,6 +103,7 @@ class ConvoInit extends React.Component {
 					});
 				}, 1500)
 			};
+
 			const invalidName = () => {
 				pushUserInput();
 				setTimeout(() => {
@@ -135,6 +145,7 @@ class ConvoInit extends React.Component {
 					continueFlow();
 			}
 		};
+
 		userThreadChecker();
 	}
 	convoFlow() {
@@ -172,7 +183,7 @@ class ConvoInit extends React.Component {
 		threadChecker();
 	}
 	componentDidMount() {
-		setTimeout(() => this.convoFlow(), 3000);
+		setTimeout(() => this.convoFlow(), 3000);  // Delay to start Convo flow to wait for page load
 	}
 	render() {
 		return(
