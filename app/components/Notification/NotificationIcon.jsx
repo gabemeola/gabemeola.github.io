@@ -1,13 +1,17 @@
-import React from "react";
+import React, { PropTypes } from "react";
 
-function NotificationIcon(props) {
+function NotificationIcon({unread}) {
 	return (
 		<div className="notification-icon-wrapper">
 			<div className="notification-icon">
-				1
+				{unread}
 			</div>
 		</div>
 	)
+}
+
+NotificationIcon.propTypes = {
+	unread: PropTypes.number.isRequired
 }
 
 export default NotificationIcon;
