@@ -16,6 +16,7 @@
 		backface-visibility: hidden
 		perspective: 1000
 		transform: translateZ(0)
+		z-index: 2
 		@import "navbar-socials"
 		.navbar-header-text
 			color: #ffffff
@@ -24,6 +25,9 @@
 			margin-left: 22px
 			display: inline-block
 			font-weight: 500
+			&--hidden
+				transition: all .2s ease-in-out
+				opacity: 0
 		.navbar-header-block
 			background-color: $green
 			width: 42px
@@ -35,6 +39,8 @@
 		&:hover
 			.navbar-header-text
 				cursor: pointer
+				&--hidden
+					opacity: 1
 			.navbar-header-block
 				width: 275px
 			.navbar-socials

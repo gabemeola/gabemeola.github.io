@@ -7,7 +7,7 @@ function NavbarHeader ({onNavbarClose}) {
 		<div className="navbar-header-wrapper">
 			<Link to="/" onClick={onNavbarClose}>
 				<div className="navbar-header-block"></div>
-				<h1 className="navbar-header-text"><span style={{fontWeight: 700}}>g</span>abemeola.com</h1>
+				<h1 className="navbar-header-text"><span style={{fontWeight: 700}}>g</span><span className="navbar-header-text--hidden">abemeola.com</span></h1>
 			</Link>
 			<NavbarSocials/>
 		</div>

@@ -1,6 +1,7 @@
 import React, { PropTypes } from "react";
 import NavbarHeader from "../../components/Navbar/NavbarHeader";
 import NavbarNavBtn from "../../components/Navbar/NavbarNavBtn";
+import NotificationIcon from "../../components/Notification/NotificationIcon";
 
 class NavbarContainer extends React.Component {
 	constructor(props) {
@@ -19,6 +20,7 @@ class NavbarContainer extends React.Component {
 					<NavbarHeader
 						onNavbarClose={() => this.passNavbarClose()}
 					/>
+					<NotificationIcon/>
 					<NavbarNavBtn
 						onNavbarSwitch={() => this.passNavbarSwitch()}
 					  isNavbarOpen={this.props.isNavbarOpen}
