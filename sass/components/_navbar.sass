@@ -16,7 +16,7 @@
 		backface-visibility: hidden
 		perspective: 1000
 		transform: translateZ(0)
-		z-index: 2
+		z-index: 1
 		@import "navbar-socials"
 		.navbar-header-text
 			color: #ffffff
@@ -37,6 +37,7 @@
 			z-index: 1
 			transition: $transition
 		&:hover
+			z-index: 3
 			.navbar-header-text
 				cursor: pointer
 				&--hidden

@@ -1,7 +1,18 @@
 .notification-wrapper
 	position: absolute
-	width: 100vw
+	width: 100%
 	top: 0
+.notification-icon-wrapper
+	position: absolute
+	right: 20%
+	top: 30px
+	width: 60px
+	margin-top: -3px
+	padding-top: 3px
+	height: 40px
+	z-index: 2
+	@media only screen and (max-width: $sm-device)
+		right: 40%
 .notification-icon
 	width: 34px
 	height: 34px
@@ -9,10 +20,5 @@
 	background-color: $orange
 	text-align: center
 	color: #ffffff
-	position: absolute
-	right: 20%
-	top: 30px
+	margin: 0 auto
 	line-height: 34px
-	z-index: 1
-	@media only screen and (max-width: $sm-device)
-		right: 45%
