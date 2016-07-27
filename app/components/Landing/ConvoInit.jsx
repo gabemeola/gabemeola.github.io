@@ -55,7 +55,7 @@ class ConvoInit extends React.Component {
 		});
 	}
 	handleNewUserMessage(text) {
-		const {inputDisabled, conversation, scriptMarker, convoScript} = this.state;
+		const { inputDisabled, conversation, scriptMarker, convoScript } = this.state;
 
 		const pushUserInput = () => {
 			let newConversation = conversation.slice(0);
