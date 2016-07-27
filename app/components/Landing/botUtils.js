@@ -1,6 +1,7 @@
 import { emailValidate, blankString } from "../../utils/validations";
 import { initSmooch, getSmooch, postSmooch, updateSmooch } from "../../utils/smoochUtils";
 
+
 export function handleNewUserMessage(text) {
 	const { inputDisabled, conversation, scriptMarker, convoScript } = this.state;
 
@@ -95,6 +96,7 @@ export function handleNewUserMessage(text) {
 }
 
 
+
 export function convoFlow() {
 	const { convoScript, conversation, scriptMarker } = this.state;
 	let newConversation = conversation.slice(0);
@@ -129,6 +131,7 @@ export function convoFlow() {
 
 	threadChecker();
 }
+
 
 
 export function initNewSmooch() {
