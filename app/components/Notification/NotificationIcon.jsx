@@ -2,7 +2,9 @@ import React from "react";
 
 function NotificationIcon(props) {
 	return (
-		<div>NotificationIcon</div>
+		<div className="notification-icon">
+			NotificationIcon
+		</div>
 	)
 }
 

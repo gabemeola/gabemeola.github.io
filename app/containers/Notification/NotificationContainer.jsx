@@ -1,5 +1,4 @@
 import React from "react";
-import NotificationIcon from "../../components/Notification/NotificationIcon";
 
 class NotificationContainer extends React.Component {
 	constructor(props) {
@@ -7,9 +6,7 @@ class NotificationContainer extends React.Component {
 	}
 	render() {
 		return(
-			<div>
-				<NotificationIcon/>
-			</div>
+			<h2>NotificationContainer</h2>
 		)
 	}
 }
