@@ -9,11 +9,15 @@ class NotificationContainer extends Component {
 			isOpen: false
 		}
 	}
+	isOpenToggle() {
+		this.setState({ isOpen: !this.state.isOpen })
+	}
 	render() {
 		return(
 			<div className="notification-wrapper">
 				<NotificationIcon
 					unread={this.state.unread}
+				  isOpenToggle={() => this.isOpenToggle()}
 				/>
 			</div>
 		)
