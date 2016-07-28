@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import NotificationIcon from "../../components/Notification/NotificationIcon";
 
-class NotificationContainer extends React.Component {
+class NotificationContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {

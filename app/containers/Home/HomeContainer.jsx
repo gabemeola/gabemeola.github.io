@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import Home from "../../components/Home/Home";
 
-class HomeContainer extends React.Component {
+class HomeContainer extends Component {
 	render() {
 		return(
 			<div className="home">

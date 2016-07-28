@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 const socket = io(SERVER_ADDRESS);
 import { initSmooch, postSmooch, getSmooch } from "../../utils/smoochUtils";
 import SmoochChats from "../../components/Smooch/SmoochChats";
 import SmoochInput from "../../components/Smooch/SmoochInput";
 
 
-class SmoochContainer extends React.Component {
+class SmoochContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {

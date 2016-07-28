@@ -1,9 +1,9 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 import SmoochContainer from "../Smooch/SmoochContainer";
 import LandingIcon from "../../components/Landing/LandingIcon";
 import ConvoInit from "../../components/Landing/ConvoInit";
 
-class LandingContainer extends React.Component {
+class LandingContainer extends Component {
 	constructor() {
 		super();
 		this.state = {

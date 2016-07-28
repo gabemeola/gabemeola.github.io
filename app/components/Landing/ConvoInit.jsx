@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import NewConvo from "../Smooch/NewConvo";
 import SmoochInput from "../Smooch/SmoochInput";
 import { getSmooch, postSmooch } from "../../utils/smoochUtils";
@@ -11,7 +11,7 @@ const script = [
 	`This conversation is persistent, but what is your email in case we get disconnected?`
 ];
 
-class ConvoInit extends React.Component {
+class ConvoInit extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {

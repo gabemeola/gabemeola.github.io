@@ -1,6 +1,6 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 
-class SmoochInput extends React.Component {
+class SmoochInput extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {

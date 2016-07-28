@@ -1,9 +1,9 @@
-import React, { PropTypes } from "react";
+import React, { Component, PropTypes } from "react";
 import NavbarHeader from "../../components/Navbar/NavbarHeader";
 import NavbarNavBtn from "../../components/Navbar/NavbarNavBtn";
 import NotificationContainer from "../Notification/NotificationContainer";
 
-class NavbarContainer extends React.Component {
+class NavbarContainer extends Component {
 	constructor(props) {
 		super(props)
 	}

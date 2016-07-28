@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import NavbarContainer from "../../containers/Navbar/NavbarContainer";
 import MenuContainer from "../../containers/Menu/MenuContainer";
 import preventScroll from "../../utils/preventScroll";
 
-class Main extends React.Component {
+class Main extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
