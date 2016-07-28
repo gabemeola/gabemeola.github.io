@@ -27,13 +27,9 @@ class Main extends Component {
 	}
 	handleNavbarSwitch() {
 		let { navbarOpen } = this.state;
-		navbarOpen ?
-			this.setState({
-				navbarOpen: false
-			}) :
-			this.setState({
-				navbarOpen: true
-			});
+		this.setState({
+			navbarOpen: !navbarOpen
+		});
 		navbarOpen ? preventScroll.enable() : preventScroll.disable()
 	}
 	handleNavbarClose() {
