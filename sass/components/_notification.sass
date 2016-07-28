@@ -1,5 +1,5 @@
 .notification-wrapper
-	position: absolute
+	position: fixed
 	width: 100%
 	top: 0
 .notification-icon-wrapper
@@ -23,3 +23,18 @@
 		color: #ffffff
 		margin: 0 auto
 		line-height: 34px
+.notification-convo
+	width: 92%
+	height: 85vh
+	margin: 0 auto
+	position: relative
+	overflow-y: scroll
+	display: none
+	opacity: 0
+	top: 90px
+	background-color: blanchedalmond
+	transition: $fade-transition
+	&--open
+		transition: $fade-transition
+		display: block
+		opacity: 1

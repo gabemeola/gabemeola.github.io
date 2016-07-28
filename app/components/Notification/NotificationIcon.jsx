@@ -1,8 +1,8 @@
 import React, { PropTypes } from "react";
 
-function NotificationIcon({unread, isOpenToggle}) {
+function NotificationIcon({unread, isNotificationOpenToggle}) {
 	return (
-		<div className="notification-icon-wrapper" onClick={isOpenToggle}>
+		<div className="notification-icon-wrapper" onClick={isNotificationOpenToggle}>
 			<div className="notification-icon">
 				{unread}
 			</div>
@@ -11,7 +11,8 @@ function NotificationIcon({unread, isOpenToggle}) {
 }
 
 NotificationIcon.propTypes = {
-	unread: PropTypes.number.isRequired
-}
+	unread: PropTypes.number.isRequired,
+	isNotificationOpenToggle: PropTypes.func.isRequired
+};
 
 export default NotificationIcon;

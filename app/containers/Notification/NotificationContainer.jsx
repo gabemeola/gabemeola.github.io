@@ -1,23 +1,27 @@
 import React, { Component } from "react";
 import NotificationIcon from "../../components/Notification/NotificationIcon";
+import NotificationConvo from "../../components/Notification/NotificationConvo";
 
 class NotificationContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			unread: 0,
-			isOpen: false
+			isNotificationOpen: false
 		}
 	}
 	isOpenToggle() {
-		this.setState({ isOpen: !this.state.isOpen })
+		this.setState({ isNotificationOpen: !this.state.isNotificationOpen })
 	}
 	render() {
 		return(
 			<div className="notification-wrapper">
 				<NotificationIcon
 					unread={this.state.unread}
-				  isOpenToggle={() => this.isOpenToggle()}
+					isNotificationOpenToggle={() => this.isOpenToggle()}
+				/>
+				<NotificationConvo
+					isNotificationOpen={this.state.isNotificationOpen}
 				/>
 			</div>
 		)
