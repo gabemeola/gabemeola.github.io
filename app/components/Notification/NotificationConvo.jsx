@@ -10,7 +10,7 @@ function NotificationConvo({isNotificationOpen}) {
 }
 
 NotificationConvo.propTypes = {
-	isNotificationOpen: PropTypes.func.isRequired
+	isNotificationOpen: PropTypes.bool.isRequired
 };
 
 export default NotificationConvo;

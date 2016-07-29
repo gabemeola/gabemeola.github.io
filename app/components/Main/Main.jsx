@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import NavbarContainer from "../../containers/Navbar/NavbarContainer";
 import MenuContainer from "../../containers/Menu/MenuContainer";
+import ImgPreRenders from "./imgPreRenders";
 import preventScroll from "../../utils/preventScroll";
 
 class Main extends Component {
@@ -52,6 +53,7 @@ class Main extends Component {
 					visible={this.state.navbarOpen}
 					onNavbarSwitch={() => this.handleNavbarSwitch()}
 				/>
+				<ImgPreRenders/>
 			</div>
 		)
 	}
