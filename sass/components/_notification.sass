@@ -2,6 +2,7 @@
 	position: fixed
 	width: 100%
 	top: 0
+	transition: $transition
 .notification-icon-wrapper
 	position: absolute
 	right: 20%
@@ -24,17 +25,19 @@
 		margin: 0 auto
 		line-height: 34px
 .notification-convo
-	width: 92%
-	height: 85vh
+	width: 50%
+	height: 87vh
 	margin: 0 auto
-	position: relative
+	position: absolute
+	right: 0
 	overflow-y: scroll
 	overflow-scrolling: touch
 	-webkit-overflow-scrolling: touch
 	display: none
 	opacity: 0
 	top: 90px
-	background-color: blanchedalmond
+	background-color: rgba(255, 255, 255, 1)
+	border: 1px solid gray
 	transition: $fade-transition
 	&--open
 		transition: $fade-transition

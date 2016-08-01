@@ -5,7 +5,7 @@ import NotificationContainer from "../Notification/NotificationContainer";
 
 class NavbarContainer extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 	}
 	passNavbarSwitch() {
 		this.props.onNavbarSwitch();
@@ -20,7 +20,9 @@ class NavbarContainer extends Component {
 					<NavbarHeader
 						onNavbarClose={() => this.passNavbarClose()}
 					/>
-					<NotificationContainer/>
+					<NotificationContainer
+					  route={this.props.route}
+					/>
 					<NavbarNavBtn
 						onNavbarSwitch={() => this.passNavbarSwitch()}
 					  isNavbarOpen={this.props.isNavbarOpen}

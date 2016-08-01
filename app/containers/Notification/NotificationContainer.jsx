@@ -15,7 +15,7 @@ class NotificationContainer extends Component {
 	}
 	render() {
 		return(
-			<div className="notification-wrapper">
+			<div className="notification-wrapper" style={this.props.route !== "/" ? { visibility: "visible", opacity: "1" } : { visibility: "hidden", opacity: "0" }}>
 				<NotificationIcon
 					unread={this.state.unread}
 					isNotificationOpenToggle={() => this.isOpenToggle()}

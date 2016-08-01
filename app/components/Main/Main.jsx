@@ -45,6 +45,7 @@ class Main extends Component {
 					onNavbarSwitch={() => this.handleNavbarSwitch()}
 					isNavbarOpen={this.state.navbarOpen}
 					onNavbarClose={() => this.handleNavbarClose()}
+				  route={this.props.location.pathname}
 				/>
 				<div className={"main-container-content " + (this.state.navbarOpen ? "main-container-content--blurred" : "")}>
 					{this.props.children}
