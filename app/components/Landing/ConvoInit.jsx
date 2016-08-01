@@ -35,15 +35,15 @@ class ConvoInit extends Component {
 	}
 	componentDidUpdate() {
 		const chatElem = document.getElementsByClassName("smooch-chat");
-		for (let chat of chatElem) { // Scroll to Bottom of chat on update
-			chat.scrollTop = chat.scrollHeight
+		for (let i = 0; i > chatElem.length; i++) { // Scroll to Bottom of chat on update
+			chatElem[i].scrollTop = chatElem[i].scrollHeight
 		}
 	}
 	componentDidMount() {
 		setTimeout(() => convoFlow.bind(this)(), 3000);  // Delay to start Convo flow to wait for page load
 		const chatElem = document.getElementsByClassName("smooch-chat");
-		for (let chat of chatElem) { // Scroll to Bottom of chat on update
-			chat.scrollTop = chat.scrollHeight
+		for (let i = 0; i > chatElem.length; i++) { // Scroll to Bottom of chat on update
+			chatElem[i].scrollTop = chatElem[i].scrollHeight
 		}
 	}
 	render() {
