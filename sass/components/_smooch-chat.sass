@@ -3,8 +3,9 @@
 	overflow: scroll
 	overflow-scrolling: touch
 	-webkit-overflow-scrolling: touch
-	height: 80%
-	//padding-bottom: 180px
+	height: 80% /* Fall Back for browser that do not support calc */
+	height: calc(100% - 125px)
+	//padding-bottom: 125px
 	.smooch-chat-thread
 		font-family: $latoFont
 		font-weight: 300

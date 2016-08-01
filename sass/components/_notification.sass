@@ -1,5 +1,5 @@
 .notification-wrapper
-	position: fixed
+	position: absolute
 	width: 100%
 	top: 0
 	transition: $transition
@@ -25,7 +25,7 @@
 		margin: 0 auto
 		line-height: 34px
 .notification-convo
-	width: 50%
+	width: 620px
 	height: 87vh
 	margin: 0 auto
 	position: absolute
@@ -39,6 +39,8 @@
 	background-color: rgba(255, 255, 255, 1)
 	border: 1px solid gray
 	transition: $fade-transition
+	@media only screen and (max-width: $med-sm-device)
+		width: 100%
 	&--open
 		transition: $fade-transition
 		display: block

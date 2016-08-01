@@ -15,19 +15,17 @@ class NavbarContainer extends Component {
 	}
 	render() {
 		return(
-			<div>
-				<div className="navbar">
-					<NavbarHeader
-						onNavbarClose={() => this.passNavbarClose()}
-					/>
-					<NotificationContainer
-					  route={this.props.route}
-					/>
-					<NavbarNavBtn
-						onNavbarSwitch={() => this.passNavbarSwitch()}
-					  isNavbarOpen={this.props.isNavbarOpen}
-					/>
-				</div>
+			<div className="navbar">
+				<NavbarHeader
+					onNavbarClose={() => this.passNavbarClose()}
+				/>
+				<NotificationContainer
+				  route={this.props.route}
+				/>
+				<NavbarNavBtn
+					onNavbarSwitch={() => this.passNavbarSwitch()}
+				  isNavbarOpen={this.props.isNavbarOpen}
+				/>
 			</div>
 		)
 	}

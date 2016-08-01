@@ -3,9 +3,11 @@
 		position: relative
 		top: 90px
 		z-index: 900
-		width: 92vw
+		width: 100vw
 		margin: 0 auto
 		transition: $fade-transition
+		@media only screen and (min-width: $extra-lg-device)
+			width: 1426px
 		&--blurred
 			//filter: blur(3px)
 			backface-visibility: hidden
