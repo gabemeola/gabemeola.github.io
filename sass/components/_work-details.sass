@@ -1,13 +1,20 @@
 .work-details
+	position: relative
 	width: 100%
 	min-height: 300px
 	padding-bottom: 10px
 	background-color: #A7664C
+	@media only screen and (min-width: $extra-lg-device)
+		right: calc(100vw - 1426px)
+		padding-left: calc(100vw - 1426px)
+		padding-right: calc(100vw - 1426px)
 	.work-details-wrapper
 		width: 85%
 		margin: 0 auto
 		padding-top: 20px
 		color: #ffffff
+		@media only screen and (min-width: $extra-lg-device)
+			width: 1226px
 		.work-details-header
 			display: block
 			width: 100%
@@ -33,11 +40,16 @@
 				ul
 					list-style: none
 .work-header
+	position: relative
 	width: 100%
 	min-height: 50px
 	padding-bottom: 10px
 	background-color: #D3754F
 	color: #ffffff
+	@media only screen and (min-width: $extra-lg-device)
+		right: calc(100vw - 1426px)
+		padding-left: calc(100vw - 1426px)
+		padding-right: calc(100vw - 1426px)
 	.work-header-wrapper
 		width: 90%
 		margin: 0 auto
