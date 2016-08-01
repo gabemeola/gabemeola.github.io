@@ -33,8 +33,18 @@ class ConvoInit extends Component {
 			})
 		});
 	}
+	componentDidUpdate() {
+		const chatElem1 = document.getElementsByClassName("smooch-chat")[0];
+		const chatElem2 = document.getElementsByClassName("smooch-chat")[1];
+		chatElem1.scrollTop = chatElem1.scrollHeight; // Scroll to Bottom of chat on update
+		chatElem2.scrollTop = chatElem2.scrollHeight;
+	}
 	componentDidMount() {
 		setTimeout(() => convoFlow.bind(this)(), 3000);  // Delay to start Convo flow to wait for page load
+		const chatElem1 = document.getElementsByClassName("smooch-chat")[0];
+		const chatElem2 = document.getElementsByClassName("smooch-chat")[1];
+		chatElem1.scrollTop = chatElem1.scrollHeight;
+		chatElem2.scrollTop = chatElem2.scrollHeight;
 	}
 	render() {
 		return(
