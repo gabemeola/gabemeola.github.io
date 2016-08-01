@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NewConvo from "../Smooch/NewConvo";
+import SmoochChats from "../Smooch/SmoochChats";
 import SmoochInput from "../Smooch/SmoochInput";
 import { getSmooch, postSmooch } from "../../utils/smoochUtils";
 import { handleNewUserMessage, convoFlow } from "./botUtils";
@@ -35,7 +35,7 @@ class ConvoInit extends Component {
 	}
 	componentDidUpdate() {
 		const chatElem = document.getElementsByClassName("smooch-chat");
-		for (let i = 0; i > chatElem.length; i++) { // Scroll to Bottom of chat on update
+		for (let i = 0; i < chatElem.length; i++) { // Scroll to Bottom of chat on update
 			chatElem[i].scrollTop = chatElem[i].scrollHeight
 		}
 	}
@@ -48,8 +48,8 @@ class ConvoInit extends Component {
 	}
 	render() {
 		return(
-			<div className="smooch-chat">
-				<NewConvo
+			<div className="smooch">
+				<SmoochChats
 					conversation={this.state.conversation}
 				/>
 				{!this.state.isSmoochInit ?
