@@ -30,38 +30,40 @@ function Work({detailHeader, detailDate, builtWith, team, name, siteUrl, macMock
 					</div>
 				</div>
 			</div>
-			<div className="work-header">
-				<div className="work-header-wrapper">
-					<h1 className="work-header-name">{name}</h1>
-					<h3 className="work-header-siteUrl underline">
-						<a target="_blank" href={`//${siteUrl}`}>
-							{`www.${siteUrl}`}
-							<div className="underline-mark"></div>
-						</a>
-					</h3>
-				</div>
-			</div>
-			<div className="work-content">
-				<div className="work-content-overview">
-					<div className="work-content-macmock">
-						<img src={macMock} alt="MAC MOCK"/>
-					</div>
-					<div className="work-content-header">
-							<h2>{overviewHeader}</h2>
-							<h4>
-								with <b>Gabe Meola</b>
-								<br/>
-								as <b>{overviewPosition}</b>
-							</h4>
+			<div className="work-wrapper">
+				<div className="work-header">
+					<div className="work-header-wrapper">
+						<h1 className="work-header-name">{name}</h1>
+						<h3 className="work-header-siteUrl underline">
+							<a target="_blank" href={`//${siteUrl}`}>
+								{`www.${siteUrl}`}
+								<div className="underline-mark"></div>
+							</a>
+						</h3>
 					</div>
 				</div>
-			</div>
-			<div className="work-link">
-				<a target="_blank" href={`//${siteUrl}`}>
-					<div className="work-link-btn">
-						<p>Visit Project</p>
+				<div className="work-content">
+					<div className="work-content-overview">
+						<div className="work-content-macmock">
+							<img src={macMock} alt="MAC MOCK"/>
+						</div>
+						<div className="work-content-header">
+								<h2>{overviewHeader}</h2>
+								<h4>
+									with <b>Gabe Meola</b>
+									<br/>
+									as <b>{overviewPosition}</b>
+								</h4>
+						</div>
 					</div>
-				</a>
+				</div>
+				<div className="work-link">
+					<a target="_blank" href={`//${siteUrl}`}>
+						<div className="work-link-btn">
+							<p>Visit Project</p>
+						</div>
+					</a>
+				</div>
 			</div>
 		</div>
 	)
