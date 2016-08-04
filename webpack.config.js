@@ -10,7 +10,7 @@ for (var dev in ifaces) {
 	ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address: undefined);
 }
 module.exports = {
-	resolve: { //Resolves ES2015 Imports
+	resolve: { //Resolves JSX Imports
 		extensions: ["", ".js", ".jsx"]
 	},
 	entry: { //Entry Point for Webpack

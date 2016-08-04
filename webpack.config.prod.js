@@ -8,7 +8,7 @@ var path = require("path"),
 		webServer = '159.203.242.5:3333';
 
 module.exports = {
-	resolve: { //Resolves ES2015 Imports
+	resolve: { //Resolves JSX Imports
 		extensions: ["", ".js", ".jsx"]
 	},
   entry: { //Entry Point for Webpack
@@ -66,6 +66,9 @@ module.exports = {
 	//Config for Post-CSS and AutoPrefixer
 	postcss: [ autoprefixer({ remove: true, browsers: ['> 5%'] }) ],
   plugins: [
+	  new StyleExtHtmlWebpackPlugin({
+		  minify: true
+	  }),
 	  new ExtractTextPlugin("main.css"),
 	  new webpack.DefinePlugin({
 		  SERVER_ADDRESS: JSON.stringify(`http://${webServer}`),
@@ -92,7 +95,6 @@ module.exports = {
 	  }),
 	  new ScriptExtHtmlWebpackPlugin({
 		  defaultAttribute: 'async'
-	  }),
-	  new StyleExtHtmlWebpackPlugin()
+	  })
   ]
 };
