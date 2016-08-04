@@ -55,10 +55,6 @@ module.exports = {
 					'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false&progressive=true'
 				]
 			},
-			{ //Loads HTML imports/requires
-				test: /\.html$/,
-				loader: "html"
-			},
 			{ // Loads JSON files
 				test: /\.json$/,
 				loader: "json"

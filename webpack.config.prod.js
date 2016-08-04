@@ -4,10 +4,9 @@ var path = require("path"),
 		autoprefixer = require('autoprefixer'),
 		HtmlWebpackPlugin = require('html-webpack-plugin'),
 		ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin'),
+		StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin'),
 		webServer = '159.203.242.5:3333';
 
-var preloadCSS = new ExtractTextPlugin("preload.[hash].css"), //Extracts the two chunk to different file for async loading
-    mainCSS = new ExtractTextPlugin("main.[hash].css");
 module.exports = {
 	resolve: { //Resolves ES2015 Imports
 		extensions: ["", ".js", ".jsx"]
@@ -21,7 +20,7 @@ module.exports = {
   },
 	output: {
 		path: __dirname + "/dist/",
-		filename: "bundle.[hash].js" //Bundled Javascript Webpack Spits out.
+		filename: "bundle.js" //Bundled Javascript Webpack Spits out.
 	},
 	module: {
 		loaders: [
@@ -36,12 +35,12 @@ module.exports = {
 			{ //Loads the preloader sass as inline styles
 				test: /\.sass$/,
 				include: __dirname + "/sass/preloader/",
-				loader: preloadCSS.extract('css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax')
+				loader: StyleExtHtmlWebpackPlugin.inline('postcss-loader!sass-loader?indentedSyntax')
 			},
       { //Converts SASS to CSS and also performs relevant pathing and auto-prefixes
         test: /\.sass$/,
 	      exclude: __dirname + "/sass/preloader/",
-	      loader: mainCSS.extract('css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax')
+	      loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax') // Extracts main.css to separate file
       },
 			{ //Loads the font files from imports
 				test:  /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -53,10 +52,6 @@ module.exports = {
 					'file?hash=sha512&digest=hex&name=./assets/min-icons/[hash].[ext]',
 					'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=true&progressive=true'
 				]
-			},
-			{ //Loads HTML imports/requires
-				test: /\.html$/,
-				loader: "html"
 			},
 			{ // Loads JSON files
 				test: /\.json$/,
@@ -71,8 +66,7 @@ module.exports = {
 	//Config for Post-CSS and AutoPrefixer
 	postcss: [ autoprefixer({ remove: true, browsers: ['> 5%'] }) ],
   plugins: [
-	  preloadCSS,
-	  mainCSS,
+	  new ExtractTextPlugin("main.css"),
 	  new webpack.DefinePlugin({
 		  SERVER_ADDRESS: JSON.stringify(`http://${webServer}`),
 		  'process.env': {
@@ -92,11 +86,13 @@ module.exports = {
 	  }),
 	  new HtmlWebpackPlugin({
 		  template: __dirname + "/app/index.html",
+		  extraFiles: "/socket.io/socket.io.js",
 		  filename: "index.html",
 		  inject: "body"
 	  }),
 	  new ScriptExtHtmlWebpackPlugin({
 		  defaultAttribute: 'async'
-	  })
+	  }),
+	  new StyleExtHtmlWebpackPlugin()
   ]
 };
