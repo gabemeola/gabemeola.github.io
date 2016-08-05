@@ -20,7 +20,7 @@ module.exports = {
   },
 	output: {
 		path: __dirname + "/dist/",
-		filename: "bundle.js" //Bundled Javascript Webpack Spits out.
+		filename: "bundle.[hash].js" //Bundled Javascript Webpack Spits out.
 	},
 	module: {
 		loaders: [
@@ -53,6 +53,11 @@ module.exports = {
 					'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=true&progressive=true'
 				]
 			},
+			{ //Loads HTML imports/requires
+				test: /\.html$/,
+				exclude: __dirname + "/app/index.html",
+				loader: "html"
+			},
 			{ // Loads JSON files
 				test: /\.json$/,
 				loader: "json"
@@ -69,7 +74,7 @@ module.exports = {
 	  new StyleExtHtmlWebpackPlugin({
 		  minify: true
 	  }),
-	  new ExtractTextPlugin("main.css"),
+	  new ExtractTextPlugin("main.[hash].css"),
 	  new webpack.DefinePlugin({
 		  SERVER_ADDRESS: JSON.stringify(`http://${webServer}`),
 		  'process.env': {
@@ -80,7 +85,9 @@ module.exports = {
 		  socket: 'window.io'
 	  }),
 	  new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
+	  new webpack.optimize.DedupePlugin(),
 	  new webpack.optimize.UglifyJsPlugin({
+	  	sourceMap: false,
 		  compress: {
 			  warnings: false,
 			  drop_console: true
@@ -89,7 +96,6 @@ module.exports = {
 	  }),
 	  new HtmlWebpackPlugin({
 		  template: __dirname + "/app/index.html",
-		  extraFiles: "/socket.io/socket.io.js",
 		  filename: "index.html",
 		  inject: "body"
 	  }),
