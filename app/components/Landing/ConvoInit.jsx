@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SmoochChats from "../Smooch/SmoochChats";
 import SmoochInput from "../Smooch/SmoochInput";
-import { getSmooch, postSmooch } from "../../utils/smoochUtils";
+import { getSmooch, postSmooch, checkForExistingSmooch } from "../../utils/smoochUtils";
 import { handleNewUserMessage, convoFlow } from "./botUtils";
 
 const script = [
@@ -40,7 +40,17 @@ class ConvoInit extends Component {
 		}
 	}
 	componentDidMount() {
-		setTimeout(() => convoFlow.bind(this)(), 3000);  // Delay to start Convo flow to wait for page load
+		checkForExistingSmooch().then((res) => {
+			res == true ?
+				getSmooch().then((res) => {
+					this.setState({  // Updating Current Convo to match with Smooch's
+						isSmoochInit: true,
+						conversation: res.conversation.messages
+					})
+				}) :
+				setTimeout(() => convoFlow.bind(this)(), 3000);  // Delay to start Convo flow to wait for page load
+		});
+
 		const chatElem = document.getElementsByClassName("smooch-chat");
 		for (let i = 0; i > chatElem.length; i++) { // Scroll to Bottom of chat on update
 			chatElem[i].scrollTop = chatElem[i].scrollHeight

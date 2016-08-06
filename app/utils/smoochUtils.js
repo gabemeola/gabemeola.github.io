@@ -1,6 +1,8 @@
 import SmoochCore from "smooch-core"
 import createHash from "./createHash";
 import q from "q";
+import { createStorage, getStorage }  from "./localStorage";
+
 
 let smoochUserEmail;
 let deviceId;
@@ -24,6 +26,8 @@ export function initSmooch(email, name) {
 	}).then((res) => {
 		console.log("Smooch returns: ", res);
 		smoochUserEmail = res.appUser._id;
+		createStorage("smoochUserEmail", smoochUserEmail)
+			.then((res) => console.warn(res));
 		defer.resolve(res);
 	});
 	return defer.promise;
@@ -63,5 +67,20 @@ export function getSmooch() {
 			console.log("Get Smooch: ", res);
 			defer.resolve(res);
 		});
+	return defer.promise;
+}
+
+export function checkForExistingSmooch() {
+	const defer = q.defer();
+
+	getStorage("smoochUserEmail").then((res) => {
+			if(res !== null) {
+				smoochUserEmail = res;
+				defer.resolve(true);
+			} else {
+				defer.resolve(false);
+			}
+	});
+
 	return defer.promise;
 }

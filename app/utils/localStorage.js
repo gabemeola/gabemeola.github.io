@@ -24,8 +24,8 @@ function eraseCookie(name) {
 export function createStorage(key, value) {
 	const defer = q.defer();
 	if(HTML5_SUPPORT) {
-		localStorage[key] = value;
-		defer.resolve("New Storage Created: ", localStorage[key])
+		localStorage.setItem(key, value);
+		defer.resolve(`New Storage Created: ${key} = ${value}`)
 	} else {
 		newCookie(key, value, 365);
 		defer.resolve(`${key} Cookie Created`);
@@ -36,8 +36,7 @@ export function createStorage(key, value) {
 export function getStorage(key) {
 	const defer = q.defer();
 	if(HTML5_SUPPORT) {
-		console("Storage item: ", localStorage[key]);
-		defer.resolve(localStorage[key]);
+		defer.resolve(localStorage.getItem(key));
 	} else {
 		defer.resolve(getCookie(key))
 	}
