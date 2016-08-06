@@ -79,12 +79,16 @@ export function handleNewUserMessage(text) {
 				}
 				break;
 			case 3:
-				if (emailValidate(text)) {
-					this.setState({ userEmail: text.toLowerCase() });
-					console.log("Smooch Initiated for: ", text);
-					continueFlow();
+				if(blankString(text)) {
+					invalidName();
 				} else {
-					invalidEmail();
+					if (emailValidate(text)) {
+						this.setState({userEmail: text.toLowerCase()});
+						console.log("Smooch Initiated for: ", text);
+						continueFlow();
+					} else {
+						invalidEmail();
+					}
 				}
 				break;
 			default:
