@@ -40,6 +40,9 @@
 			max-height: 45px
 			position: absolute
 			z-index: 1
+			backface-visibility: hidden
+			perspective: 1000
+			transform-origin: left center 0
 			transition: $transition
 		&:hover
 			z-index: 3
@@ -48,6 +51,7 @@
 				&--hidden
 					opacity: 1
 			.navbar-header-block
-				width: 275px
+				//width: 275px
+				transform: scale3d(6.5, 1, 1)
 			.navbar-socials
 				opacity: 1

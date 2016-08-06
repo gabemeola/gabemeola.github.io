@@ -32,6 +32,7 @@ class SmoochInput extends Component {
 						onChange={(event) => this.setState({inputText: event.target.value})}
 						type="text"
 					  className="smooch-input"
+					  autoFocus="autoFocus"
 					  disabled={this.props.isDisabled}
 					/>
 				</form>
@@ -41,7 +42,7 @@ class SmoochInput extends Component {
 }
 
 SmoochInput.propTypes = {
-	onTextSubmit: PropTypes.func,
+	onTextSubmit: PropTypes.func.isRequired,
 	isDisabled: PropTypes.bool
 };
 
