@@ -41,7 +41,7 @@ class ConvoInit extends Component {
 	}
 	componentDidMount() {
 		checkForExistingSmooch().then((res) => {
-			res == true ?
+			res ?
 				getSmooch().then((res) => {
 					this.setState({  // Updating Current Convo to match with Smooch's
 						isSmoochInit: true,
