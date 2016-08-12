@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SmoochChats from "../Smooch/SmoochChats";
 import SmoochInput from "../Smooch/SmoochInput";
-import { getSmooch, postSmooch, checkForExistingSmooch } from "../../utils/smoochUtils";
+import { getSmooch, postSmooch, checkExistingSmoochStore } from "../../utils/smoochUtils";
 import { handleNewUserMessage, convoFlow } from "./botUtils";
 
 const script = [
@@ -40,7 +40,7 @@ class ConvoInit extends Component {
 		}
 	}
 	componentDidMount() {
-		checkForExistingSmooch().then((res) => {
+		checkExistingSmoochStore().then((res) => {
 			res ?
 				getSmooch().then((res) => {
 					this.setState({  // Updating Current Convo to match with Smooch's

@@ -70,17 +70,15 @@ export function getSmooch() {
 	return defer.promise;
 }
 
-export function checkForExistingSmooch() {
+export function checkExistingSmoochStore() {
 	const defer = q.defer();
-
 	getStorage("smoochUserEmail").then((res) => {
-			if(res !== null) {
+			if(res) {
 				smoochUserEmail = res;
 				defer.resolve(true);
 			} else {
 				defer.resolve(false);
 			}
 	});
-
 	return defer.promise;
 }
