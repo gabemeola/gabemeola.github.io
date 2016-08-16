@@ -1,11 +1,11 @@
 var path = require("path"),
-    webpack = require("webpack"),
-    ExtractTextPlugin = require('extract-text-webpack-plugin'),
-		autoprefixer = require('autoprefixer'),
-		HtmlWebpackPlugin = require('html-webpack-plugin'),
-		ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin'),
-		StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin'),
-		webServer = '159.203.242.5:3333';
+	  webpack = require("webpack"),
+	  ExtractTextPlugin = require('extract-text-webpack-plugin'),
+	  autoprefixer = require('autoprefixer'),
+	  HtmlWebpackPlugin = require('html-webpack-plugin'),
+	  ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin'),
+	  StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin'),
+	  webServer = '159.203.242.5:3333';
 
 module.exports = {
 	resolve: { //Resolves JSX Imports
@@ -84,7 +84,7 @@ module.exports = {
 	  new webpack.ProvidePlugin({
 		  socket: 'window.io'
 	  }),
-	  new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
+	  new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),  // Prevent Error with Smooch for webpack
 	  new webpack.optimize.DedupePlugin(),
 	  new webpack.optimize.UglifyJsPlugin({
 	  	sourceMap: false,

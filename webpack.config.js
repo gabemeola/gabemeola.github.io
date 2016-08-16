@@ -82,7 +82,7 @@ module.exports = {
 		new webpack.ProvidePlugin({
 			socket: 'window.io'
 		}),
-		new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),
+		new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'), // Prevent Error with Smooch for webpack
 		new webpack.HotModuleReplacementPlugin(),
 		new HtmlWebpackPlugin({
 			template: __dirname + "/app/index.html",
