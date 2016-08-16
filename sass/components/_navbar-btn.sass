@@ -14,6 +14,7 @@
 	transform: rotate(180deg) translate3d(0, 0, 0)
 	backface-visibility: hidden
 	perspective: 1000
+	will-change: transform
 	&--open
 		transform: rotate(225deg) translate3d(-9px, 0, 0)
 	.navbar-navbtn-img1, .navbar-navbtn-img2
@@ -23,6 +24,8 @@
 		display: inline-block
 		background-color: $orange
 		transition: $transition
+		transform: none
+		will-change: transform
 	.navbar-navbtn-img1
 		margin-right: 70%
 		&--open
