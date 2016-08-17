@@ -2,7 +2,7 @@
   "name": "gabemeola.github.io",
   "version": "1.0.0",
   "description": "Gabe M Personal WebApp",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "start": "PORT=3333 node server.js",
     "webpack-dev-server": "webpack-dev-server --progress --colors --host 0.0.0.0",
@@ -53,6 +53,7 @@
     "socket.io": "^1.4.8",
     "style-ext-html-webpack-plugin": "^2.0.2",
     "style-loader": "^0.13.1",
+    "webpack-closure-compiler": "^2.0.2",
     "webpack-dev-server": "^1.14.1"
   }
 }
