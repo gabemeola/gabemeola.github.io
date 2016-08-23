@@ -7,7 +7,7 @@ var address,
 		PORT = process.env.PORT ;
 // Finds out your local IP address
 for (var dev in ifaces) {
-	ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address: undefined);
+	ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address : undefined);
 }
 module.exports = {
 	resolve: { //Resolves JSX Imports

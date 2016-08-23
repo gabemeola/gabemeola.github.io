@@ -4,10 +4,10 @@ var webpackServer = require("./server/webpackServer"),
 		ADDRESS;
 // Finds out your local IP address
 for (var dev in ifaces) {
-	ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? ADDRESS = details.address: undefined);
+	ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? ADDRESS = details.address : undefined);
 }
 
-const PROD  = process.env.NODE_ENV === "production";
+const PROD  = process.env.NODE_ENV === JSON.stringify('development');
 const PORT = process.env.PORT ? process.env.PORT : process.env.PORT = 8080;
 
 if (PROD) {
