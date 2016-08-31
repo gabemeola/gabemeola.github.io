@@ -5,7 +5,10 @@ var webpack = require("webpack"),
 module.exports = (PORT, ADDRESS) => {
 	const server = new WebpackDevServer(webpack(config), {
 		proxy: {
-			"*" : `http://${ADDRESS}:${PORT - 10}`
+			"/" : {
+				target: `http://${ADDRESS}:${PORT - 10}`,
+				secure: false
+			}
 		},
 		progress: true,
 		hot: true,
