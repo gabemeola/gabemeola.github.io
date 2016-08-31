@@ -17,6 +17,8 @@ module.exports = (PORT, ADDRESS) => {
 			colors: true
 		}
 	});
-	server.listen(PORT, '0.0.0.0');
+	server.listen(PORT, '0.0.0.0', function(err, result) {
+		if(err) return console.warn(err);
+	});
 	console.log(`Webpack Server starting at: http://${ADDRESS}:${PORT}`)
 };
