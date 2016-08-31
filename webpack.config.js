@@ -38,7 +38,7 @@ module.exports = {
 			{ //Babel loader for converting ES2015 to ES5
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				loaders: ['react-hot', 'babel-loader?presets[]=es2015,presets[]=react']
+				loaders: ['react-hot', 'babel-loader?presets[]=es2015,presets[]=react,plugins[]=babel-plugin-transform-object-rest-spread']
 			},
 			{ //Converts SASS to CSS
 				test: /\.sass$/,
