@@ -13,8 +13,15 @@ class WorksContainer extends Component {
 	componentDidUpdate() {
 		window.scrollTo(0,0)
 	}
-	handleNoWorkMatch() {
-		this.context.router.push("/about");
+	componentWillMount() {
+		const { work } = this.props.routeParams;
+		this.handleNoWorkMatch(work);
+	}
+	handleNoWorkMatch(route) {
+		// Send to about route if not a valid works route
+		if(!(route === "cosmeticlaserexchange" || route === "fivestarlegal" || route === "camtaylor")) {
+			this.context.router.push("/about");
+		}
 	}
 	render() {
 		const { work } = this.props.routeParams;
@@ -27,7 +34,6 @@ class WorksContainer extends Component {
 			case "camtaylor" :
 				return <CamTaylor/>;
 			default:
-				this.handleNoWorkMatch();
 				return null;
 		}
 	}
