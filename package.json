@@ -24,8 +24,7 @@
     "react-addons-css-transition-group": "^15.3.1",
     "react-dom": "^15.3.1",
     "react-router": "^2.7.0",
-    "smooch-core": "^1.5.0",
-    "webpack": "^1.13.2"
+    "smooch-core": "^1.5.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -53,7 +52,7 @@
     "socket.io": "^1.4.8",
     "style-ext-html-webpack-plugin": "^2.0.2",
     "style-loader": "^0.13.1",
-    "webpack-closure-compiler": "^2.0.2",
+    "webpack": "^1.13.2",
     "webpack-dev-server": "^1.15.0"
   }
 }

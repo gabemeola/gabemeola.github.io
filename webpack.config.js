@@ -10,15 +10,16 @@ for (var dev in ifaces) {
 	ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address : undefined);
 }
 module.exports = {
-	resolve: { //Resolves JSX Imports
-		extensions: ["", ".js", ".jsx"]
+	resolve: {
+		root: path.resolve("./app"), // Allow Easy non-relative imports
+		extensions: ["", ".js", ".jsx"] //Resolves JSX Imports
 	},
 	entry: { //Entry Point for Webpack
 		app: [
 			`webpack-dev-server/client?http://${address}:${PORT}`,
 			'webpack/hot/only-dev-server',
 			'./app/app.jsx',
-			"./sass/preloader/preload.sass",
+			'./sass/preloader/preload.sass',
 			'./sass/entry.sass'
 		]
 	},
@@ -31,7 +32,7 @@ module.exports = {
 	devServer: { //Allows webpack-dev-server to be live reloaded
 		inline: true,
 		hot: true,
-		port: 3333
+		port: PORT
 	},
 	module: {
 		loaders: [

@@ -8,8 +8,9 @@ var path = require("path"),
 	  webServer = '159.203.242.5:3333';
 
 module.exports = {
-	resolve: { //Resolves JSX Imports
-		extensions: ["", ".js", ".jsx"]
+	resolve: {
+		root: path.resolve("./app"), // Allow Easy non-relative imports
+		extensions: ["", ".js", ".jsx"] //Resolves JSX Imports
 	},
   entry: { //Entry Point for Webpack
 	  app: [
