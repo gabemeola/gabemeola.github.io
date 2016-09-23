@@ -9,25 +9,25 @@ const initialState = {
 	error: ''
 };
 
-function openMenu() {
+export function openNav() {
 	return {
 		type: OPEN_NAV
 	}
 }
 
-function closeMenu() {
+export function closeNav() {
 	return {
 		type: CLOSE_NAV
 	}
 }
 
-function openChat() {
+export function openChat() {
 	return {
 		type: OPEN_CHAT
 	}
 }
 
-function closeChat() {
+export function closeChat() {
 	return {
 		type: CLOSE_CHAT
 	}
