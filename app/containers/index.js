@@ -1,3 +1,4 @@
+export { default as MainContainer } from './Main/MainContainer';
 export { default as HomeContainer } from './Home/HomeContainer';
 export { default as LandingContainer } from './Landing/LandingContainer';
 export { default as MenuContainer } from './Menu/MenuContainer';

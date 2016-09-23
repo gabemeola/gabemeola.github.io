@@ -2,7 +2,6 @@ export { default as Home } from './Home/Home';
 export { default as Landing } from './Landing/Landing';
 export { default as LandingIcon } from './Landing/LandingIcon';
 export { default as ConvoInit } from './Landing/ConvoInit';
-export { default as Main } from './Main/Main';
 export { default as MenuNav } from './Menu/MenuNav';
 export { default as NavbarHeader } from './Navbar/NavbarHeader';
 export { default as NavbarNavBtn } from './Navbar/NavbarNavBtn';

@@ -1,6 +1,6 @@
 import React from "react";
 import { Router, hashHistory, Route, IndexRoute } from "react-router";
-import { Main } from 'components';
+import { MainContainer } from 'containers';
 import {
 	LandingContainer,
 	HomeContainer,
@@ -11,7 +11,7 @@ import {
 
 const routes = (
 	<Router history={hashHistory}>
-		<Route path="/" component={Main}>
+		<Route path="/" component={MainContainer}>
 			<IndexRoute component={LandingContainer}/>
 			<Route path="smooch" component={SmoochContainer}/>
 			<Route path="about" component={HomeContainer}/>
