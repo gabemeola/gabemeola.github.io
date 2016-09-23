@@ -1,1 +1,1 @@
-export { default as mainReducer } from './mainReducer';
+export { default as menus } from './menus';
