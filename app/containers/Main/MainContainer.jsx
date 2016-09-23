@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { NavbarContainer, MenuContainer } from "containers";
 import ImgPreRenders from "./imgPreRenders";
-import preventScroll from "utils/preventScroll";
 
 class Main extends Component {
 	constructor(props) {
@@ -21,11 +20,7 @@ class Main extends Component {
 				let elem = document.getElementById("loading");
 				elem.parentNode.removeChild(elem);
 			}, 3000);
-			this.props.isNavOpen ? preventScroll.enable() : preventScroll.disable()
 		};
-	}
-	componentDidUpdate() {
-		this.props.isNavOpen ? preventScroll.enable() : preventScroll.disable()
 	}
 	render() {
 		return(

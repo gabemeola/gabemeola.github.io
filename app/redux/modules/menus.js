@@ -1,3 +1,5 @@
+import preventScroll from "utils/preventScroll";
+
 const OPEN_NAV = 'OPEN_NAV';
 const CLOSE_NAV = 'CLOSE_NAV';
 const OPEN_CHAT = 'OPEN_CHAT';
@@ -37,7 +39,13 @@ export function navSwitcher() { // Simple Nav Open / Close Switch Thunk
 	return function(dispatch, getState) {
 		const navStatus = getState().menus.isNavOpen;
 
-		navStatus ? dispatch(closeNav()) : dispatch(openNav());
+		if(navStatus === true) { // Also prevents scrolling when nav is open
+			preventScroll.enable();
+			dispatch(closeNav());
+		} else {
+			preventScroll.disable();
+			dispatch(openNav());
+		}
 	}
 }
 
