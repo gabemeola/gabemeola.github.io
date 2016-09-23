@@ -33,6 +33,14 @@ export function closeChat() {
 	}
 }
 
+export function navSwitcher() { // Simple Nav Open / Close Switch Thunk
+	return function(dispatch, getState) {
+		const navStatus = getState().menus.isNavOpen;
+
+		navStatus ? dispatch(closeNav()) : dispatch(openNav());
+	}
+}
+
 export default function menus(state = initialState, action) {
 	switch (action.type) {
 		case OPEN_NAV:

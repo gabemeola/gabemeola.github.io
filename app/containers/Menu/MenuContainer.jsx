@@ -1,18 +1,22 @@
 import React, { Component, PropTypes } from "react";
+import { connect } from 'react-redux';
+import { navSwitcher } from 'redux/modules/menus';
 import { MenuNav } from "components";
 
 class MenuContainer extends Component {
 	constructor(props) {
 		super(props)
 	}
-	passNavbarSwitch() {
-		this.props.onNavbarSwitch();
+	handleNavSwitch() {
+		const { dispatch } = this.props;
+
+		dispatch(navSwitcher())
 	}
 	render() {
 		return (
-			<div className={"menu-container " + (this.props.visible ? "menu-container--visible" : "menu-container--hidden")}>
+			<div className={"menu-container " + (this.props.isNavOpen ? "menu-container--visible" : "menu-container--hidden")}>
 				<MenuNav
-					onNavbarSwitch={() => this.passNavbarSwitch()}
+					navSwitch={() => this.handleNavSwitch()}
 				/>
 			</div>
 		)
@@ -20,13 +24,19 @@ class MenuContainer extends Component {
 }
 
 MenuContainer.defaultProps = {
-	visible: false
+	isNavOpen: false
 };
 
 MenuContainer.propTypes = {
-	visible: PropTypes.bool.isRequired,
-	onNavbarSwitch: PropTypes.func.isRequired
+	isNavOpen: PropTypes.bool.isRequired,
 };
 
+function mapStateToProps({menus}, props) {
+	return {
+		isNavOpen: menus.isNavOpen
+	}
+}
 
-export default MenuContainer;
+export default connect(
+	mapStateToProps
+)(MenuContainer);

@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
-import { openNav, closeNav } from 'redux/modules/menus';
+import { closeNav, navSwitcher } from 'redux/modules/menus';
 import { NavbarHeader, NavbarNavBtn } from 'components';
 import { NotificationContainer } from 'containers';
 
@@ -9,9 +9,9 @@ class NavbarContainer extends Component {
 		super(props);
 	}
 	handleNavSwitch() {
-		const { dispatch, isNavOpen } = this.props;
+		const { dispatch } = this.props;
 
-		isNavOpen ? dispatch(closeNav()) : dispatch(openNav()); // Simple Nav Open / Close Switch
+		dispatch(navSwitcher());
 	}
 	handleNavClose() {
 		const { dispatch } = this.props;

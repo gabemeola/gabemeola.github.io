@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
+import { connect } from 'react-redux';
 import { NavbarContainer, MenuContainer } from "containers";
 import ImgPreRenders from "./imgPreRenders";
 import preventScroll from "utils/preventScroll";
@@ -6,15 +7,12 @@ import preventScroll from "utils/preventScroll";
 class Main extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			navbarOpen: false
-		}
 	}
 	shouldComponentUpdate(nextProps, nextState) {
 		if(nextProps.location.pathname !== this.props.location.pathname) { // If Route Changes, update
 			return true
 		} else {   // If Route Doesn't change then check to see if navbar state changed
-			return nextState.navbarOpen !== this.state.navbarOpen
+			return nextProps.isNavOpen !== this.props.isNavOpen
 		}
 	}
 	componentDidMount() {
@@ -23,40 +21,38 @@ class Main extends Component {
 				let elem = document.getElementById("loading");
 				elem.parentNode.removeChild(elem);
 			}, 3000);
+			this.props.isNavOpen ? preventScroll.enable() : preventScroll.disable()
 		};
 	}
-	handleNavbarSwitch() {
-		let { navbarOpen } = this.state;
-		this.setState({
-			navbarOpen: !navbarOpen
-		});
-		navbarOpen ? preventScroll.enable() : preventScroll.disable()
-	}
-	handleNavbarClose() {
-		if(this.state.navbarOpen) {
-			this.handleNavbarSwitch();
-		}
+	componentDidUpdate() {
+		this.props.isNavOpen ? preventScroll.enable() : preventScroll.disable()
 	}
 	render() {
 		return(
 			<div className="main-container">
 				<NavbarContainer
-					onNavbarSwitch={() => this.handleNavbarSwitch()}
-					isNavbarOpen={this.state.navbarOpen}
-					onNavbarClose={() => this.handleNavbarClose()}
 				  route={this.props.location.pathname}
 				/>
-				<div className={"main-container-content " + (this.state.navbarOpen ? "main-container-content--blurred" : "")}>
+				<div className={"main-container-content " + (this.props.isNavOpen ? "main-container-content--blurred" : "")}>
 					{this.props.children}
 				</div>
-				<MenuContainer
-					visible={this.state.navbarOpen}
-					onNavbarSwitch={() => this.handleNavbarSwitch()}
-				/>
+				<MenuContainer/>
 				<ImgPreRenders/>
 			</div>
 		)
 	}
+};
+
+Main.propTypes = {
+	isNavOpen: PropTypes.bool.isRequired
 }
 
-export default Main;
+function mapStateToProps({menus}, props) {
+	return {
+		isNavOpen: menus.isNavOpen
+	}
+}
+
+export default connect(
+	mapStateToProps
+)(Main);
