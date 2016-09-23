@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import NotificationIcon from "../../components/Notification/NotificationIcon";
-import NotificationConvo from "../../components/Notification/NotificationConvo";
+import { NotificationIcon, NotificationConvo } from 'components';
 
 class NotificationContainer extends Component {
 	constructor(props) {

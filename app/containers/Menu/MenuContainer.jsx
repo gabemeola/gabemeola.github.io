@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from "react";
-import MenuNav from "../../components/Menu/MenuNav";
+import { MenuNav } from "components";
 
 class MenuContainer extends Component {
 	constructor(props) {

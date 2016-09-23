@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from "react";
-import NavbarHeader from "../../components/Navbar/NavbarHeader";
-import NavbarNavBtn from "../../components/Navbar/NavbarNavBtn";
-import NotificationContainer from "../Notification/NotificationContainer";
+import { NavbarHeader, NavbarNavBtn } from 'components';
+import { NotificationContainer } from 'containers';
 
 class NavbarContainer extends Component {
 	constructor(props) {

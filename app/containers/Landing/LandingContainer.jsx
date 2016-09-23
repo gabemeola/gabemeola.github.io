@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from "react";
-import SmoochContainer from "../Smooch/SmoochContainer";
-import LandingIcon from "../../components/Landing/LandingIcon";
-import ConvoInit from "../../components/Landing/ConvoInit";
+import { SmoochContainer } from 'containers';
+import { LandingIcon, ConvoInit } from 'components';
 
 class LandingContainer extends Component {
 	constructor() {

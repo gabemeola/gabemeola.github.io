@@ -1,7 +1,9 @@
 import React, { Component, PropTypes } from "react";
-import CosmeticLaserExchange from "../../components/Works/CosmeticLaserExchange";
-import FiveStarLegal from "../../components/Works/FiveStarLegal";
-import CamTaylor from "../../components/Works/CamTaylor";
+import {
+	CosmeticLaserExchange,
+	FiveStarLegal,
+	CamTaylor
+} from 'components';
 
 class WorksContainer extends Component {
 	constructor(props) {
