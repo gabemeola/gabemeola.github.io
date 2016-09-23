@@ -1,11 +1,13 @@
 import React from "react";
 import { Router, hashHistory, Route, IndexRoute } from "react-router";
-import Main from "../components/Main/Main";
-import LandingContainer from "../containers/Landing/LandingContainer";
-import HomeContainer from "../containers/Home/HomeContainer";
-import MenuContainer from "../containers/Menu/MenuContainer";
-import WorksContainer from "../containers/Works/WorksContainer";
-import SmoochContainer from "../containers/Smooch/SmoochContainer";
+import { Main } from 'components';
+import {
+	LandingContainer,
+	HomeContainer,
+	MenuContainer,
+	WorksContainer,
+	SmoochContainer
+} from 'containers';
 
 const routes = (
 	<Router history={hashHistory}>
