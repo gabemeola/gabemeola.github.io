@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import SmoochChats from "../Smooch/SmoochChats";
-import SmoochInput from "../Smooch/SmoochInput";
+import { SmoochChats, SmoochInput } from "components";
 import { getSmooch, postSmooch, checkExistingSmoochStore } from "../../utils/smoochUtils";
 import { handleNewUserMessage, convoFlow } from "./botUtils";
 

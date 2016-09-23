@@ -1,6 +1,6 @@
 import React from "react";
 import Work from "./Work";
-import macMock from "../../../assets/camtaylorMock@2x.png";
+import macMock from "assets/camtaylorMock@2x.png";
 
 let builtWith = [
 	"HTML5",

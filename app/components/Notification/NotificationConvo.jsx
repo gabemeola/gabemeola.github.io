@@ -1,5 +1,5 @@
 import React, { PropTypes } from "react";
-import ConvoInit from "../Landing/ConvoInit";
+import { ConvoInit } from "components";
 
 function NotificationConvo({isNotificationOpen}) {
 	return(

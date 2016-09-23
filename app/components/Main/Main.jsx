@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import NavbarContainer from "../../containers/Navbar/NavbarContainer";
-import MenuContainer from "../../containers/Menu/MenuContainer";
+import { NavbarContainer, MenuContainer } from "containers";
 import ImgPreRenders from "./imgPreRenders";
-import preventScroll from "../../utils/preventScroll";
+import preventScroll from "utils/preventScroll";
 
 class Main extends Component {
 	constructor(props) {

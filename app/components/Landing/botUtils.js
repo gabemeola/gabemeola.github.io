@@ -1,5 +1,5 @@
-import { emailValidate, blankString } from "../../utils/validations";
-import { initSmooch, getSmooch, postSmooch, updateSmooch } from "../../utils/smoochUtils";
+import { emailValidate, blankString } from "utils/validations";
+import { initSmooch, getSmooch, postSmooch, updateSmooch } from "utils/smoochUtils";
 
 
 export function handleNewUserMessage(text) {

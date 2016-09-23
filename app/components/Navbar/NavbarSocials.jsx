@@ -1,7 +1,7 @@
 import React from "react";
-import facebookIcon from "../../../assets/Facebook.svg";
-import linkedinIcon from "../../../assets/linkedin.svg";
-import githubIcon from "../../../assets/github.svg";
+import facebookIcon from "assets/Facebook.svg";
+import linkedinIcon from "assets/linkedin.svg";
+import githubIcon from "assets/github.svg";
 
 function NavbarSocials(props) {
 	return(
