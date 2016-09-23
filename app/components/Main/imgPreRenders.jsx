@@ -1,8 +1,8 @@
 import React from "react";
-import CamTaylorMacMock from "../../../assets/camtaylorMock@2x.png";
-import CosmeticLaserExchangeMacMock from "../../../assets/CLEmock@2x.png";
-import FiveStarLegalMacMock from "../../../assets/fivestarMock@2x.png";
-import gabeImg from "../../../assets/gabe.png";
+import CamTaylorMacMock from "../../assets/camtaylorMock@2x.png";
+import CosmeticLaserExchangeMacMock from "../../assets/CLEmock@2x.png";
+import FiveStarLegalMacMock from "../../assets/fivestarMock@2x.png";
+import gabeImg from "../../assets/gabe.png";
 
 
 function ImgPreRenders() {
