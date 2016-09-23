@@ -41,11 +41,11 @@ class Main extends Component {
 			</div>
 		)
 	}
-};
+}
 
 Main.propTypes = {
 	isNavOpen: PropTypes.bool.isRequired
-}
+};
 
 function mapStateToProps({menus}, props) {
 	return {
