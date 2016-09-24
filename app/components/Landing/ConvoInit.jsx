@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { SmoochChats, SmoochInput } from "components";
-import { getSmooch, postSmooch, checkExistingSmoochStore } from "../../utils/smoochUtils";
+import { getSmooch, postSmooch, checkExistingSmoochStore } from "utils/smoochUtils";
 import { handleNewUserMessage, convoFlow } from "./botUtils";
 
 const script = [
@@ -47,7 +47,7 @@ class ConvoInit extends Component {
 						conversation: res.conversation.messages
 					})
 				}) :
-				setTimeout(() => convoFlow.bind(this)(), 3000);  // Delay to start Convo flow to wait for page load
+				setTimeout(() => convoFlow(), 3000);  // Delay to start Convo flow to wait for page load
 		});
 
 		const chatElem = document.getElementsByClassName("smooch-chat");
@@ -63,7 +63,7 @@ class ConvoInit extends Component {
 				/>
 				{!this.state.isSmoochInit ?
 					<SmoochInput
-						onTextSubmit={(text) => setTimeout(() => handleNewUserMessage.bind(this)(text), 600)}
+						onTextSubmit={(text) => setTimeout(() => handleNewUserMessage(text), 600)}
 						isDisabled={this.state.inputDisabled}
 					/> :
 					<SmoochInput

@@ -6,9 +6,6 @@ import { ChatIcon, ChatConvo } from 'components';
 class ChatContainer extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			unread: 0,
-		}
 	}
 	handleChatSwitcher() {
 		const { dispatch } = this.props;
@@ -19,7 +16,7 @@ class ChatContainer extends Component {
 		return(
 			<div className="notification-wrapper" style={this.props.route !== "/" ? { visibility: "visible", opacity: "1" } : { visibility: "hidden", opacity: "0" }}>
 				<ChatIcon
-					unread={this.state.unread}
+					unread={this.props.unread}
 					chatSwitch={() => this.handleChatSwitcher()}
 				/>
 				<ChatConvo
@@ -32,12 +29,13 @@ class ChatContainer extends Component {
 
 ChatContainer.propTypes = {
 	isChatOpen: PropTypes.bool.isRequired,
-	unread: PropTypes.number
+	unread: PropTypes.number.isRequired
 };
 
 function mapStateToProps({chat}, props) {
 	return {
-		isChatOpen: chat.isChatOpen
+		isChatOpen: chat.isChatOpen,
+		unread: chat.unread
 	}
 }
 

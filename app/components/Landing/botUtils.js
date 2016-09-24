@@ -2,7 +2,7 @@ import { emailValidate, blankString } from "utils/validations";
 import { initSmooch, getSmooch, postSmooch, updateSmooch } from "utils/smoochUtils";
 
 
-export function handleNewUserMessage(text) {
+export const handleNewUserMessage = (text) => {
 	const { inputDisabled, conversation, scriptMarker, convoScript } = this.state;
 
 	const pushUserInput = () => {
@@ -25,9 +25,9 @@ export function handleNewUserMessage(text) {
 			pushUserInput();
 			this.setState({ scriptMarker: scriptMarker + 1 });
 			if (lastScript !== scriptMarker) {
-				setTimeout(() => convoFlow.bind(this)(), 1500);
+				setTimeout(() => convoFlow(), 1500);
 			} else {
-				initNewSmooch.bind(this)();
+				initNewSmooch();
 			}
 		}
 	};
@@ -97,11 +97,11 @@ export function handleNewUserMessage(text) {
 	};
 
 	userThreadChecker();
-}
+};
 
 
 
-export function convoFlow() {
+export const convoFlow = () => {
 	const { convoScript, conversation, scriptMarker } = this.state;
 	let newConversation = conversation.slice(0);
 
@@ -134,11 +134,11 @@ export function convoFlow() {
 	};
 
 	threadChecker();
-}
+};
 
 
 
-export function initNewSmooch() {
+export const initNewSmooch = () => {
 	const { userEmail, userName } = this.state;
 	const newUserSlackMessage = `${userName} at ${userEmail} just finished up with the bot. Handing it off to Human Gabe!`;
 	this.setState({ inputDisabled: false });
@@ -155,7 +155,7 @@ export function initNewSmooch() {
 						isSmoochInit: true
 					})
 				})
-			});
-		});
-	});
-}
+			})
+		})
+	})
+};

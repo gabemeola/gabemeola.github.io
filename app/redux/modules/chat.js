@@ -3,6 +3,7 @@ const CLOSE_CHAT = 'CLOSE_CHAT';
 
 const initialState = {
 	isChatOpen: false,
+	unread: 0,
 	error: ''
 };
 
