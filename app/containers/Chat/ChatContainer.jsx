@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { chatSwitcher } from 'redux/modules/chat';
 import { ChatIcon, ChatConvo } from 'components';
@@ -29,6 +29,11 @@ class ChatContainer extends Component {
 		)
 	}
 }
+
+ChatContainer.propTypes = {
+	isChatOpen: PropTypes.bool.isRequired,
+	unread: PropTypes.number
+};
 
 function mapStateToProps({chat}, props) {
 	return {
