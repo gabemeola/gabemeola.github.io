@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { chatSwitcher } from 'redux/modules/chat';
 import { ChatIcon, ChatConvo } from 'components';
 
 class ChatContainer extends Component {
@@ -6,25 +8,34 @@ class ChatContainer extends Component {
 		super(props);
 		this.state = {
 			unread: 0,
-			isNotificationOpen: false
 		}
 	}
-	isOpenToggle() {
-		this.setState({ isNotificationOpen: !this.state.isNotificationOpen })
+	handleChatSwitcher() {
+		const { dispatch } = this.props;
+
+		dispatch(chatSwitcher());
 	}
 	render() {
 		return(
 			<div className="notification-wrapper" style={this.props.route !== "/" ? { visibility: "visible", opacity: "1" } : { visibility: "hidden", opacity: "0" }}>
 				<ChatIcon
 					unread={this.state.unread}
-					isNotificationOpenToggle={() => this.isOpenToggle()}
+					chatSwitch={() => this.handleChatSwitcher()}
 				/>
 				<ChatConvo
-					isChatOpen={this.state.isNotificationOpen}
+					isChatOpen={this.props.isChatOpen}
 				/>
 			</div>
 		)
 	}
 }
 
-export default ChatContainer;
+function mapStateToProps({chat}, props) {
+	return {
+		isChatOpen: chat.isChatOpen
+	}
+}
+
+export default connect(
+	mapStateToProps
+)(ChatContainer);

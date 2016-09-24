@@ -18,6 +18,14 @@ function closeChat() {
 	}
 }
 
+export function chatSwitcher() { // Simple Chat Open / Close Switch Thunk
+	return function(dispatch, getState) {
+		const chatStatus = getState().chat.isChatOpen;
+
+		chatStatus ? dispatch(closeChat()) : dispatch(openChat());
+	}
+}
+
 export default function chat(state = initialState, action) {
 	switch (action.type) {
 		case OPEN_CHAT:
