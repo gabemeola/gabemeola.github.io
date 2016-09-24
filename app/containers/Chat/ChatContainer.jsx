@@ -20,7 +20,7 @@ class ChatContainer extends Component {
 					isNotificationOpenToggle={() => this.isOpenToggle()}
 				/>
 				<ChatConvo
-					isNotificationOpen={this.state.isNotificationOpen}
+					isChatOpen={this.state.isNotificationOpen}
 				/>
 			</div>
 		)

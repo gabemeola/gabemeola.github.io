@@ -42,9 +42,9 @@ Main.propTypes = {
 	isNavOpen: PropTypes.bool.isRequired
 };
 
-function mapStateToProps({menus}, props) {
+function mapStateToProps({menu}, props) {
 	return {
-		isNavOpen: menus.isNavOpen
+		isNavOpen: menu.isNavOpen
 	}
 }
 

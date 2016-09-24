@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
-import { navSwitcher } from 'redux/modules/menus';
+import { navSwitcher } from 'redux/modules/menu';
 import { MenuNav } from "components";
 
 class MenuContainer extends Component {
@@ -31,9 +31,9 @@ MenuContainer.propTypes = {
 	isNavOpen: PropTypes.bool.isRequired,
 };
 
-function mapStateToProps({menus}, props) {
+function mapStateToProps({menu}, props) {
 	return {
-		isNavOpen: menus.isNavOpen
+		isNavOpen: menu.isNavOpen
 	}
 }
 
