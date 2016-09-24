@@ -1,7 +1,7 @@
 import React, { PropTypes } from "react";
 import { ConvoInit } from "components";
 
-function NotificationConvo({isNotificationOpen}) {
+function ChatConvo({isNotificationOpen}) {
 	return(
 		<div className={"notification-convo " + (isNotificationOpen ? "notification-convo--open" : "")}>
 			<ConvoInit/>
@@ -9,8 +9,8 @@ function NotificationConvo({isNotificationOpen}) {
 	)
 }
 
-NotificationConvo.propTypes = {
+ChatConvo.propTypes = {
 	isNotificationOpen: PropTypes.bool.isRequired
 };
 
-export default NotificationConvo;
+export default ChatConvo;

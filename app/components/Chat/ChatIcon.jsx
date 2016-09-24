@@ -1,6 +1,6 @@
 import React, { PropTypes } from "react";
 
-function NotificationIcon({unread, isNotificationOpenToggle}) {
+function ChatIcon({unread, isNotificationOpenToggle}) {
 	return (
 		<div className="notification-icon-wrapper" onClick={isNotificationOpenToggle}>
 			<div className="notification-icon">
@@ -10,9 +10,9 @@ function NotificationIcon({unread, isNotificationOpenToggle}) {
 	)
 }
 
-NotificationIcon.propTypes = {
+ChatIcon.propTypes = {
 	unread: PropTypes.number.isRequired,
 	isNotificationOpenToggle: PropTypes.func.isRequired
 };
 
-export default NotificationIcon;
+export default ChatIcon;

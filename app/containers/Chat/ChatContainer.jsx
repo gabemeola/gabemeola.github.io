@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { NotificationIcon, NotificationConvo } from 'components';
+import { ChatIcon, ChatConvo } from 'components';
 
-class NotificationContainer extends Component {
+class ChatContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -15,11 +15,11 @@ class NotificationContainer extends Component {
 	render() {
 		return(
 			<div className="notification-wrapper" style={this.props.route !== "/" ? { visibility: "visible", opacity: "1" } : { visibility: "hidden", opacity: "0" }}>
-				<NotificationIcon
+				<ChatIcon
 					unread={this.state.unread}
 					isNotificationOpenToggle={() => this.isOpenToggle()}
 				/>
-				<NotificationConvo
+				<ChatConvo
 					isNotificationOpen={this.state.isNotificationOpen}
 				/>
 			</div>
@@ -27,4 +27,4 @@ class NotificationContainer extends Component {
 	}
 }
 
-export default NotificationContainer;
+export default ChatContainer;

@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { closeNav, navSwitcher } from 'redux/modules/menus';
 import { NavbarHeader, NavbarNavBtn } from 'components';
-import { NotificationContainer } from 'containers';
+import { ChatContainer } from 'containers';
 
 class NavbarContainer extends Component {
 	constructor(props) {
@@ -26,7 +26,7 @@ class NavbarContainer extends Component {
 				<NavbarHeader
 					navClose={() => this.handleNavClose()}
 				/>
-				<NotificationContainer
+				<ChatContainer
 				  route={this.props.route}
 				/>
 				<NavbarNavBtn
