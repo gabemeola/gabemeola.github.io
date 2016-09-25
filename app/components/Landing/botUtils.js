@@ -2,7 +2,7 @@ import { emailValidate, blankString } from "utils/validations";
 import { initSmooch, getSmooch, postSmooch, updateSmooch } from "utils/smoochUtils";
 
 
-export const handleNewUserMessage = (text) => {
+export const handleNewUserMessage = (text) => { // Each time a user posts a message
 	const { inputDisabled, conversation, scriptMarker, convoScript } = this.state;
 
 	const pushUserInput = () => {
@@ -101,7 +101,7 @@ export const handleNewUserMessage = (text) => {
 
 
 
-export const convoFlow = () => {
+export const convoFlow = () => { // Start Point
 	const { convoScript, conversation, scriptMarker } = this.state;
 	let newConversation = conversation.slice(0);
 

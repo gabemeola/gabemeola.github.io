@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import { SmoochChats, SmoochInput } from "components";
 import { getSmooch, postSmooch, checkExistingSmoochStore } from "utils/smoochUtils";
 import { handleNewUserMessage, convoFlow } from "./botUtils";
