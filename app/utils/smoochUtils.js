@@ -47,7 +47,7 @@ export function updateSmooch(email, name) {
 
 export function postSmooch(text) {
 	const defer = q.defer();
-	smooch.conversations.sendMessage(smoochUserEmail, {
+	smooch.appUsers.sendMessage(smoochUserEmail, {
 		text: text,
 		role: "appUser",
 		_clientSent: new Date(),
@@ -62,10 +62,10 @@ export function postSmooch(text) {
 
 export function getSmooch() {
 	const defer = q.defer();
-	smooch.conversations.get(smoochUserEmail)
+	smooch.appUsers.getMessages(smoochUserEmail)
 		.then((res) => {
 			console.log("Get Smooch: ", res);
-			defer.resolve(res);
+			defer.resolve(res.messages);
 		});
 	return defer.promise;
 }

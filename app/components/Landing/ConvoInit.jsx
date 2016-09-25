@@ -25,9 +25,9 @@ class ConvoInit extends Component {
 	}
 	handleSmoochPost(text) {
 		postSmooch(text).then(() => {
-			getSmooch().then((res) => {
+			getSmooch().then((messages) => {
 				this.setState({  // Updating Current Convo to match with Smooch's
-					conversation: res.conversation.messages
+					conversation: messages
 				})
 			})
 		});
@@ -41,10 +41,10 @@ class ConvoInit extends Component {
 	componentDidMount() {
 		checkExistingSmoochStore().then((res) => {
 			res ?
-				getSmooch().then((res) => {
+				getSmooch().then((messages) => {
 					this.setState({  // Updating Current Convo to match with Smooch's
 						isSmoochInit: true,
-						conversation: res.conversation.messages
+						conversation: messages
 					})
 				}) :
 				setTimeout(() => convoFlow(), 3000);  // Delay to start Convo flow to wait for page load
