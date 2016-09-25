@@ -118,7 +118,7 @@ export const convoFlow = () => { // Start Point
 		});
 	};
 
-	const threadChecker = () => {
+		const threadChecker = () => {
 		switch (scriptMarker) {
 			case 0:
 			case 2:
@@ -138,7 +138,7 @@ export const convoFlow = () => { // Start Point
 
 
 
-export const initNewSmooch = () => {
+export function initNewSmooch() {
 	const { userEmail, userName } = this.state;
 	const newUserSlackMessage = `${userName} at ${userEmail} just finished up with the bot. Handing it off to Human Gabe!`;
 	this.setState({ inputDisabled: false });
