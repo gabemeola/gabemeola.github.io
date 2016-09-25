@@ -7,6 +7,7 @@ const initialState = {
 	error: ''
 };
 
+/* Action Creators */
 function openChat() {
 	return {
 		type: OPEN_CHAT
@@ -19,6 +20,7 @@ function closeChat() {
 	}
 }
 
+/* Thunks */
 export function chatSwitcher() { // Simple Chat Open / Close Switch Thunk
 	return function(dispatch, getState) {
 		const chatStatus = getState().chat.isChatOpen;

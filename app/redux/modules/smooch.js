@@ -7,7 +7,6 @@ const INCREASE_SCRIPT_MARKER = 'INCREASE_SCRIPT_MARKER';
 const SET_USERNAME = 'SET_USERNAME';
 const SET_USEREMAIL = 'SET_USEREMAIL';
 
-
 let name = '';
 const script = [
 	`Hello, my name is GabeBot.`,
@@ -16,6 +15,7 @@ const script = [
 	`This conversation is persistent, but what is your email in case we get disconnected?`
 ];
 
+/* Action Creators */
 const initialState = {
 	conversation: [],
 	userName: undefined,
@@ -54,6 +54,7 @@ function increaseScriptMarker() {
 	}
 }
 
+/* Thunks */
 export function newUserMessage(text) { // Each time a user posts a message
 	return function(dispatch, getState) {
 		const state = getState().smooch;
@@ -177,7 +178,7 @@ export default function chat(state = initialState, action) {
 			return {
 				...state,
 				userEmail: action.userEmail
-			}
+			};
 		case UPDATE_CONVO:
 			return {
 				...state,

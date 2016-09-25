@@ -8,6 +8,7 @@ const initialState = {
 	error: ''
 };
 
+/* Action Creators */
 export function openNav() {
 	return {
 		type: OPEN_NAV
@@ -20,6 +21,7 @@ export function closeNav() {
 	}
 }
 
+/* Thunks */
 export function navSwitcher() { // Simple Nav Open / Close Switch Thunk
 	return function(dispatch, getState) {
 		const navStatus = getState().menu.isNavOpen;
