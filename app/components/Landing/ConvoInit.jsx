@@ -1,29 +1,11 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { SmoochChats, SmoochInput } from "components";
-import { getSmooch, postSmooch, checkExistingSmoochStore } from "utils/smoochUtils";
-// import { handleNewUserMessage, convoFlow } from "./botUtils";
-import { botFlow, newPost } from 'redux/modules/smooch';
-
-const script = [
-	`Hello, my name is GabeBot.`,
-	`What is your name?`,
-	`Great! Feel free to take a look at my current work!`,
-	`This conversation is persistent, but what is your email in case we get disconnected?`
-];
+import { newPost } from 'redux/modules/smooch';
 
 class ConvoInit extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			conversation: [],
-			userName: undefined,
-			userEmail: undefined,
-			convoScript: script,
-			inputDisabled: false,
-			scriptMarker: 0,
-			isSmoochInit: false
-		}
 	}
 	handlePost(text) {
 		const { dispatch } = this.props;
