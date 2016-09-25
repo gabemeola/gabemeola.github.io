@@ -113,7 +113,7 @@ function userPostSmooch(text) {
 function userPostBot(text) { // Each time a user posts a message
 	return function(dispatch, getState) {
 		const state = getState().smooch;
-		const { scriptMarker, inputDisabled, conversation, convoScript } = state;
+		const { scriptMarker, inputDisabled, convoScript } = state;
 
 		function pushUserInput() {
 			const state = getState().smooch;
@@ -194,7 +194,7 @@ function userPostBot(text) { // Each time a user posts a message
 export function botFlow() { // Start Point
 	return function (dispatch, getState) {
 		const state = getState().smooch;
-		const { conversation, scriptMarker } = state;
+		const { scriptMarker } = state;
 
 		function pushBotThread(marker) {
 			const state = getState().smooch;
