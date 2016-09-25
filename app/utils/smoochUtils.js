@@ -82,3 +82,11 @@ export function checkExistingSmoochStore() {
 	});
 	return defer.promise;
 }
+
+export function createNewThread(text, name, role) {
+	return {
+		text,
+		name,
+		role
+	};
+}
