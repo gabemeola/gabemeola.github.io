@@ -1,11 +1,13 @@
 import { emailValidate, blankString } from "utils/validations";
 import { getSmooch, postSmooch, checkExistingSmoochStore, initSmooch, updateSmooch } from "utils/smoochUtils";
-import { handleNewUserMessage, convoFlow } from "components/Landing/botUtils";
 
 const UPDATE_CONVO = 'UPDATE_CONVO';
 const INCREASE_SCRIPT_MARKER = 'INCREASE_SCRIPT_MARKER';
 const SET_USERNAME = 'SET_USERNAME';
 const SET_USEREMAIL = 'SET_USEREMAIL';
+const INPUT_ENABLE = 'INPUT_ENABLE';
+const INPUT_DISABLE = 'INPUT_DISABLE';
+const SMOOCH_ENABLE = 'SMOOCH_ENABLE';
 
 let name = '';
 const script = [
@@ -40,11 +42,10 @@ function setUserEmail(userEmail) {
 	}
 }
 
-function updateConvo(newConvo, inputDisabled) {
+function updateConvo(newConvo) {
 	return {
 		type: UPDATE_CONVO,
-		newConvo,
-		inputDisabled
+		newConvo
 	}
 }
 
@@ -54,8 +55,48 @@ function increaseScriptMarker() {
 	}
 }
 
+function inputEnable() {
+	return {
+		type: INPUT_ENABLE
+	}
+}
+
+function inputDisable() {
+	return {
+		type: INPUT_DISABLE
+	}
+}
+
+function smoochEnable() {
+	return {
+		type: SMOOCH_ENABLE
+	}
+}
+
+
 /* Thunks */
-export function newUserMessage(text) { // Each time a user posts a message
+export function newPost(post) {
+	return function(dispatch, getState) {
+		const { isSmoochInit } = getState().smooch;
+
+		isSmoochInit === true // Post message to bot convo or smooch convo
+			? dispatch(userPostSmooch(post))
+			: dispatch(userPostBot(post))
+	}
+}
+
+function userPostSmooch(text) {
+	console.log('its me userPostSmooch')
+	return function(dispatch, getState) {
+		postSmooch(text).then(() => {
+			getSmooch().then((messages) => {
+				dispatch(updateConvo(messages)); // Updating Current Convo to match with Smooch's
+			})
+		});
+	}
+}
+
+function userPostBot(text) { // Each time a user posts a message
 	return function(dispatch, getState) {
 		const state = getState().smooch;
 		const { scriptMarker, inputDisabled } = state;
@@ -68,7 +109,8 @@ export function newUserMessage(text) { // Each time a user posts a message
 				role: "appUser"
 			};
 			newConvo.push(newThread);
-			dispatch(updateConvo(newConvo, true));
+			dispatch(updateConvo(newConvo));
+			dispatch(inputDisable());
 		}
 
 		function continueFlow() {
@@ -78,9 +120,10 @@ export function newUserMessage(text) { // Each time a user posts a message
 				pushUserInput();
 				dispatch(increaseScriptMarker());
 				if (lastScript !== scriptMarker) {
-					setTimeout(() => convoFlow(), 1500);
+					setTimeout(() => dispatch(botFlow()), 1500);
 				} else {
-					initNewSmooch();
+					dispatch(initNewSmooch());
+					console.log("Smooch Initiated for: ", text);
 				}
 			}
 		}
@@ -95,7 +138,8 @@ export function newUserMessage(text) { // Each time a user posts a message
 					role: "appMaker"
 				};
 				newConvo.push(newThread);
-				dispatch(updateConvo(newConvo, false));
+				dispatch(updateConvo(newConvo));
+				dispatch(inputEnable());
 			}, 1500)
 		}
 
@@ -109,13 +153,15 @@ export function newUserMessage(text) { // Each time a user posts a message
 					role: "appMaker"
 				};
 				newConvo.push(newThread);
-				dispatch(updateConvo(newConvo, false));
+				dispatch(updateConvo(newConvo));
+				dispatch(inputEnable());
 			}, 1500)
 		}
 
 		switch (scriptMarker) {
 			case 1:
 				if (!blankString(text)) {
+					name = text;
 					dispatch(setUserName(text));
 					continueFlow();
 				} else {
@@ -128,7 +174,6 @@ export function newUserMessage(text) { // Each time a user posts a message
 				} else {
 					if (emailValidate(text)) {
 						dispatch(setUserEmail(text.toLowerCase()));
-						console.log("Smooch Initiated for: ", text);
 						continueFlow();
 					} else {
 						invalidEmail();
@@ -141,31 +186,72 @@ export function newUserMessage(text) { // Each time a user posts a message
 	}
 }
 
+export function botFlow() { // Start Point
+	return function (dispatch, getState) {
+		const state = getState().smooch;
+		const { convoScript, conversation, scriptMarker } = state;
+		let newConversation = conversation.slice(0);
+
+		function pushBotThread(marker) {
+			const newThread = {
+				text: convoScript[marker],
+				name: "GabeBot",
+				role: "appMaker"
+			};
+			newConversation.push(newThread);
+			dispatch(updateConvo(newConversation));
+			dispatch(inputEnable());
+		}
+
+		switch (scriptMarker) {
+			case 0:
+			case 2:
+				pushBotThread(scriptMarker);
+				dispatch(increaseScriptMarker());
+				setTimeout(() => pushBotThread(scriptMarker + 1), 3000);
+				break;
+			default:
+				pushBotThread(scriptMarker)
+		}
+	}
+}
+
 export function initNewSmooch() {
 	return function(dispatch, getState) {
 		const state = getState().smooch;
-		const { userEmail, userName } = state;
+		const { userEmail, userName, conversation } = state;
 
 		const newUserSlackMessage = `${userName} at ${userEmail} just finished up with the bot. Handing it off to Human Gabe!`;
-		this.setState({inputDisabled: false});
+		dispatch(inputEnable());
 		console.warn("lastMessageScript Ran");
 		initSmooch(userEmail).then(() => {  // Initializes new Smooch User
 			updateSmooch(userEmail, userName).then(() => { // Adds User Email and Name to Smooch Database
 				postSmooch(newUserSlackMessage).then(() => { // Send New User Smooch Email to Business Logic
-					getSmooch().then((res) => { // Concats Old Bot Conversation with new Smooch Conversation
-						let newConversation = this.state.conversation.slice(0);
-						res.conversation.messages.pop();
-						const jointConversation = newConversation.concat(res.conversation.messages);
-						this.setState({
-							conversation: jointConversation,
-							isSmoochInit: true
-						})
+					getSmooch().then((messages) => { // Concats Old Bot Conversation with new Smooch Conversation
+						messages.pop(); // Remove last message
+						const jointConversation = [...conversation, ...messages];
+						dispatch(smoochEnable());
+						dispatch(updateConvo(jointConversation));
 					})
 				})
 			})
 		})
 	}
 }
+
+export function startConvo() {
+	return function(dispatch, getState) {
+		checkExistingSmoochStore().then((res) => {
+			res ?
+				getSmooch().then((messages) => {
+					dispatch(smoochEnable());
+					dispatch(updateConvo(messages));
+				}) :
+				setTimeout(() => dispatch(botFlow()), 3000);  // Delay to start Convo flow to wait for page load
+		});
+	}
+}
+
 
 export default function chat(state = initialState, action) {
 	switch (action.type) {
@@ -182,13 +268,27 @@ export default function chat(state = initialState, action) {
 		case UPDATE_CONVO:
 			return {
 				...state,
-				conversation: action.newConvo,
-				inputDisabled: action.inputDisabled
+				conversation: action.newConvo
 			};
 		case INCREASE_SCRIPT_MARKER:
 			return {
 				...state,
 				scriptMarker: state.scriptMarker + 1
+			};
+		case INPUT_ENABLE:
+			return {
+				...state,
+				inputDisabled: false
+			};
+		case INPUT_DISABLE:
+			return {
+				...state,
+				inputDisabled: true
+			};
+		case SMOOCH_ENABLE:
+			return {
+				...state,
+				isSmoochInit: true
 			};
 		default:
 			return state;

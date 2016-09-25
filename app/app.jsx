@@ -5,11 +5,14 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import * as reducers from 'redux/modules';
 import routes from './config/routes';
+import { startConvo } from 'redux/modules/smooch'
 
 const store = createStore(combineReducers(reducers), compose(
 	applyMiddleware(thunk), // Redux Thunks that lets us return function asynchronously
 	window.devToolsExtension ? window.devToolsExtension() : (f) => f // Lets us view Redux store using Redux Chrome Extension
 ));
+
+store.dispatch(startConvo()); // Start Smooch Convo
 
 ReactDOM.render(
 	<Provider store={store}>
