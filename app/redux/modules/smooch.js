@@ -79,13 +79,13 @@ function smoochEnable() {
 export function startConvo() {
 	return function(dispatch, getState) {
 		checkExistingSmoochStore().then((res) => {
-			res ?
-				getSmooch().then((messages) => {
+			res === true
+				? getSmooch().then((messages) => {
 					dispatch(smoochEnable());
 					dispatch(updateConvo(messages));
 					dispatch(inputEnable());
-				}) :
-				setTimeout(() => dispatch(botFlow()), 3000);  // Delay to start Convo flow to wait for page load
+				})
+				: dispatch(botFlow());  // Delay to start Convo flow to wait for page load
 		});
 	}
 }

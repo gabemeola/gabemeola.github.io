@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { NavbarContainer, MenuContainer } from "containers";
+import { startConvo } from 'redux/modules/smooch'
 import ImgPreRenders from "./imgPreRenders";
 
 class Main extends Component {
@@ -17,9 +18,11 @@ class Main extends Component {
 	componentDidMount() {
 		window.onload = () => { // Wait for CSS and externals to load
 			setTimeout(() => {
+				this.props.dispatch(startConvo()); // Start Smooch Convo
+
 				let elem = document.getElementById("loading");
-				elem.parentNode.removeChild(elem);
-			}, 3000);
+				elem.parentNode.removeChild(elem); // Remove Loading Indicator
+			}, 2000);
 		};
 	}
 	render() {
