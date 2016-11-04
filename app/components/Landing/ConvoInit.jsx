@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
-import { SmoochChats, SmoochInput } from "components";
+import { SmoochChat, SmoochInput } from "components";
 import { newPost } from 'redux/modules/smooch';
 
 class ConvoInit extends Component {
@@ -9,6 +9,7 @@ class ConvoInit extends Component {
 	}
 	handlePost(text) {
 		const { dispatch } = this.props;
+		console.debug('text', text);
 
 		dispatch(newPost(text));
 	}
@@ -27,11 +28,11 @@ class ConvoInit extends Component {
 	render() {
 		return(
 			<div className="smooch">
-				<SmoochChats
+				<SmoochChat
 					conversation={this.props.conversation}
 				/>
 				<SmoochInput
-					onTextSubmit={(text) => setTimeout(this.handlePost(text), 600)}
+					onTextSubmit={(text) => this.handlePost(text)}
 					isDisabled={this.props.inputDisabled}
 				/>
 			</div>

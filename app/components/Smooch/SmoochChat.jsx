@@ -1,6 +1,6 @@
-import React, { PropTypes } from "react";
+import React, { PropTypes } from 'react';
 
-function NewConvo({conversation}) {
+function SmoochChat({conversation}) {
 	const convo = conversation.map((info, index) => {
 		return (
 			<p
@@ -13,12 +13,18 @@ function NewConvo({conversation}) {
 	});
 
 	return (
-		<div>{convo}</div>
-	);
+		<div className="smooch-chat">
+			<div>{convo}</div>
+		</div>
+	)
 }
 
-NewConvo.propTypes = {
-	conversation: PropTypes.array.isRequired
+SmoochChat.propTypes = {
+	conversation: PropTypes.array
 };
 
-export default NewConvo;
+SmoochChat.defaultProps = {
+
+};
+
+export default SmoochChat;

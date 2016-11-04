@@ -8,16 +8,16 @@ class SmoochInput extends Component {
 			isSubmitted: false
 		}
 	}
-	handleIsSubmitted() {
+	animateSubmit() {
 		this.setState({
 			isSubmitted: true
 		});
 		setTimeout(() => this.setState({inputText: ""}), 200);
 		setTimeout(() => this.setState({isSubmitted: false}), 400);
 	}
-	forTextSubmit(e) {
+	handleTextSubmit(e) {
 		e.preventDefault();
-		this.handleIsSubmitted();
+		this.animateSubmit();
 		this.props.onTextSubmit(this.state.inputText);
 	}
 	render() {
@@ -25,7 +25,7 @@ class SmoochInput extends Component {
 		return (
 			<div className={"smooch-form " + (isSubmitted ? "smooch-form--submitted" : "" )}>
 				<form
-					onSubmit={(event) => this.forTextSubmit(event)}
+					onSubmit={(event) => this.handleTextSubmit(event)}
 				>
 					<input
 						value={inputText}
