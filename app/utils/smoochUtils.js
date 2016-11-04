@@ -12,11 +12,10 @@ const smooch = new SmoochCore({
 
 
 export function initSmooch(email, name) {
-	const defer = q.defer();
 	const { platform } = window.navigator;
 	deviceId = createHash(email + platform, true);
 	console.log(deviceId);
-	smooch.appUsers.init({
+	return smooch.appUsers.init({
 		device: {
 			id: deviceId,
 			platform: 'web',
@@ -28,59 +27,50 @@ export function initSmooch(email, name) {
 		smoochUserEmail = res.appUser._id;
 		createStorage("smoochUserEmail", smoochUserEmail)
 			.then((res) => console.warn(res));
-		defer.resolve(res);
+		return res;
 	});
-	return defer.promise;
 }
 
 export function updateSmooch(email, name) {
-	const defer = q.defer();
-	smooch.appUsers.update(smoochUserEmail, {
+	return smooch.appUsers.update(smoochUserEmail, {
 		email: email,
 		givenName: name
 	}).then((res) => {
-		defer.resolve(res);
+		return res;
 	});
-	return defer.promise;
 }
 
 
 export function postSmooch(text) {
-	const defer = q.defer();
-	smooch.appUsers.sendMessage(smoochUserEmail, {
+	return smooch.appUsers.sendMessage(smoochUserEmail, {
 		text: text,
 		role: "appUser",
 		_clientSent: new Date(),
 		deviceId: deviceId
 	}).then((res) => {
 		console.log(res);
-		defer.resolve(res);
+		return res;
 	});
-	return defer.promise;
 }
 
 
 export function getSmooch() {
-	const defer = q.defer();
-	smooch.appUsers.getMessages(smoochUserEmail)
+	return smooch.appUsers.getMessages(smoochUserEmail)
 		.then((res) => {
 			console.log("Get Smooch: ", res);
-			defer.resolve(res.messages);
+			return res.messages;
 		});
-	return defer.promise;
 }
 
 export function checkExistingSmoochStore() {
-	const defer = q.defer();
-	getStorage("smoochUserEmail").then((res) => {
+	return getStorage("smoochUserEmail").then((res) => {
 			if(res) {
 				smoochUserEmail = res;
-				defer.resolve(true);
+				return true;
 			} else {
-				defer.resolve(false);
+				return false;
 			}
 	});
-	return defer.promise;
 }
 
 export function createNewThread(text, name, role) {
