@@ -1,3 +1,7 @@
+/* Polyfills */
+import './external_modules/objectAssign.polyfill';
+
+/* React Bootstrapping */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';

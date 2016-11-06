@@ -90,6 +90,7 @@ export function startConvo() {
 	}
 }
 
+// Handle any user input and directs it accordingly
 export function newPost(post) {
 	return function(dispatch, getState) {
 		const { isSmoochInit } = getState().smooch;
@@ -242,7 +243,7 @@ export function initNewSmooch() {
 }
 
 
-export default function chat(state = initialState, action) {
+export default function smooch(state = initialState, action) {
 	switch (action.type) {
 		case SET_USERNAME:
 			return {
