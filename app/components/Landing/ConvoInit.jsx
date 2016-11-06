@@ -9,8 +9,6 @@ class ConvoInit extends Component {
 	}
 	handlePost(text) {
 		const { dispatch } = this.props;
-		console.debug('text', text);
-
 		dispatch(newPost(text));
 	}
 	componentDidUpdate() {

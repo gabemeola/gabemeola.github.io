@@ -106,11 +106,9 @@ function userPostSmooch(text) {
 		postSmooch(text).then(() => {
 			getSmooch().then((messages) => {
 				const { conversation } = getState().smooch;
-				console.log('newConvo convo', conversation);
-				// Mixed the threads
+				// Mixed the conversations
 				const formattedMessages = removeInitThread(messages);
 				const newConvo = [ ...conversation, ...formattedMessages];
-				console.log('newConvo', newConvo);
 				dispatch(updateConvo(newConvo)); // Updating Current Convo to match with Smooch's
 			})
 		});
