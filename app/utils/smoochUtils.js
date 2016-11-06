@@ -74,7 +74,9 @@ export function checkExistingSmoochStore() {
 }
 
 export function removeInitThread(messages) {
-	return messages.shift(); // Remove First Test Init Message(s)
+	var formattedMessages = messages.slice(); // Return new array
+	formattedMessages.shift(); // Remove First Test Init Message(s)
+	return formattedMessages;
 }
 
 export function createNewThread(text, name, role) {

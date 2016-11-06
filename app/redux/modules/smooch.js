@@ -107,7 +107,7 @@ function userPostSmooch(text) {
 			getSmooch().then((messages) => {
 				// Mixed the thread and avoids duplicates
 				const newConvo = Object.assign([], getState().smooch.coversation, removeInitThread(messages));
-				dispatch(updateConvo(messages)); // Updating Current Convo to match with Smooch's
+				dispatch(updateConvo(newConvo)); // Updating Current Convo to match with Smooch's
 			})
 		});
 	}
