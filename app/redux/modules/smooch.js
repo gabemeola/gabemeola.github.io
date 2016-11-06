@@ -26,7 +26,8 @@ const initialState = {
 	convoScript: script,
 	inputDisabled: true,
 	scriptMarker: 0,
-	isSmoochInit: false
+	isSmoochInit: false,
+	unreadCount: 0
 };
 
 function setUserName(userName) {
@@ -73,7 +74,6 @@ function smoochEnable() {
 		type: SMOOCH_ENABLE
 	}
 }
-
 
 /* Thunks */
 export function startConvo() {
