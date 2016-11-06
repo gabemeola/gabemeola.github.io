@@ -1,6 +1,6 @@
 import { emailValidate, blankString } from "utils/validations";
 import { getSmooch, postSmooch, checkExistingSmoochStore,
-	initSmooch, updateSmooch, createNewThread } from "utils/smoochUtils";
+	initSmooch, updateSmooch, createNewThread, removeInitThread } from "utils/smoochUtils";
 
 const UPDATE_CONVO = 'UPDATE_CONVO';
 const INCREASE_SCRIPT_MARKER = 'INCREASE_SCRIPT_MARKER';
@@ -82,7 +82,7 @@ export function startConvo() {
 			res === true
 				? getSmooch().then((messages) => {
 					dispatch(smoochEnable());
-					dispatch(updateConvo(messages));
+					dispatch(updateConvo(removeInitThread(messages)));
 					dispatch(inputEnable());
 				})
 				: dispatch(botFlow());  // Delay to start Convo flow to wait for page load
@@ -105,6 +105,8 @@ function userPostSmooch(text) {
 	return function(dispatch, getState) {
 		postSmooch(text).then(() => {
 			getSmooch().then((messages) => {
+				// Mixed the thread and avoids duplicates
+				const newConvo = Object.assign([], getState().smooch.coversation, removeInitThread(messages));
 				dispatch(updateConvo(messages)); // Updating Current Convo to match with Smooch's
 			})
 		});

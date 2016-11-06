@@ -73,6 +73,10 @@ export function checkExistingSmoochStore() {
 	});
 }
 
+export function removeInitThread(messages) {
+	return messages.shift(); // Remove First Test Init Message(s)
+}
+
 export function createNewThread(text, name, role) {
 	return {
 		text,
