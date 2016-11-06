@@ -105,8 +105,12 @@ function userPostSmooch(text) {
 	return function(dispatch, getState) {
 		postSmooch(text).then(() => {
 			getSmooch().then((messages) => {
-				// Mixed the thread and avoids duplicates
-				const newConvo = Object.assign([], getState().smooch.coversation, removeInitThread(messages));
+				const { conversation } = getState().smooch;
+				console.log('newConvo convo', conversation);
+				// Mixed the threads
+				const formattedMessages = removeInitThread(messages);
+				const newConvo = [ ...conversation, ...formattedMessages];
+				console.log('newConvo', newConvo);
 				dispatch(updateConvo(newConvo)); // Updating Current Convo to match with Smooch's
 			})
 		});
@@ -233,8 +237,8 @@ export function initNewSmooch() {
 			updateSmooch(userEmail, userName).then(() => { // Adds User Email and Name to Smooch Database
 				postSmooch(newUserSlackMessage).then(() => { // Send New User Smooch Email to Business Logic
 					getSmooch().then((messages) => { // Concats Old Bot Conversation with new Smooch Conversation
-						messages.pop(); // Remove last message
-						const jointConversation = [...conversation, ...messages];
+						const formattedMessages = removeInitThread(messages);
+						const jointConversation = [...conversation, ...formattedMessages];
 						dispatch(smoochEnable());
 						dispatch(updateConvo(jointConversation));
 					})
