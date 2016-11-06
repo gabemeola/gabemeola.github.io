@@ -1,17 +1,17 @@
 import React, { PropTypes } from "react";
 
-function ChatIcon({unread, chatSwitch}) {
+function ChatIcon({unreadCount, chatSwitch}) {
 	return (
 		<div className="notification-icon-wrapper" onClick={chatSwitch}>
 			<div className="notification-icon">
-				{unread}
+				{unreadCount}
 			</div>
 		</div>
 	)
 }
 
 ChatIcon.propTypes = {
-	unread: PropTypes.number.isRequired,
+	unreadCount: PropTypes.number.isRequired,
 	chatSwitch: PropTypes.func.isRequired
 };
 

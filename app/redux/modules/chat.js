@@ -39,7 +39,12 @@ export function chatSwitcher() { // Simple Chat Open / Close Switch Thunk
 	return function(dispatch, getState) {
 		const chatStatus = getState().chat.isChatOpen;
 
-		chatStatus ? dispatch(closeChat()) : dispatch(openChat());
+		if(chatStatus === true) {
+			dispatch(closeChat())
+		} else {
+			dispatch(openChat());
+			dispatch(clearUnreadCount());
+		}
 	}
 }
 

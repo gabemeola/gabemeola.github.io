@@ -16,7 +16,7 @@ class ChatContainer extends Component {
 		return(
 			<div className="notification-wrapper" style={this.props.route !== "/" ? { visibility: "visible", opacity: "1" } : { visibility: "hidden", opacity: "0" }}>
 				<ChatIcon
-					unread={this.props.unread}
+					unreadCount={this.props.unreadCount}
 					chatSwitch={() => this.handleChatSwitcher()}
 				/>
 				<ChatConvo
@@ -29,13 +29,13 @@ class ChatContainer extends Component {
 
 ChatContainer.propTypes = {
 	isChatOpen: PropTypes.bool.isRequired,
-	unread: PropTypes.number.isRequired
+	unreadCount: PropTypes.number.isRequired
 };
 
 function mapStateToProps({chat}, props) {
 	return {
 		isChatOpen: chat.isChatOpen,
-		unread: chat.unread
+		unreadCount: chat.unreadCount
 	}
 }
 
