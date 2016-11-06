@@ -10,6 +10,8 @@ module.exports = function(PORT) {
 		res.sendFile(__dirname + "/dist/index.html")
 	});
 
+	app.use(compression());
+
 	app.use("/", express.static(__dirname + "/dist", {
 		maxAge: 5184000000
 	}));
@@ -31,7 +33,7 @@ module.exports = function(PORT) {
 	app.post("/api/newmessage", (req, res) => {
 		console.log('BODY: ', req.body);
 		res.sendStatus(200);
-	});
+	})
 
 	http.listen(PORT, () => console.log(`Server Listening on Port: ${PORT}`));
 };
