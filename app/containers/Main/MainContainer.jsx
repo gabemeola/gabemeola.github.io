@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { NavbarContainer, MenuContainer } from "containers";
-import { startConvo, getNewMessages } from 'redux/modules/smooch'
+import { startConvo, newMessagesHook } from 'redux/modules/smooch'
 import ImgPreRenders from "./imgPreRenders";
 const socket = io.connect(SERVER_ADDRESS);
 
