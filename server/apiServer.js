@@ -10,7 +10,7 @@ module.exports = function(PORT) {
 		res.sendFile(__dirname + "/dist/index.html")
 	});
 
-	app.use(compression());
+	// app.use(compression());
 
 	app.use("/", express.static(__dirname + "/dist", {
 		maxAge: 5184000000
@@ -25,6 +25,7 @@ module.exports = function(PORT) {
 
 	io.on("connection", (socket) => {
 		console.log("Socket.io: A User Connected");
+		socket.emit('newConnection', { text: 'Awesome a New Connection!' });
 		socket.on('disconnect', () => {
 			console.log('Socket.io: A User disconnected');
 		});
