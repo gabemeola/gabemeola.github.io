@@ -25,17 +25,17 @@ module.exports = function(PORT) {
 
 	io.on("connection", (socket) => {
 		console.log("Socket.io: A User Connected");
-		socket.emit('newConnection', { text: 'Awesome a New Connection!' });
 		socket.on('disconnect', () => {
 			console.log('Socket.io: A User disconnected');
 		});
 	});
 
 	app.post("/api/newmessage", (req, res) => {
+		const smoochId = req.body.appUser._id;
 		console.log('BODY: ', req.body);
-		io.emit('newConnection', {text: req.body.messages[0].text});
+		io.emit(smoochId, {text: req.body.messages[0].text});
 		res.sendStatus(200);
-	})
+	});
 
 	http.listen(PORT, () => console.log(`Server Listening on Port: ${PORT}`));
 };

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-const socket = io(SERVER_ADDRESS);
+import { connect } from 'react-redux';
+const socket = io.connect(SERVER_ADDRESS);
 
 class SmoochContainer extends Component {
 	constructor(props) {
@@ -9,7 +10,10 @@ class SmoochContainer extends Component {
 		}
 	}
 	componentDidMount() {
-		socket.on('newConnection', (data) => {
+		// const socket = io.connect(SERVER_ADDRESS + '/api/hook/' + this.props.smoochId);
+		console.log('socket address below');
+		console.log('socket address', SERVER_ADDRESS + '/api/hook/' + this.props.smoochId);
+		socket.on(this.props.smoochId, (data) => {
 			console.warn('connection data', data);
 			const newState = this.state.connections.slice();
 			newState.push(data);
@@ -29,4 +33,12 @@ class SmoochContainer extends Component {
 	}
 }
 
-export default SmoochContainer;
+function mapStateToProps({smooch}, props) {
+	return {
+		smoochId: smooch.smoochId
+	}
+}
+
+export default connect(
+	mapStateToProps
+)(SmoochContainer);

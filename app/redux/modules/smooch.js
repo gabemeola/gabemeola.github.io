@@ -88,7 +88,7 @@ function smoochEnable() {
 export function startConvo() {
 	return function(dispatch, getState) {
 		checkExistingSmoochStore().then((res) => {
-			res === true
+			res !== false
 				? getSmooch().then((messages) => {
 					dispatch(smoochEnable());
 					dispatch(setSmoochId(res));
