@@ -10,8 +10,6 @@ class SmoochContainer extends Component {
 		}
 	}
 	componentDidMount() {
-		// const socket = io.connect(SERVER_ADDRESS + '/api/hook/' + this.props.smoochId);
-		console.log('socket address below');
 		console.log('socket address', SERVER_ADDRESS + '/api/hook/' + this.props.smoochId);
 		socket.on(this.props.smoochId, (data) => {
 			console.warn('connection data', data);

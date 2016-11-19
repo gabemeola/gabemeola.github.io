@@ -22,7 +22,7 @@ function closeChat() {
 	}
 }
 
-function increaseUnreadCount() {
+export function increaseUnreadCount() {
 	return {
 		type: INCREASE_UNREAD_COUNT
 	}

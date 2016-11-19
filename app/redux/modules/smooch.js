@@ -1,6 +1,7 @@
 import { emailValidate, blankString } from "utils/validations";
 import { getSmooch, postSmooch, checkExistingSmoochStore,
 	initSmooch, updateSmooch, createNewThread, removeInitThread } from "utils/smoochUtils";
+import { increaseUnreadCount } from './chat';
 
 const UPDATE_CONVO = 'UPDATE_CONVO';
 const INCREASE_SCRIPT_MARKER = 'INCREASE_SCRIPT_MARKER';
@@ -29,7 +30,7 @@ const initialState = {
 	scriptMarker: 0,
 	isSmoochInit: false,
 	unreadCount: 0,
-	smoochId: ''
+	smoochId: checkExistingSmoochStore()
 };
 
 function setUserName(userName) {
@@ -97,6 +98,19 @@ export function startConvo() {
 				})
 				: dispatch(botFlow());  // Delay to start Convo flow to wait for page load
 		});
+	}
+}
+
+export function newMessagesHook() {
+	return function(dispatch, getState) {
+		getSmooch().then((messages) => {
+			const { conversation } = getState().smooch;
+			// Mixed the conversations
+			const formattedMessages = removeInitThread(messages);
+			const newConvo = [ ...conversation, ...formattedMessages];
+			dispatch(updateConvo(newConvo)); // Updating Current Convo to match with Smooch's
+			dispatch(increaseUnreadCount()); // Increase the unread count.
+		})
 	}
 }
 

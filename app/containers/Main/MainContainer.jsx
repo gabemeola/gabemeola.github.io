@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from "react";
 import { connect } from 'react-redux';
 import { NavbarContainer, MenuContainer } from "containers";
-import { startConvo } from 'redux/modules/smooch'
+import { startConvo, getNewMessages } from 'redux/modules/smooch'
 import ImgPreRenders from "./imgPreRenders";
+const socket = io.connect(SERVER_ADDRESS);
 
 class Main extends Component {
 	constructor(props) {
@@ -22,6 +23,10 @@ class Main extends Component {
 
 				let elem = document.getElementById("loading");
 				elem.parentNode.removeChild(elem); // Remove Loading Indicator
+
+				socket.on(this.props.smoochId, (data) => {
+					this.props.dispatch(newMessagesHook());
+				});
 			}, 2000);
 		};
 	}
@@ -45,8 +50,9 @@ Main.propTypes = {
 	isNavOpen: PropTypes.bool.isRequired
 };
 
-function mapStateToProps({menu}, props) {
+function mapStateToProps({menu, smooch}, props) {
 	return {
+		smoochId: smooch.smoochId,
 		isNavOpen: menu.isNavOpen
 	}
 }
