@@ -6,6 +6,7 @@ const UPDATE_CONVO = 'UPDATE_CONVO';
 const INCREASE_SCRIPT_MARKER = 'INCREASE_SCRIPT_MARKER';
 const SET_USERNAME = 'SET_USERNAME';
 const SET_USEREMAIL = 'SET_USEREMAIL';
+const SET_SMOOCHID = 'SET_SMOOCHID';
 const INPUT_ENABLE = 'INPUT_ENABLE';
 const INPUT_DISABLE = 'INPUT_DISABLE';
 const SMOOCH_ENABLE = 'SMOOCH_ENABLE';
@@ -27,7 +28,8 @@ const initialState = {
 	inputDisabled: true,
 	scriptMarker: 0,
 	isSmoochInit: false,
-	unreadCount: 0
+	unreadCount: 0,
+	smoochId: ''
 };
 
 function setUserName(userName) {
@@ -41,6 +43,13 @@ function setUserEmail(userEmail) {
 	return {
 		type: SET_USEREMAIL,
 		userEmail
+	}
+}
+
+function setSmoochId(smoochId) {
+	return {
+		type: SET_SMOOCHID,
+		smoochId
 	}
 }
 
@@ -82,6 +91,7 @@ export function startConvo() {
 			res === true
 				? getSmooch().then((messages) => {
 					dispatch(smoochEnable());
+					dispatch(setSmoochId(res));
 					dispatch(updateConvo(removeInitThread(messages)));
 					dispatch(inputEnable());
 				})
@@ -231,7 +241,8 @@ export function initNewSmooch() {
 		const newUserSlackMessage = `${userName} at ${userEmail} just finished up with the bot. Handing it off to Human Gabe!`;
 		dispatch(inputEnable());
 		console.warn("lastMessageScript Ran");
-		initSmooch(userEmail).then(() => {  // Initializes new Smooch User
+		initSmooch(userEmail).then((res) => {  // Initializes new Smooch User
+			dispatch(setSmoochId(res.smoochUserEmail));
 			updateSmooch(userEmail, userName).then(() => { // Adds User Email and Name to Smooch Database
 				postSmooch(newUserSlackMessage).then(() => { // Send New User Smooch Email to Business Logic
 					getSmooch().then((messages) => { // Concats Old Bot Conversation with new Smooch Conversation
@@ -258,6 +269,11 @@ export default function smooch(state = initialState, action) {
 			return {
 				...state,
 				userEmail: action.userEmail
+			};
+		case SET_SMOOCHID:
+			return {
+				...state,
+				smoochId: action.smoochId
 			};
 		case UPDATE_CONVO:
 			return {

@@ -106,8 +106,8 @@ module.exports = {
 			  removeRedundantAttributes: true
 		  }
 	  }),
-	  new ScriptExtHtmlWebpackPlugin({
-		  defaultAttribute: 'async'
-	  })
+	  // new ScriptExtHtmlWebpackPlugin({
+		 //  defaultAttribute: 'async'
+	  // })
   ]
 };

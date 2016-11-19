@@ -22,8 +22,8 @@ class SmoochContainer extends Component {
 		return (
 			<div>
 				{this.state.connections.map((data, index) => {
-				return <p key={index}>{data.text}</p>
-			})}
+					return <p key={index}>{data.text}</p>
+				})}
 			</div>
 		)
 	}

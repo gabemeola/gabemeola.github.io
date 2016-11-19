@@ -1,6 +1,5 @@
 import SmoochCore from "smooch-core"
 import createHash from "./createHash";
-import q from "q";
 import { createStorage, getStorage }  from "./localStorage";
 
 
@@ -25,6 +24,7 @@ export function initSmooch(email, name) {
 	}).then((res) => {
 		console.log("Smooch returns: ", res);
 		smoochUserEmail = res.appUser._id;
+		res.smoochUserEmail = smoochUserEmail;
 		createStorage("smoochUserEmail", smoochUserEmail)
 			.then((res) => console.warn(res));
 		return res;
@@ -66,7 +66,7 @@ export function checkExistingSmoochStore() {
 	return getStorage("smoochUserEmail").then((res) => {
 			if(res) {
 				smoochUserEmail = res;
-				return true;
+				return smoochUserEmail;
 			} else {
 				return false;
 			}

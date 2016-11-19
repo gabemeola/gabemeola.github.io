@@ -33,6 +33,7 @@ module.exports = function(PORT) {
 
 	app.post("/api/newmessage", (req, res) => {
 		console.log('BODY: ', req.body);
+		io.emit('newConnection', {text: req.body.messages[0].text});
 		res.sendStatus(200);
 	})
 
