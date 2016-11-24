@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, hashHistory, Route, IndexRoute } from "react-router";
+import { Router, hashHistory, browserHistory, Route, IndexRoute } from "react-router";
 import { MainContainer } from 'containers';
 import {
 	LandingContainer,
@@ -10,7 +10,7 @@ import {
 } from 'containers';
 
 const routes = (
-	<Router history={hashHistory}>
+	<Router history={browserHistory}>
 		<Route path="/" component={MainContainer}>
 			<IndexRoute component={LandingContainer}/>
 			<Route path="smooch" component={SmoochContainer}/>

@@ -30,6 +30,7 @@ module.exports = {
 	},
 	devtool: 'eval-source-map',
 	devServer: { //Allows webpack-dev-server to be live reloaded
+		historyApiFallback: true,
 		inline: true,
 		hot: true,
 		port: PORT

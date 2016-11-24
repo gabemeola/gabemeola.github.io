@@ -21,7 +21,8 @@ module.exports = {
   },
 	output: {
 		path: __dirname + "/dist/",
-		filename: "bundle.[hash].js" //Bundled Javascript Webpack Spits out.
+		filename: "bundle.[hash].js", //Bundled Javascript Webpack Spits out.
+		publicPath: '/'
 	},
 	module: {
 		loaders: [
