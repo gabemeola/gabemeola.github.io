@@ -4,9 +4,12 @@ import { Link } from "react-router";
 function Menu({navSwitch}) {
 	return(
 		<div className="menu-nav">
-			<Link to="about" onClick={navSwitch} activeClassName="about--active">
-				<h2 className="about">About me</h2>
-			</Link>
+			{/*<Link to="about" onClick={navSwitch} activeClassName="about--active">*/}
+				{/*<h2 className="about">About me</h2>*/}
+			{/*</Link>*/}
+			<a disabled="true">
+				<h2 style={{'cursor': 'not-allowed', 'color': '#c6c9cb'}} className="about">About me</h2>
+			</a>
 			<div className="menu-nav-works-wrapper">
 				<h2>Work</h2>
 				<Link to="works/cosmeticlaserexchange" activeClassName="menu-nav-works--active" onClick={navSwitch}>
