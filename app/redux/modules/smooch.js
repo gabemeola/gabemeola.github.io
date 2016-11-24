@@ -12,11 +12,13 @@ const INPUT_ENABLE = 'INPUT_ENABLE';
 const INPUT_DISABLE = 'INPUT_DISABLE';
 const SMOOCH_ENABLE = 'SMOOCH_ENABLE';
 
+
 let name = '';
+const getName = () => name;
 const script = [
 	`Hello, my name is GabeBot.`,
 	`What is your name?`,
-	`Great ${name}! Feel free to take a look at my current work!`,
+	`Great ${getName()}! Feel free to take a look at my current work!`,
 	`This conversation is persistent, but what is your email in case we get disconnected?`
 ];
 
@@ -30,7 +32,7 @@ const initialState = {
 	scriptMarker: 0,
 	isSmoochInit: false,
 	unreadCount: 0,
-	smoochId: checkExistingSmoochStore()
+	smoochId: ''
 };
 
 function setUserName(userName) {
