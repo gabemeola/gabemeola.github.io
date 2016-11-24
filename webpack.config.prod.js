@@ -71,7 +71,7 @@ module.exports = {
 		]
 	},
 	//Config for Post-CSS and AutoPrefixer
-	postcss: [ autoprefixer({ remove: true, browsers: ['> 5%'] }) ],
+	postcss: [ autoprefixer({ remove: true, browsers: ['>1%,last 2 versions,Firefox ESR'] }) ],
   plugins: [
 	  new StyleExtHtmlWebpackPlugin({
 		  minify: true
