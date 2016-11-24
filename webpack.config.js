@@ -75,7 +75,7 @@ module.exports = {
 		]
 	},
 	//Config for Post-CSS and AutoPrefixer
-	postcss: [ autoprefixer({ remove: false, browsers: ['>1%,last 2 versions,Firefox ESR'] }) ],
+	postcss: [ autoprefixer({ remove: false, browsers: ['>1%','last 2 versions','Firefox ESR'] }) ],
 	plugins: [
 		new webpack.DefinePlugin({
 			SERVER_ADDRESS: JSON.stringify(`http://${address}:${PORT}`),
