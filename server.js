@@ -1,18 +1,25 @@
-var webpackServer = require("./server/webpackServer"),
-		apiServer = require("./server/apiServer"),
-		ifaces = require('os').networkInterfaces(),
-		ADDRESS;
+const webpackServer = require("./server/webpackServer"),
+	    apiServer = require("./server/apiServer"),
+	    os = require('os'),
+	    ADDRESS = getLocalIp();
 // Finds out your local IP address
-for (var dev in ifaces) {
-	ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? ADDRESS = details.address : undefined);
+function getLocalIp() {
+	const ifaces = os.networkInterfaces();
+	let address;
+	Object.keys(ifaces).forEach((dev) => ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address : false));
+
+	return address || '0.0.0.0';
 }
 
-const PROD  = process.env.NODE_ENV === JSON.stringify('development');
-const PORT = process.env.PORT ? process.env.PORT : process.env.PORT = 8080;
+const ENV = process.env.NODE_ENV;
+const PORT = process.env.PORT || 8080;
+console.log(`Node Environment Set To ${ENV}`);
 
-if (PROD) {
+if (ENV === 'production') {
 	apiServer(PORT, ADDRESS);
-} else {
+} else if (ENV === 'development') {
 	apiServer(PORT - 10);
 	webpackServer(PORT, ADDRESS);
 }
+
+console.log('Address', ADDRESS);

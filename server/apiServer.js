@@ -38,5 +38,5 @@ module.exports = function(PORT) {
 		res.sendStatus(200);
 	});
 
-	http.listen(PORT, () => console.log(`Server Listening on Port: ${PORT}`));
+	http.listen(PORT, () => console.log(`Api Server Listening on Port: ${PORT}`));
 };

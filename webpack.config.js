@@ -1,22 +1,17 @@
-var address,
-		path = require("path"),
-		webpack = require("webpack"),
-		autoprefixer = require('autoprefixer'),
-		HtmlWebpackPlugin = require('html-webpack-plugin'),
-		ifaces = require('os').networkInterfaces(),
-		PORT = process.env.PORT ;
-// Finds out your local IP address
-for (var dev in ifaces) {
-	ifaces[dev].filter((details) => details.family === 'IPv4' && details.internal === false ? address = details.address : undefined);
-}
-module.exports = {
+const path = require("path"),
+		  webpack = require("webpack"),
+		  autoprefixer = require('autoprefixer'),
+		  HtmlWebpackPlugin = require('html-webpack-plugin');
+
+module.exports = (PORT, ADDRESS) => {
+	return {
 	resolve: {
 		root: path.resolve("./app"), // Allow Easy non-relative imports
 		extensions: ["", ".js", ".jsx"] //Resolves JSX Imports
 	},
 	entry: { //Entry Point for Webpack
 		app: [
-			`webpack-dev-server/client?http://${address}:${PORT}`,
+			`webpack-dev-server/client?http://${ADDRESS}:${PORT}`,
 			'webpack/hot/only-dev-server',
 			'./app/app.jsx',
 			'./sass/preloader/preload.sass',
@@ -26,7 +21,7 @@ module.exports = {
 	output: {
 		path: __dirname + "/dist/",
 		filename: "bundle.js",
-		publicPath: `http://${address}:${PORT}/` //Bundled Javascript Webpack Spits out.
+		publicPath: `http://${ADDRESS}:${PORT}/` //Bundled Javascript Webpack Spits out.
 	},
 	devtool: 'eval-source-map',
 	devServer: { //Allows webpack-dev-server to be live reloaded
@@ -79,7 +74,7 @@ module.exports = {
 	postcss: [ autoprefixer({ remove: false, browsers: ['>1%','last 2 versions','Firefox ESR'] }) ],
 	plugins: [
 		new webpack.DefinePlugin({
-			SERVER_ADDRESS: JSON.stringify(`http://${address}:${PORT}`),
+			SERVER_ADDRESS: JSON.stringify(`http://${ADDRESS}:${PORT}`),
 			'process.env': {
 				'NODE_ENV': JSON.stringify('development')
 			}
@@ -95,4 +90,5 @@ module.exports = {
 			inject: "body"
 		})
 	]
+	}
 };

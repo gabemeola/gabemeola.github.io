@@ -4,8 +4,7 @@
   "description": "Gabe M Personal WebApp",
   "main": "index.js",
   "scripts": {
-    "start": "PORT=3333 node server.js",
-    "webpack-dev-server": "webpack-dev-server --progress --colors --host 0.0.0.0",
+    "start": "PORT=3333 NODE_ENV=development node server.js",
     "build:prodution": "webpack --config webpack.config.prod.js --progress"
   },
   "repository": {
