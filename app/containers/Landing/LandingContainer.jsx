@@ -22,12 +22,12 @@ class LandingContainer extends Component {
 	render() {
 		return(
 			<div className="landing">
-				{/*<ConvoInit/>*/}
-				<Landing/>
-				<LandingIcon
-					onIconExpand={() => this.handleIconExpand()}
-				  isIconExpanded={this.state.iconExpanded}
-				/>
+				<ConvoInit/>
+				{/*<Landing/>*/}
+				{/*<LandingIcon*/}
+					{/*onIconExpand={() => this.handleIconExpand()}*/}
+				  {/*isIconExpanded={this.state.iconExpanded}*/}
+				{/*/>*/}
 			</div>
 		)
 	}
