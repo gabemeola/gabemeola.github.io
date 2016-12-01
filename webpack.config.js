@@ -42,7 +42,7 @@ module.exports = (PORT, ADDRESS) => {
 				}			},
 			{ //Converts SASS to CSS
 				test: /\.sass$/,
-				loader: 'style-loader!css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax'
+				loader: 'style-loader!css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax&sourceMap'
 			},
 			{ //Loads the font files from imports
 				test:  /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,

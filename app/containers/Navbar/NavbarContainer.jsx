@@ -26,9 +26,9 @@ class NavbarContainer extends Component {
 				<NavbarHeader
 					navClose={() => this.handleNavClose()}
 				/>
-				<ChatContainer
-				  route={this.props.route}
-				/>
+				{/*<ChatContainer*/}
+				  {/*route={this.props.route}*/}
+				{/*/>*/}
 				<NavbarNavBtn
 					navSwitch={() => this.handleNavSwitch()}
 				  isNavOpen={this.props.isNavOpen}

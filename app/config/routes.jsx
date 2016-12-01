@@ -1,5 +1,5 @@
 import React from "react";
-import { Router, hashHistory, browserHistory, Route, IndexRoute } from "react-router";
+import { Router, browserHistory, Route, IndexRoute } from "react-router";
 import { MainContainer } from 'containers';
 import {
 	LandingContainer,
