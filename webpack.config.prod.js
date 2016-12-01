@@ -84,9 +84,6 @@ module.exports = {
 			  'NODE_ENV': JSON.stringify('production')
 		  }
 	  }),
-	  new webpack.ProvidePlugin({
-		  socket: 'window.io'
-	  }),
 	  new webpack.NormalModuleReplacementPlugin(/\/iconv-loader$/, 'node-noop'),  // Prevent Error with Smooch for webpack
 	  new webpack.optimize.DedupePlugin(),
 	  new webpack.optimize.UglifyJsPlugin({

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+import io from 'socket.io-client';
 const socket = io.connect(SERVER_ADDRESS);
 
 class SmoochContainer extends Component {

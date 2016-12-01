@@ -25,7 +25,8 @@
     "react-router": "^3.0.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
-    "smooch-core": "^2.1.1"
+    "smooch-core": "^2.1.1",
+    "socket.io-client": "^1.7.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.3",
