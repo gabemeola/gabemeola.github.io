@@ -1,5 +1,8 @@
 {
  "name": "gabemeola.com",
+ "background_color": "#6CCECD",
+ "theme_color": "#6CCECD",
+ "description": "Gabe Meola Personal Portfolio",
  "icons": [
   {
    "src": "\/android-icon-36x36.png",
