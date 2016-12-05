@@ -32,7 +32,7 @@ module.exports = {
 				loader: 'babel-loader',
 				query: {
 					presets: ['react', 'es2015'],
-					plugins: ['babel-plugin-transform-object-rest-spread']
+					plugins: ['transform-object-rest-spread', 'transform-react-remove-prop-types']
 		    }
 			},
 			{ //Loads the preloader sass as inline styles

@@ -38,7 +38,7 @@ module.exports = (PORT, ADDRESS) => {
 				loader: 'babel-loader',
 				query: {
 					presets: ['react', 'es2015', 'react-hmre'],
-					plugins: ['babel-plugin-transform-object-rest-spread']
+					plugins: ['transform-object-rest-spread']
 				}			},
 			{ //Converts SASS to CSS
 				test: /\.sass$/,
