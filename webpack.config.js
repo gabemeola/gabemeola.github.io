@@ -3,8 +3,8 @@ const webpack = require("webpack");
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = (PORT, ADDRESS) => {
-	return {
+module.exports = (PORT, ADDRESS) => (
+	{
 	resolve: {
 		root: path.resolve("./app"), // Allow Easy non-relative imports
 		extensions: ["", ".js", ".jsx"] //Resolves JSX Imports
@@ -39,20 +39,21 @@ module.exports = (PORT, ADDRESS) => {
 				query: {
 					presets: ['react', 'es2015', 'react-hmre'],
 					plugins: ['transform-object-rest-spread']
-				}			},
+				}
+			},
 			{ //Converts SASS to CSS
 				test: /\.sass$/,
 				loader: 'style-loader!css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax&sourceMap'
 			},
 			{ //Loads the font files from imports
-				test:  /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+				test:  /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/i,
 				loader: 'file-loader?name=./assets/fonts/[name].[ext]&context=./assets'
 			},
 			{ //Optimizes Images
 				test: /\.(jpe?g|png|gif|svg)$/i,
 				loaders: [
 					'file?hash=sha512&digest=hex&name=./assets/min-imgs/[hash].[ext]',
-					'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false&progressive=true'
+					'image-webpack?bypassOnDebug&optimizationLevel=1&interlaced=false&progressive=false'
 				]
 			},
 			{ //Loads HTML imports/requires
@@ -88,4 +89,4 @@ module.exports = (PORT, ADDRESS) => {
 		})
 	]
 	}
-};
+);

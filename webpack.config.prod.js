@@ -46,7 +46,7 @@ module.exports = {
 	      loader: ExtractTextPlugin.extract('css-loader?sourceMap!postcss-loader!resolve-url!sass-loader?indentedSyntax') // Extracts main.css to separate file
       },
 			{ //Loads the font files from imports
-				test:  /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+				test:  /\.(ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/i,
 				loader: 'file-loader?name=./assets/fonts/[name].[ext]&context=./assets'
 			},
 			{ //Optimizes Images
