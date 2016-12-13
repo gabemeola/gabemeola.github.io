@@ -1,7 +1,7 @@
-const webpackServer = require("./server/webpackServer"),
-	    apiServer = require("./server/apiServer"),
-	    os = require('os'),
-	    ADDRESS = getLocalIp();
+const webpackServer = require("./server/webpackServer");
+const apiServer = require("./server/apiServer");
+const os = require('os');
+const ADDRESS = getLocalIp();
 // Finds out your local IP address
 function getLocalIp() {
 	const ifaces = os.networkInterfaces();

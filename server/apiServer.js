@@ -1,9 +1,9 @@
-const express = require("express"),
-	    app = express(),
-	    http = require("http").Server(app),
-	    io = require("socket.io")(http),
-	    bodyParser = require('body-parser'),
-	    path = require('path');
+const express = require("express");
+const app = express();
+const http = require("http").Server(app);
+const io = require("socket.io")(http);
+const bodyParser = require('body-parser');
+const path = require('path');
 
 module.exports = function(PORT) {
 

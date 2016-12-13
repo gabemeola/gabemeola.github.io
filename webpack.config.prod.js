@@ -1,11 +1,11 @@
-var path = require("path"),
-	  webpack = require("webpack"),
-	  ExtractTextPlugin = require('extract-text-webpack-plugin'),
-	  autoprefixer = require('autoprefixer'),
-	  HtmlWebpackPlugin = require('html-webpack-plugin'),
-	  ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin'),
-	  StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin'),
-	  webServer = '159.203.242.5:3333';
+const path = require("path");
+const webpack = require("webpack");
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
+const webServer = '159.203.242.5:3333';
 
 module.exports = {
 	resolve: {
