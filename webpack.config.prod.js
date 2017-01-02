@@ -5,7 +5,7 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
-const webServer = '159.203.242.5:3333';
+const webServer = 'gabemeola.com';
 
 module.exports = {
 	resolve: {
